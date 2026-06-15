@@ -143,6 +143,31 @@ You can change database by changing `DBProvider` in `ApplicationOptions` to `SQL
 - You can configure logging levels and other settings in appsetttings.json.
   - More information: https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/
 
+## Platform Support
+
+Remotely has three roles, and platform support differs per role. It's important
+to separate *controlling from* a device (the viewer) from *being controlled* (the
+agent + desktop client).
+
+| Role | Windows | Linux | macOS | Android | iOS / iPadOS |
+|------|:-------:|:-----:|:-----:|:-------:|:------------:|
+| **Server** (host the web app) | ✅ | ✅ | ✅ | — | — |
+| **Viewer** (control *from*, in a browser) | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Controlled device** (agent + desktop client) | ✅ | ✅ (X11) | ⚠️ experimental | 🚧 planned | ❌ not possible |
+
+Notes:
+
+- **Viewer** runs in any modern browser, including mobile browsers, with touch
+  gestures (see *Remote Control on Mobile* below). No install required.
+- **macOS controlled device** is new/experimental: screen capture via CoreGraphics
+  (`CGDisplayCreateImage`) and input via `CGEvent`. It requires granting the
+  **Screen Recording** and **Accessibility** privacy permissions, and has not yet
+  been validated on hardware. Linux support is X11 only (Wayland is not supported).
+- **iOS / iPadOS cannot be remotely controlled.** Apple provides no public API for
+  a third-party app to capture another app's screen unattended or to inject input
+  across apps; this is an OS-level restriction, not a Remotely limitation. An
+  iPhone/iPad can still be used as a *viewer* to control other devices.
+
 ## Remote Control Client Requirements
 
 - Windows: Only the latest version of Windows 11 is tested. Windows 7 and 8.1 should work, though performance will be reduced on Windows 7.
