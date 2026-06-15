@@ -50,12 +50,13 @@ Publishing clients/server: `Utilities/Publish.ps1` builds the Agent for win-x64/
 - **Desktop.Shared** — the active cross-platform core of the desktop/remote-control client: screen capture, input injection, chat, and the SignalR connection to the desktop hub (`Desktop.Shared/Services/`).
 - **Desktop.UI** — cross-platform **Avalonia 11** UI for the desktop client.
 - **Desktop.Win** (`net8.0-windows`, WinExe, assembly `Remotely_Desktop`) — Windows entry point. Uses SharpDX (DXGI/Direct3D11) for screen capture and NAudio for audio. Its post-build step copies the output into `Agent/bin/.../Desktop/` so the Agent ships with the desktop client.
-- **Desktop.Linux** — Linux entry point (Avalonia).
-- **Desktop.Native** — P/Invoke native interop split into `Windows/` and `Linux/`.
+- **Desktop.Linux** — Linux entry point (Avalonia). Screen capture via X11 `XGetImage`, input via `libXtst`.
+- **Desktop.MacOS** — macOS entry point (Avalonia), mirrors Desktop.Linux. Screen capture via CoreGraphics `CGDisplayCreateImage`, input via CoreGraphics `CGEvent`. **Compiles on any OS but only runs on macOS** (P/Invoke is metadata), and is not yet validated on real hardware; needs the Screen Recording + Accessibility privacy permissions at runtime.
+- **Desktop.Native** — P/Invoke native interop split into `Windows/`, `Linux/`, and `MacOS/`.
 - **Tests** — `Server.Tests` (MSTest), `Shared.Tests`, `Desktop.Win.Tests`, and `LoadTester` (a console load-testing tool).
 - **Utilities** — PowerShell scripts for migrations, publishing, and command-list generation; bundled `signtool.exe`.
 
-> **Desktop client pipeline:** `Desktop.Shared` (cross-platform core: capture, input, SignalR) → `Desktop.UI` (Avalonia UI) → `Desktop.Win` / `Desktop.Linux` (per-OS entry points), with `Desktop.Native` providing the P/Invoke layer. Put desktop changes in `Desktop.Shared`/`Desktop.UI`; only touch a per-OS head (`Desktop.Win`/`Desktop.Linux`) when the change is genuinely OS-specific (native capture/input). The porting surface for a new OS is the set of abstractions in `Desktop.Shared/Abstractions/` (e.g. `IScreenCapturer`, `IKeyboardMouseInput`, `IAudioCapturer`, `IClipboardService`), each implemented per platform and registered in that platform's `Startup/IServiceCollectionExtensions.cs`.
+> **Desktop client pipeline:** `Desktop.Shared` (cross-platform core: capture, input, SignalR) → `Desktop.UI` (Avalonia UI) → `Desktop.Win` / `Desktop.Linux` / `Desktop.MacOS` (per-OS entry points), with `Desktop.Native` providing the P/Invoke layer. Put desktop changes in `Desktop.Shared`/`Desktop.UI`; only touch a per-OS head (`Desktop.Win`/`Desktop.Linux`/`Desktop.MacOS`) when the change is genuinely OS-specific (native capture/input). The porting surface for a new OS is the set of abstractions in `Desktop.Shared/Abstractions/` (e.g. `IScreenCapturer`, `IKeyboardMouseInput`, `IAudioCapturer`, `IClipboardService`), each implemented per platform and registered in that platform's `Startup/IServiceCollectionExtensions.cs`.
 
 ### SignalR communication (the core of the system)
 
