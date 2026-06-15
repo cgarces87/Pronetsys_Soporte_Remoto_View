@@ -61,6 +61,9 @@ public class AgentUpdateController : ControllerBase
                 case "macos-x64":
                     filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Remotely-MacOS-x64.zip");
                     break;
+                case "macos-arm64":
+                    filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Remotely-MacOS-arm64.zip");
+                    break;
                 default:
                     _logger.LogWarning(
                         "Unknown platform requested in {className}. " +
