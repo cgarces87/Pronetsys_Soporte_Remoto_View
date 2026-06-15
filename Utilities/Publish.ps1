@@ -106,6 +106,8 @@ dotnet publish /p:Version=$CurrentVersion /p:FileVersion=$CurrentVersion --runti
 New-Item -Path "$Root\Agent\bin\publish\win-x64\Desktop\" -ItemType Directory -Force
 New-Item -Path "$Root\Agent\bin\publish\win-x86\Desktop\" -ItemType Directory -Force
 New-Item -Path "$Root\Agent\bin\publish\linux-x64\Desktop\" -ItemType Directory -Force
+New-Item -Path "$Root\Agent\bin\publish\osx-x64\Desktop\" -ItemType Directory -Force
+New-Item -Path "$Root\Agent\bin\publish\osx-arm64\Desktop\" -ItemType Directory -Force
 
 
 # Publish Linux ScreenCaster
@@ -113,6 +115,14 @@ dotnet publish /p:Version=$CurrentVersion /p:FileVersion=$CurrentVersion -p:Publ
 
 # Publish Linux GUI App
 dotnet publish /p:Version=$CurrentVersion /p:FileVersion=$CurrentVersion -p:PublishProfile=desktop-linux-x64 --configuration Release "$Root\Desktop.Linux\"
+
+# Publish macOS ScreenCaster (bundled into the osx agent packages)
+dotnet publish /p:Version=$CurrentVersion /p:FileVersion=$CurrentVersion -p:PublishProfile=packaged-osx-x64 --configuration Release "$Root\Desktop.MacOS\"
+dotnet publish /p:Version=$CurrentVersion /p:FileVersion=$CurrentVersion -p:PublishProfile=packaged-osx-arm64 --configuration Release "$Root\Desktop.MacOS\"
+
+# Publish macOS GUI App (direct-download copies under Server\wwwroot\Content)
+dotnet publish /p:Version=$CurrentVersion /p:FileVersion=$CurrentVersion -p:PublishProfile=desktop-osx-x64 --configuration Release "$Root\Desktop.MacOS\"
+dotnet publish /p:Version=$CurrentVersion /p:FileVersion=$CurrentVersion -p:PublishProfile=desktop-osx-arm64 --configuration Release "$Root\Desktop.MacOS\"
 
 # Publish Windows ScreenCaster (32-bit)
 dotnet publish /p:Version=$CurrentVersion /p:FileVersion=$CurrentVersion -p:PublishProfile=packaged-win-x86 --configuration Release "$Root\Desktop.Win"
