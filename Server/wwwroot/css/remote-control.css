@@ -47,8 +47,9 @@ body {
 .connection-box-wrapper {
     position: fixed;
     top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
     text-align: center;
     z-index: 1;
 }
@@ -56,9 +57,10 @@ body {
 .center-connection-box {
     display: inline-block;
     text-align: left;
-    width: 350px;
+    width: min(350px, 92vw);
     padding: 30px;
     margin-bottom: 20px;
+    box-sizing: border-box;
 }
 
     .center-connection-box input {
@@ -476,7 +478,49 @@ footer {
 
 @media only screen and (max-width : 667px) {
     /* Hide the logo column on mobile.  Not enough screen space for it. */
-  #menuFrame {
-    grid-template-columns: 0 2fr 1fr;
-  }
+    #menuFrame {
+        grid-template-columns: 0 2fr 1fr;
+        grid-column-gap: 6px;
+    }
+
+    /* Keep the labelled toolbar buttons readable when horizontal space is tight. */
+    .menu-column-middle button {
+        font-size: 12px;
+    }
+
+    /* Tighten the connect form padding so it fits comfortably on small screens. */
+    .center-connection-box {
+        padding: 20px;
+    }
+
+    /* Popup menus must never run off the side of a small screen. */
+    .popup-menu.open {
+        max-width: 92vw;
+        overflow: auto;
+    }
+
+    /* Shrink the session-metrics overlay so it doesn't dominate a phone screen. */
+    #metricsFrame {
+        font-size: 0.7em;
+    }
+
+    /* Reclaim vertical space; the faint copyright isn't worth it on phones. */
+    footer {
+        display: none;
+    }
+}
+
+/* Touch devices (phones/tablets): enforce comfortable tap-target sizes.
+   Apple HIG and Material both recommend a minimum of ~44px. */
+@media (pointer: coarse) {
+    button,
+    input,
+    select {
+        min-height: 44px;
+    }
+
+    #menuButton,
+    #keyboardButton {
+        height: 44px;
+    }
 }
