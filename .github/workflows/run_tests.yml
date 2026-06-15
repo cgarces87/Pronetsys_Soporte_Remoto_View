@@ -2,9 +2,9 @@ name: Tests
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, develop ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, develop ]
   workflow_dispatch:
 
 jobs:
@@ -19,9 +19,8 @@ jobs:
                              # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
 
     env:
-      Solution_Name: Remotely.sln                               # Replace with your solution name, i.e. MyWpfApp.sln.
+      Solution_Name: Remotely.sln
       Configuration: ${{ matrix.configuration }}
-      Test_Project_Path: Tests\Tests.csproj                     # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
 
     steps:
     - name: Checkout
@@ -30,15 +29,30 @@ jobs:
         submodules: recursive
         fetch-depth: 0
 
-    # Install the .NET Core workload
-    - name: Install .NET Core
+    # Install the .NET workload (projects target net8.0).
+    - name: Install .NET
       uses: actions/setup-dotnet@v3.0.3
       with:
-        dotnet-version: 7
-      
+        dotnet-version: 8.0.x
+
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v1
+
+    # Fail the build if any project references a NuGet package with a known
+    # vulnerability. New advisories are published over time, so this guards
+    # against regressions even when no code changed.
+    - name: Security audit (fail on vulnerable packages)
+      shell: pwsh
+      run: |
+        dotnet restore $env:Solution_Name
+        $audit = dotnet list $env:Solution_Name package --vulnerable --include-transitive | Out-String
+        Write-Host $audit
+        if ($audit -match 'has the following vulnerable packages') {
+          Write-Error 'Vulnerable NuGet packages detected. See the audit output above.'
+          exit 1
+        }
+        Write-Host 'No vulnerable packages found.'
 
     # Execute all unit tests in the solution
     - name: Execute unit tests
