@@ -4,19 +4,19 @@
 @inject IDataService DataService
 @inject IDataService DataService
 
-<div class="ps-4 pb-1 pe-0 pt-0 navbar navbar-dark" style="background-color: rgba(0,0,0,0.3)">
+<div class="sidebar-brand navbar navbar-dark">
     <a class="navbar-brand text-start" href="">
-        <div class="logo-title">
+        <img src="/images/pronetsys-logo.png" alt="Pronetsys" class="sidebar-logo" />
+        <div class="logo-subtitle">
             @if (!string.IsNullOrWhiteSpace(_organization?.OrganizationName))
             {
                 @_organization.OrganizationName
             }
             else
             {
-                <span>Pronetsys</span>
+                <span>Portal de soporte</span>
             }
         </div>
-        <div class="logo-subtitle">Portal de soporte</div>
     </a>
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
         <span class="navbar-toggler-icon"></span>

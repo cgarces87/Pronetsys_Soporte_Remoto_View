@@ -44,9 +44,41 @@
     }
 }
 
+/* Floating button that collapses / expands the sidebar. */
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 0.55rem;
+    left: 0.55rem;
+    z-index: 1050;
+    width: 2.3rem;
+    height: 2.3rem;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    transition: background-color .15s ease;
+}
+
+.sidebar-toggle:hover {
+    background-color: #0065cb;
+}
+
+/* On narrow screens, collapsing just hides the sidebar block. */
+.page.sidebar-collapsed .sidebar {
+    display: none;
+}
+
 @media (min-width: 641px) {
     .page {
         flex-direction: row;
+    }
+
+    .sidebar-toggle {
+        display: inline-flex;
     }
 
     .sidebar {
@@ -55,6 +87,16 @@
         position: sticky;
         overflow-y: auto;
         top: 0;
+        transition: min-width .25s ease, width .25s ease;
+    }
+
+    /* On wide screens, animate the width down to zero so the
+       main content reclaims the space. */
+    .page.sidebar-collapsed .sidebar {
+        display: block;
+        min-width: 0;
+        width: 0;
+        overflow: hidden;
     }
 
     .top-row {

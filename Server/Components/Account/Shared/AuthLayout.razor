@@ -1,0 +1,19 @@
+@inherits LayoutComponentBase
+
+@*
+    Corporate full-screen layout for the login / register screens.
+    Standalone (no app sidebar): branded gradient background + centered card
+    with the Pronetsys logo.
+*@
+
+<div class="pronetsys-auth">
+    <div class="pronetsys-auth-card">
+        <div class="pronetsys-auth-brand">
+            <img src="/images/pronetsys-logo.png" alt="Pronetsys" />
+        </div>
+        @Body
+    </div>
+    <div class="pronetsys-auth-footer">
+        &copy; @DateTime.Now.Year Pronetsys &mdash; Asistencia Remota
+    </div>
+</div>

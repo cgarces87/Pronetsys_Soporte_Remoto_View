@@ -18,6 +18,11 @@
     --bs-link-hover-color-rgb: 0, 87, 173;
 }
 
+/* Corporate font (Pronetsys site uses an Arial/Helvetica sans-serif family). */
+body {
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
 /* Primary buttons */
 .btn-primary {
     background-color: var(--pronetsys-primary) !important;
@@ -52,4 +57,98 @@
 .pronetsys-auth-logo {
     max-width: 260px;
     height: auto;
+}
+
+/* ============================================================
+   Corporate login / register screen (AuthLayout)
+   ============================================================ */
+.pronetsys-auth {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 24px;
+    overflow: auto;
+    background: linear-gradient(135deg, #0d1821 0%, #0057ad 55%, #0065cb 100%);
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.pronetsys-auth-card {
+    width: 100%;
+    max-width: 430px;
+    background: #ffffff;
+    color: #2c2c2c;
+    border-radius: 14px;
+    padding: 36px 34px;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+}
+
+.pronetsys-auth-brand {
+    text-align: center;
+    margin-bottom: 22px;
+}
+.pronetsys-auth-brand img {
+    max-width: 230px;
+    height: auto;
+}
+
+.pronetsys-auth-footer {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+/* The embedded Bootstrap form: fill the card and stay readable on white,
+   regardless of the active light/dark theme. */
+.pronetsys-auth-card h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #0d1821;
+    text-align: center;
+    margin-bottom: 4px;
+}
+.pronetsys-auth-card h2 {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #6c757d;
+    text-align: center;
+    margin-bottom: 18px;
+}
+.pronetsys-auth-card hr {
+    display: none;
+}
+.pronetsys-auth-card .row,
+.pronetsys-auth-card .col-md-4 {
+    margin: 0;
+    padding: 0;
+    flex: 0 0 100%;
+    max-width: 100%;
+    width: 100%;
+}
+.pronetsys-auth-card .form-control {
+    background-color: #fff;
+    color: #2c2c2c;
+    border: 1px solid #ced4da;
+}
+.pronetsys-auth-card .form-control:focus {
+    border-color: var(--pronetsys-primary);
+    box-shadow: 0 0 0 0.2rem rgba(0, 101, 203, 0.2);
+}
+.pronetsys-auth-card label,
+.pronetsys-auth-card .form-floating > label {
+    color: #6c757d;
+}
+.pronetsys-auth-card a {
+    color: var(--pronetsys-primary);
+    text-decoration: none;
+}
+.pronetsys-auth-card a:hover {
+    text-decoration: underline;
+}
+.pronetsys-auth-card .btn-primary {
+    padding: 0.6rem;
+    font-weight: 600;
 }

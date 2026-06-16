@@ -2,6 +2,26 @@
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+/* Brand header: Pronetsys logo. Left padding clears the floating
+   sidebar-collapse button positioned at the top-left of the viewport. */
+.sidebar-brand {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 0.75rem 0.75rem 0.6rem 3.4rem;
+    flex-wrap: nowrap;
+}
+
+.sidebar-logo {
+    max-width: 150px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.logo-subtitle {
+    color: #9fc4e8;
+    font-size: 0.75rem;
+    margin-top: 0.3rem;
+}
+
 .top-row {
     height: 3.5rem;
     background-color: rgba(0,0,0,0.4);
