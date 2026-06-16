@@ -6,7 +6,8 @@ namespace Pronetsys.Server.Filters;
 
 internal class ViewerAuthorizationFilter(
     IDataService _dataService,
-    IOtpProvider _otpProvider):  IAsyncAuthorizationFilter
+    IOtpProvider _otpProvider,
+    IRemoteControlSessionCache _sessionCache) : IAsyncAuthorizationFilter
 {
     public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
     {
@@ -31,8 +32,15 @@ internal class ViewerAuthorizationFilter(
             return true;
         }
 
-        if (context.HttpContext.Request.Query.TryGetValue("otp", out var otp) &&
-            _otpProvider.Exists($"{otp}"))
+        // Unauthenticated viewers may pass with a one-time password, but only when it
+        // was minted for the exact device of the session they're requesting. This
+        // prevents an OTP issued for one device/org from acting as a generic pass
+        // into the viewer for a different session (cross-tenant skeleton key).
+        var query = context.HttpContext.Request.Query;
+        if (query.TryGetValue("otp", out var otp) &&
+            query.TryGetValue("sessionId", out var sessionId) &&
+            _sessionCache.TryGetValue($"{sessionId}", out var session) &&
+            _otpProvider.OtpMatchesDevice($"{otp}", session.DeviceId))
         {
             return true;
         }
