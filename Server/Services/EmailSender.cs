@@ -121,13 +121,72 @@ public class EmailSenderEx : IEmailSenderEx, IEmailSender<PronetsysUser>
 
     public async Task SendPasswordResetLinkAsync(PronetsysUser user, string email, string resetLink)
     {
-        await SendEmailAsync(
-            email,
-            "Pronetsys Password Reset",
-            "A password reset has been requested for your account.  If this was not requested by you, you can ignore this email.<br/><br/>" +
-            "Otherwise, please follow this link to reset your password: " +
-            $"<a href=\"{resetLink}\">{resetLink}</a>",
-            user.OrganizationID);
+        var baseUrl = string.Empty;
+        try
+        {
+            baseUrl = new Uri(System.Net.WebUtility.HtmlDecode(resetLink)).GetLeftPart(UriPartial.Authority);
+        }
+        catch
+        {
+            // resetLink wasn't parseable as an absolute URL; the email still works without the logo.
+        }
+
+        var html = BuildBrandedHtml(
+            baseUrl,
+            "Restablecimiento de contraseña",
+            "Recibimos una solicitud para restablecer la contraseña de tu cuenta de <strong>Pronetsys Asistencia Remota</strong>. " +
+            "Haz clic en el botón para crear una contraseña nueva.",
+            "Restablecer contraseña",
+            resetLink,
+            "Si no solicitaste este cambio, puedes ignorar este correo: tu contraseña seguirá igual. " +
+            "Por seguridad, este enlace es de un solo uso y caduca pronto.");
+
+        await SendEmailAsync(email, "Restablecimiento de contraseña — Pronetsys", html, user.OrganizationID);
+    }
+
+    // Corporate Pronetsys HTML email wrapper (table-based + inline styles for email-client compatibility).
+    private static string BuildBrandedHtml(
+        string baseUrl,
+        string heading,
+        string introHtml,
+        string buttonText,
+        string buttonUrl,
+        string footerNote)
+    {
+        var logoUrl = $"{baseUrl}/images/pronetsys-logo-white.png";
+        var year = DateTime.Now.Year;
+        const string font = "Segoe UI,Arial,Helvetica,sans-serif";
+
+        return $@"<!DOCTYPE html>
+<html lang='es'>
+<head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'></head>
+<body style='margin:0;padding:0;background-color:#eef1f5;'>
+<table role='presentation' width='100%' cellpadding='0' cellspacing='0' style='background-color:#eef1f5;padding:24px 0;font-family:{font};'>
+<tr><td align='center'>
+<table role='presentation' width='600' cellpadding='0' cellspacing='0' style='width:600px;max-width:600px;background-color:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #e3e8ee;'>
+<tr><td align='center' style='background-color:#0065cb;padding:22px;'>
+<img src='{logoUrl}' alt='Pronetsys Asistencia Remota' width='210' style='display:block;border:0;outline:none;max-width:210px;height:auto;' />
+</td></tr>
+<tr><td style='padding:34px 36px 4px 36px;'>
+<h1 style='margin:0 0 16px 0;font-size:22px;color:#0d1821;font-weight:600;font-family:{font};'>{heading}</h1>
+<p style='margin:0 0 26px 0;font-size:15px;line-height:1.6;color:#444444;font-family:{font};'>{introHtml}</p>
+</td></tr>
+<tr><td align='center' style='padding:0 36px 28px 36px;'>
+<table role='presentation' cellpadding='0' cellspacing='0'><tr><td align='center' bgcolor='#0065cb' style='border-radius:8px;'>
+<a href='{buttonUrl}' target='_blank' style='display:inline-block;padding:14px 42px;font-size:16px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:8px;background-color:#0065cb;font-family:{font};'>{buttonText}</a>
+</td></tr></table>
+</td></tr>
+<tr><td style='padding:0 36px 22px 36px;color:#8a9099;font-size:12px;line-height:1.5;font-family:{font};'>
+<p style='margin:0 0 6px 0;'>Si el botón no funciona, copia y pega este enlace en tu navegador:</p>
+<p style='margin:0;word-break:break-all;'><a href='{buttonUrl}' style='color:#0065cb;'>{buttonUrl}</a></p>
+</td></tr>
+<tr><td style='padding:18px 36px 26px 36px;color:#8a9099;font-size:12px;line-height:1.6;border-top:1px solid #eeeeee;font-family:{font};'>{footerNote}</td></tr>
+<tr><td align='center' style='background-color:#0d1821;padding:18px;color:#9fb0c0;font-size:12px;font-family:{font};'>&copy; {year} Pronetsys Asistencia Remota</td></tr>
+</table>
+</td></tr>
+</table>
+</body>
+</html>";
     }
 }
 
