@@ -5,7 +5,6 @@ using Pronetsys.Server.Services;
 using Pronetsys.Shared.Extensions;
 using Pronetsys.Shared.Models;
 using Pronetsys.Shared.Services;
-using Pronetsys.Shared.Utilities;
 using System.Text;
 using FileIO = System.IO.File;
 
@@ -173,17 +172,24 @@ public class ClientDownloadsController : ControllerBase
             if (FileIO.Exists(absolutePath))
             {
                 var info = System.Diagnostics.FileVersionInfo.GetVersionInfo(absolutePath);
-                if (!string.IsNullOrWhiteSpace(info.FileVersion) && info.FileVersion != "0.0.0.0")
+                var fileVersion = info.FileVersion;
+                if (!string.IsNullOrWhiteSpace(fileVersion) &&
+                    fileVersion != "0.0.0.0" &&
+                    fileVersion != "1.0.0.0")
                 {
-                    return info.FileVersion;
+                    return fileVersion;
                 }
+
+                // Single-file binaries don't expose a usable version when read from this host,
+                // so use the binary's build/deploy date as the compilation marker.
+                return FileIO.GetLastWriteTime(absolutePath).ToString("yyyy.MM.dd");
             }
         }
         catch
         {
-            // Fall back to the server's version below.
+            // Fall through to a sensible default below.
         }
-        return AppVersionHelper.GetAppVersion();
+        return DateTime.Now.ToString("yyyy.MM.dd");
     }
 
     private async Task<IActionResult> GetInstallFile(string organizationId, string platformID)
