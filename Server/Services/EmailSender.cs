@@ -44,12 +44,23 @@ public class EmailSenderEx : IEmailSenderEx, IEmailSender<PronetsysUser>
 
     public async Task SendConfirmationLinkAsync(PronetsysUser user, string email, string confirmationLink)
     {
-        await SendEmailAsync(
-            email,
-            "Pronetsys Account Confirmation",
-            "Please confirm your Pronetsys account by clicking the following link: " +
-            $"<a href=\"{confirmationLink}\">{confirmationLink}</a>",
-            user.OrganizationID);
+        var baseUrl = string.Empty;
+        try
+        {
+            baseUrl = new Uri(System.Net.WebUtility.HtmlDecode(confirmationLink)).GetLeftPart(UriPartial.Authority);
+        }
+        catch { }
+
+        var html = BuildBrandedHtml(
+            baseUrl,
+            "Confirma tu cuenta",
+            "¡Te damos la bienvenida a <strong>Pronetsys Asistencia Remota</strong>! Para activar tu cuenta, " +
+            "confirma tu correo electrónico haciendo clic en el botón.",
+            "Confirmar cuenta",
+            confirmationLink,
+            "Si no creaste esta cuenta, puedes ignorar este correo.");
+
+        await SendEmailAsync(email, "Confirma tu cuenta — Pronetsys", html, user.OrganizationID);
     }
 
     public async Task<bool> SendEmailAsync(
@@ -114,8 +125,9 @@ public class EmailSenderEx : IEmailSenderEx, IEmailSender<PronetsysUser>
     {
         await SendEmailAsync(
             email,
-            "Pronetsys Password Reset",
-            $"A password reset code has been requested for your account.  Reset Code: {resetCode}",
+            "Código de restablecimiento — Pronetsys",
+            "Se solicitó restablecer la contraseña de tu cuenta de Pronetsys Asistencia Remota.<br/><br/>" +
+            $"Tu código de restablecimiento es: <strong>{resetCode}</strong>",
             user.OrganizationID);
     }
 

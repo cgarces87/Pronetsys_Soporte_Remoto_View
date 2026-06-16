@@ -341,14 +341,14 @@ public partial class ManageOrganization : AuthComponentBase
             }
 
             var inviteURL = $"{NavManager.BaseUri}Invite/{newInvite.Value.ID}";
-            var emailResult = await EmailSender.SendEmailAsync(invite.InvitedUser, "Invitation to Organization in Pronetsys",
-                    $@"<img src='{NavManager.BaseUri}images/Pronetsys_Logo.png'/>
+            var emailResult = await EmailSender.SendEmailAsync(invite.InvitedUser, "Invitación a una organización — Pronetsys",
+                    $@"<img src='{NavManager.BaseUri}images/Pronetsys_Logo.png' alt='Pronetsys'/>
                             <br><br>
-                            Hello!
+                            ¡Hola!
                             <br><br>
-                            You've been invited to join an organization in Pronetsys.
+                            Te han invitado a unirte a una organización en Pronetsys Asistencia Remota.
                             <br><br>
-                            You can join the organization by <a href='{HtmlEncoder.Default.Encode(inviteURL)}'>clicking here</a>.",
+                            Puedes unirte <a href='{HtmlEncoder.Default.Encode(inviteURL)}'>haciendo clic aquí</a>.",
                     User.OrganizationID);
             if (emailResult)
             {

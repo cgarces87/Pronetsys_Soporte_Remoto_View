@@ -315,14 +315,14 @@ public class OrganizationManagementController : ControllerBase
             }
 
             var inviteURL = $"{Request.Scheme}://{Request.Host}/Invite/{newInvite.Value.ID}";
-            var emailResult = await _emailSender.SendEmailAsync(invite.InvitedUser, "Invitation to Organization in Pronetsys",
-                        $@"<img src='{Request.Scheme}://{Request.Host}/images/Pronetsys_Logo.png'/>
+            var emailResult = await _emailSender.SendEmailAsync(invite.InvitedUser, "Invitación a una organización — Pronetsys",
+                        $@"<img src='{Request.Scheme}://{Request.Host}/images/Pronetsys_Logo.png' alt='Pronetsys'/>
                             <br><br>
-                            Hello!
+                            ¡Hola!
                             <br><br>
-                            You've been invited to join an organization in Pronetsys.
+                            Te han invitado a unirte a una organización en Pronetsys Asistencia Remota.
                             <br><br>
-                            You can join the organization by <a href='{HtmlEncoder.Default.Encode(inviteURL)}'>clicking here</a>.",
+                            Puedes unirte <a href='{HtmlEncoder.Default.Encode(inviteURL)}'>haciendo clic aquí</a>.",
                         orgId);
 
             if (!emailResult)

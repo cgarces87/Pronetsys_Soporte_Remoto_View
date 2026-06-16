@@ -103,14 +103,14 @@ public class ScriptResultsController : ControllerBase
                 if (!string.IsNullOrWhiteSpace(savedScript.SendErrorEmailTo))
                 {
                     await _emailSender.SendEmailAsync(savedScript.SendErrorEmailTo,
-                        "Script Run Alert",
-                        $"An alert was triggered while running script {savedScript.Name} on device {device.DeviceName}. <br /><br />" +
-                            $"Device ID: {device.ID} <br /> " +
-                            $"Device Name: {device.DeviceName} <br /> " +
-                            $"Device Alias: {device.Alias} <br /> " +
-                            $"Device Group (if any): {device.DeviceGroup?.Name} <br /> " +
+                        "Alerta de ejecución de script — Pronetsys",
+                        $"Se generó una alerta al ejecutar el script {savedScript.Name} en el dispositivo {device.DeviceName}. <br /><br />" +
+                            $"ID del dispositivo: {device.ID} <br /> " +
+                            $"Nombre del dispositivo: {device.DeviceName} <br /> " +
+                            $"Alias del dispositivo: {device.Alias} <br /> " +
+                            $"Grupo de dispositivos (si aplica): {device.DeviceGroup?.Name} <br /> " +
 
-                            $"Error Output: <br /> <br /> " +
+                            $"Salida de error: <br /> <br /> " +
                             $"{string.Join("<br /> <br />", errorOut)}");
                 }
             }

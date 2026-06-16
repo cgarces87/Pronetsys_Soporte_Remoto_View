@@ -222,20 +222,20 @@ public partial class ServerConfig : AuthComponentBase
 
         if (string.IsNullOrWhiteSpace(User.Email))
         {
-            ToastService.ShowToast2("User email is not set.", Enums.ToastType.Warning);
+            ToastService.ShowToast2("El correo del usuario no está configurado.", Enums.ToastType.Warning);
             return;
         }
 
-        var success = await EmailSender.SendEmailAsync(User.Email, "Pronetsys Test Email", "Congratulations! Your SMTP settings are working!", User.OrganizationID);
+        var success = await EmailSender.SendEmailAsync(User.Email, "Correo de prueba — Pronetsys", "¡Felicitaciones! La configuración SMTP está funcionando correctamente.", User.OrganizationID);
         if (success)
         {
-            ToastService.ShowToast($"Test email sent to {User.Email}.  Check your inbox (or spam folder).");
-            _alertMessage = $"Test email sent to {User.Email}.  Check your inbox (or spam folder).";
+            ToastService.ShowToast($"Correo de prueba enviado a {User.Email}. Revisa tu bandeja de entrada (o la carpeta de spam).");
+            _alertMessage = $"Correo de prueba enviado a {User.Email}. Revisa tu bandeja de entrada (o la carpeta de spam).";
         }
         else
         {
-            ToastService.ShowToast("Error sending email.  Check the server logs for details.", classString: "bg-danger");
-            _alertMessage = "Error sending email.  Check the server logs for details.";
+            ToastService.ShowToast("Error al enviar el correo. Revisa los registros del servidor.", classString: "bg-danger");
+            _alertMessage = "Error al enviar el correo. Revisa los registros del servidor.";
         }
     }
 
