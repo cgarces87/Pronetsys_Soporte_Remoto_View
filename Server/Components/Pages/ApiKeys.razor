@@ -11,7 +11,7 @@
 @inject IToastService ToastService
 
 
-<h3>API Keys</h3>
+<h3>Claves API</h3>
 
 @if (!string.IsNullOrWhiteSpace(_alertMessage))
 {
@@ -20,27 +20,27 @@
 
 @if (_isLoading)
 {
-    <h5>Loading...</h5>
+    <h5>Cargando...</h5>
 }
 else if (User is not null)
 {
     if (!string.IsNullOrWhiteSpace(_newKeySecret))
     {
-        <h5 class="text-warning font-weight-bold mb-2 mt-4">Warning: The key's secret will only be shown once.  Save it now.</h5>
+        <h5 class="text-warning font-weight-bold mb-2 mt-4">Advertencia: El secreto de la clave solo se mostrará una vez. Guárdalo ahora.</h5>
         <h5 class="mb-4">
-            <label class="me-1">Key Secret:</label>
+            <label class="me-1">Secreto de la clave:</label>
             <input class="form-control custom-control-inline" readonly value="@_newKeySecret" style="width:400px" />
         </h5>
     }
 
 
     <div class="mb-2 mt-4">
-        <label class="me-1">New Token Name:</label>
+        <label class="me-1">Nombre del nuevo token:</label>
         <input @bind="_createKeyName" @bind:event="oninput"
                class="form-control form-control-sm custom-control-inline me-1 d-inline-block"
                style="width:200px" />
 
-        <button class="btn btn-primary" type="button" @onclick="CreateNewKey">Create</button>
+        <button class="btn btn-primary" type="button" @onclick="CreateNewKey">Crear</button>
 
         <button class="btn btn-sm btn-secondary ms-2" @onclick="ShowApiKeyHelp">
             <span class="oi oi-question-mark"></span>
@@ -50,9 +50,9 @@ else if (User is not null)
     <table class="table table-dark table-hover table-striped">
         <thead>
             <tr>
-                <th>Name</th>
+                <th>Nombre</th>
                 <th>ID</th>
-                <th>Last Used</th>
+                <th>Último uso</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -65,10 +65,10 @@ else if (User is not null)
                     <td>@apiToken.ID</td>
                     <td>@apiToken.LastUsed</td>
                     <td>
-                        <button type="button" class="btn btn-primary" @onclick="() => RenameKey(apiToken.ID)">Rename</button>
+                        <button type="button" class="btn btn-primary" @onclick="() => RenameKey(apiToken.ID)">Renombrar</button>
                     </td>
                     <td>
-                        <button type="submit" class="btn btn-danger" @onclick="() => DeleteKey(apiToken.ID)">Delete</button>
+                        <button type="submit" class="btn btn-danger" @onclick="() => DeleteKey(apiToken.ID)">Eliminar</button>
                     </td>
                 </tr>
             }
@@ -104,7 +104,7 @@ else if (User is not null)
             return;
         }
         RefreshData();
-        _alertMessage = "Key created.";
+        _alertMessage = "Clave creada.";
         _newKeySecret = secret;
     }
 
@@ -112,7 +112,7 @@ else if (User is not null)
     {
         EnsureUserSet();
 
-        var result = await JsInterop.Confirm("Are you sure you want to delete this key?");
+        var result = await JsInterop.Confirm("¿Estás seguro de que deseas eliminar esta clave?");
         if (!result)
         {
             return;
@@ -125,7 +125,7 @@ else if (User is not null)
             return;
         }
         RefreshData();
-        _alertMessage = "Key deleted.";
+        _alertMessage = "Clave eliminada.";
     }
 
     private void RefreshData()
@@ -142,21 +142,21 @@ else if (User is not null)
     private async Task RenameKey(string keyId)
     {
         EnsureUserSet();
-        var newName = await JsInterop.Prompt("New key name");
+        var newName = await JsInterop.Prompt("Nuevo nombre de la clave");
         if (!string.IsNullOrWhiteSpace(newName))
         {
             await DataService.RenameApiToken(UserName, keyId, newName);
             RefreshData();
-            _alertMessage = "Key renamed.";
+            _alertMessage = "Clave renombrada.";
         }
     }
 
     private void ShowApiKeyHelp()
     {
-        ModalService.ShowModal("Using API Keys", new[]
+        ModalService.ShowModal("Uso de claves API", new[]
         {
-            "API keys should be added to the request header when making API calls.  The key should be \"X-Api-Key\", and value should be \"{key-id}:{key-secret}\".  Note the colon in between.",
-            "Example: X-Api-Key=e5da1c09-e851-4bd4-a8c1-532144b3f894:7uY6h5zBYm4+90pZVek4lD6ewbQ83nKcDpghBfG00hhZu6Ew"
+            "Las claves API deben agregarse al encabezado de la solicitud al realizar llamadas a la API. La clave debe ser \"X-Api-Key\", y el valor debe ser \"{key-id}:{key-secret}\". Ten en cuenta los dos puntos entre ambos.",
+            "Ejemplo: X-Api-Key=e5da1c09-e851-4bd4-a8c1-532144b3f894:7uY6h5zBYm4+90pZVek4lD6ewbQ83nKcDpghBfG00hhZu6Ew"
         });
     }
 }

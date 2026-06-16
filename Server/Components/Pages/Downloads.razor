@@ -12,32 +12,32 @@
 @if (_isAuthenticated)
 {
     <div class="alert alert-info">
-        Check out the <a href="/deploy">Deploy</a> page for a copy-and-paste deploy script!
+        Visita la página de <a href="/deploy">Despliegue</a> para obtener un script de despliegue para copiar y pegar.
     </div>
 }
 
 
 <div class="row mb-3">
-    <h4>Portable Instant Support Clients</h4>
+    <h4>Clientes portátiles de soporte instantáneo</h4>
     <p class="text-info col-sm-12 mb-2">
-        Instant desktop sharing.  No account required.
+        Compartir escritorio al instante. No se requiere cuenta.
     </p>
     <div class="col-sm-6 mb-3">
-        <strong>Windows (64-Bit)</strong>
+        <strong>Windows (64 bits)</strong>
         <p>
-            <a target="_blank" href="/api/ClientDownloads/Desktop/WindowsDesktop-x64/@_organizationId">Windows EXE</a>
+            <a target="_blank" href="/api/ClientDownloads/Desktop/WindowsDesktop-x64/@_organizationId">EXE de Windows</a>
         </p>
     </div>
     <div class="col-sm-6">
-        <strong>Windows (32-Bit)</strong>
+        <strong>Windows (32 bits)</strong>
         <p>
-            <a target="_blank" href="/api/ClientDownloads/Desktop/WindowsDesktop-x86/@_organizationId">Windows EXE</a>
+            <a target="_blank" href="/api/ClientDownloads/Desktop/WindowsDesktop-x86/@_organizationId">EXE de Windows</a>
         </p>
     </div>
     <div class="col-sm-6 mb-3">
-        <strong>Linux 64-Bit</strong>
+        <strong>Linux 64 bits</strong>
         <p>
-            <a target="_blank" href="/api/ClientDownloads/Desktop/UbuntuDesktop/@_organizationId">Ubuntu Executable</a>
+            <a target="_blank" href="/api/ClientDownloads/Desktop/UbuntuDesktop/@_organizationId">Ejecutable de Ubuntu</a>
         </p>
     </div>
     @*<div class="col-sm-6 mb-3">
@@ -54,33 +54,33 @@
 
 
 <div class="row">
-    <h4>Resident Agents</h4>
+    <h4>Agentes residentes</h4>
 
     <p class="text-info col-sm-12 mb-2">
-        Installable background agents that provide unattended access and remote scripting.
+        Agentes en segundo plano instalables que brindan acceso desatendido y ejecución remota de scripts.
     </p>
 
     @if (!_isAuthenticated)
     {
         <div class="col-sm-6 mb-3">
-            <h6>Must be logged in to download.</h6>
+            <h6>Debe iniciar sesión para descargar.</h6>
         </div>
 
     }
     else
     {
         <div class="col-sm-6 mb-3">
-            <strong>Windows 10 / 11 (64-Bit and 32-Bit)</strong>
+            <strong>Windows 10 / 11 (64 bits y 32 bits)</strong>
             <p>
-                <a target="_blank" href="/API/ClientDownloads/WindowsInstaller/@_organizationId">Windows PowerShell Installer</a>
+                <a target="_blank" href="/API/ClientDownloads/WindowsInstaller/@_organizationId">Instalador de Windows PowerShell</a>
                 <br />
-                <a target="_blank" href="/Content/Pronetsys-Win-x64.zip">Windows x64 Files Only</a>
+                <a target="_blank" href="/Content/Pronetsys-Win-x64.zip">Solo archivos de Windows x64</a>
                 <br />
-                <a target="_blank" href="/Content/Pronetsys-Win-x86.zip">Windows x86 Files Only</a>
+                <a target="_blank" href="/Content/Pronetsys-Win-x86.zip">Solo archivos de Windows x86</a>
             </p>
 
             <p>
-                <div class="small">Example Quiet Install:</div>
+                <div class="small">Ejemplo de instalación silenciosa:</div>
 
                 <code class="label label-default small">
                     powershell.exe -ExecutionPolicy Bypass -F {path}\Install-Pronetsys.ps1
@@ -91,12 +91,12 @@
                 </code>
             </p>
             <p>
-                <div class="small">Example Quiet Uninstall:</div>
+                <div class="small">Ejemplo de desinstalación silenciosa:</div>
 
                 <code class="label label-default small">powershell.exe -ExecutionPolicy Bypass -F Install-Pronetsys.ps1 -uninstall -quiet</code>
             </p>
             <p>
-                <div class="small">Example Local Install:</div>
+                <div class="small">Ejemplo de instalación local:</div>
 
                 <code class="label label-default small">
                     powershell.exe -ExecutionPolicy Bypass -F {path}\Install-Pronetsys.ps1
@@ -108,7 +108,7 @@
                 </code>
             </p>
             <p>
-                <div class="small">All Override Options:</div>
+                <div class="small">Todas las opciones de anulación:</div>
 
                 <code class="label label-default small">
                     powershell.exe -ExecutionPolicy Bypass -F {path}\Install-Pronetsys.ps1
@@ -123,26 +123,26 @@
         </div>
 
         <div class="col-sm-6 mb-3">
-            <strong>Linux 64-Bit</strong>
+            <strong>Linux 64 bits</strong>
             <p>
-                <a target="_blank" href="/API/ClientDownloads/UbuntuInstaller-x64/@_organizationId">Ubuntu x64 Bash Installer</a>
+                <a target="_blank" href="/API/ClientDownloads/UbuntuInstaller-x64/@_organizationId">Instalador Bash de Ubuntu x64</a>
                 <br />
-                <a target="_blank" href="/API/ClientDownloads/ManjaroInstaller-x64/@_organizationId">Manjaro x64 Bash Installer</a>
+                <a target="_blank" href="/API/ClientDownloads/ManjaroInstaller-x64/@_organizationId">Instalador Bash de Manjaro x64</a>
                 <br />
-                <a target="_blank" href="/Content/Pronetsys-Linux.zip">Linux x64 Files Only</a>
+                <a target="_blank" href="/Content/Pronetsys-Linux.zip">Solo archivos de Linux x64</a>
             </p>
             <p>
-                <div class="small">Example Install:</div>
+                <div class="small">Ejemplo de instalación:</div>
 
                 <code class="label label-default small">sudo [path]/Install-Ubuntu-x64.sh</code>
             </p>
             <p>
-                <div class="small">Example Local Install:</div>
+                <div class="small">Ejemplo de instalación local:</div>
 
                 <code class="label label-default small">sudo [path]/Install-Ubuntu-x64.sh --path [path]/Pronetsys-Linux.zip</code>
             </p>
             <p>
-                <div class="small">Uninstall:</div>
+                <div class="small">Desinstalar:</div>
 
                 <code class="label label-default small">sudo [path]/Install-Ubuntu-x64.sh --uninstall</code>
             </p>
@@ -151,23 +151,23 @@
         <div class="col-sm-6 mb-3">
             <strong>macOS x64 (10.12 - 10.15)</strong>
             <p>
-                <a target="_blank" href="/API/ClientDownloads/MacOSInstaller-x64/@_organizationId">macOS x64 Bash Installer</a>
+                <a target="_blank" href="/API/ClientDownloads/MacOSInstaller-x64/@_organizationId">Instalador Bash de macOS x64</a>
                 <br />
-                <a target="_blank" href="/Content/Pronetsys-MacOS-x64.zip">macOS x64 Files Only</a>
+                <a target="_blank" href="/Content/Pronetsys-MacOS-x64.zip">Solo archivos de macOS x64</a>
             </p>
 
             <p>
-                <div class="small">Example Install:</div>
+                <div class="small">Ejemplo de instalación:</div>
 
                 <code class="label label-default small">sudo [path]/Install-MacOS-x64.sh</code>
             </p>
             <p>
-                <div class="small">Example Local Install:</div>
+                <div class="small">Ejemplo de instalación local:</div>
 
                 <code class="label label-default small">sudo [path]/Install-MacOS-x64.sh --path [path]/Pronetsys-MacOS-x64.zip</code>
             </p>
             <p>
-                <div class="small">Example Uninstall:</div>
+                <div class="small">Ejemplo de desinstalación:</div>
 
                 <code class="label label-default small">sudo [path]/Install-MacOS-x64.sh --uninstall</code>
             </p>
@@ -176,23 +176,23 @@
         <div class="col-sm-6 mb-3">
             <strong>macOS arm64</strong>
             <p>
-                <a target="_blank" href="/API/ClientDownloads/MacOSInstaller-arm64/@_organizationId">macOS arm64 Bash Installer</a>
+                <a target="_blank" href="/API/ClientDownloads/MacOSInstaller-arm64/@_organizationId">Instalador Bash de macOS arm64</a>
                 <br />
-                <a target="_blank" href="/Content/Pronetsys-MacOS-arm64.zip">macOS arm64 Files Only</a>
+                <a target="_blank" href="/Content/Pronetsys-MacOS-arm64.zip">Solo archivos de macOS arm64</a>
             </p>
 
             <p>
-                <div class="small">Example Install:</div>
+                <div class="small">Ejemplo de instalación:</div>
 
                 <code class="label label-default small">sudo [path]/Install-MacOS-arm64.sh</code>
             </p>
             <p>
-                <div class="small">Example Local Install:</div>
+                <div class="small">Ejemplo de instalación local:</div>
 
                 <code class="label label-default small">sudo [path]/Install-MacOS-arm64.sh --path [path]/Pronetsys-MacOS-arm64.zip</code>
             </p>
             <p>
-                <div class="small">Example Uninstall:</div>
+                <div class="small">Ejemplo de desinstalación:</div>
 
                 <code class="label label-default small">sudo [path]/Install-MacOS-arm64.sh --uninstall</code>
             </p>

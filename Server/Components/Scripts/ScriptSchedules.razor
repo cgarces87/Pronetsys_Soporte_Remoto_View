@@ -2,7 +2,7 @@
 @attribute [Authorize]
 
 
-<h4 class="mt-3">Add or Edit Schedule</h4>
+<h4 class="mt-3">Agregar o editar programación</h4>
 
 <EditForm Model="_selectedSchedule" OnValidSubmit="OnValidSubmit">
     <div class="row">
@@ -19,33 +19,33 @@
         <div class="mt-2 col-12">
             <div>
                 <button type="submit" class="btn btn-primary align-middle me-3" disabled="@(!CanModifySchedule)">
-                    Save
+                    Guardar
                 </button>
 
                 <button type="button" class="btn btn-success me-3" @onclick="CreateNew">
-                    New
+                    Nuevo
                 </button>
                 <button class="btn btn-danger me-4" type="button"
                         disabled="@(!CanDeleteSchedule)"
                         @onclick="DeleteSelectedSchedule">
-                    Delete
+                    Eliminar
                 </button>
 
                 <InputCheckbox class="me-2 align-middle" @bind-Value="_selectedSchedule.RunOnNextConnect" />
-                <span class="align-middle">If devices are offline, run immediately when next connected</span>
+                <span class="align-middle">Si los dispositivos están desconectados, ejecutar de inmediato en la próxima conexión</span>
             </div>
         </div>
 
         <div class="mt-2 col-md-6 col-lg-4">
             <div>
-                <label>Schedule Name</label>
+                <label>Nombre de la programación</label>
                 <InputText class="form-control" @bind-Value="_selectedSchedule.Name" />
             </div>
         </div>
 
         <div class="mt-2 col-md-6 col-lg-4">
             <div>
-                <label>Start At</label>
+                <label>Comenzar a las</label>
                 <input type="datetime-local" step="1" class="form-control" @bind="_selectedSchedule.StartAt" />
             </div>
         </div>
@@ -53,7 +53,7 @@
 
         <div class="mt-2 col-md-6 col-lg-4">
             <div>
-                <label>Repeat Interval</label>
+                <label>Intervalo de repetición</label>
                 <InputSelect @bind-Value="_selectedSchedule.Interval" class="form-control">
                     @foreach (var interval in Enum.GetValues<RepeatInterval>())
                     {
@@ -66,10 +66,10 @@
 
     <div class="row">
         <div class="mt-2 col-md-6 col-lg-4">
-            <label>Saved Scripts</label>
+            <label>Scripts guardados</label>
             <div class="small">
                 <input type="checkbox" @bind="ParentPage.ShowOnlyMyScripts" />
-                <span class="align-top">Show only mine</span>
+                <span class="align-top">Mostrar solo los míos</span>
             </div>
             <TreeView DataSource="ParentPage.TreeNodes"
                       ItemTypeSelector="x => x.ItemType"
@@ -83,7 +83,7 @@
         </div>
 
         <div class="mt-2 col-md-6 col-lg-4">
-            <label>Device Groups</label>
+            <label>Grupos de dispositivos</label>
             <div class="item-list-border">
                 @foreach (var deviceGroup in _deviceGroups)
                 {
@@ -99,7 +99,7 @@
         </div>
 
         <div class="mt-2 col-md-6 col-lg-4">
-            <label>Devices</label>
+            <label>Dispositivos</label>
             <div class="item-list-border">
                 @foreach (var device in _devices)
                 {
@@ -118,16 +118,16 @@
 </EditForm>
    
 
-<h4 class="mt-5">Saved Schedules</h4>
+<h4 class="mt-5">Programaciones guardadas</h4>
 <table class="table table-dark table-striped table-hover">
     <thead>
         <tr>
-            <th>Script Name</th>
-            <th>Repeat Interval</th>
-            <th>Next Run</th>
-            <th>Last Run</th>
-            <th>Created At</th>
-            <th>Created By</th>
+            <th>Nombre del script</th>
+            <th>Intervalo de repetición</th>
+            <th>Próxima ejecución</th>
+            <th>Última ejecución</th>
+            <th>Creado el</th>
+            <th>Creado por</th>
         </tr>
     </thead>
     <tbody>

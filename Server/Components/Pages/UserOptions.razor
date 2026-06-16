@@ -8,7 +8,7 @@
 @inject IToastService ToastService
 @inject IModalService ModalService
 
-<h3 class="mb-3">User Options</h3>
+<h3 class="mb-3">Opciones de usuario</h3>
 
 <div class="row">
     <div class="col-md-6">
@@ -23,15 +23,15 @@
             }
 
             <div class="form-group">
-                <label class="control-label">Your Name</label>
+                <label class="control-label">Tu nombre</label>
                 <br />
-                <InputText @bind-Value="_options.DisplayName" class="form-control" placeholder="Shown to clients instead of your email" />
+                <InputText @bind-Value="_options.DisplayName" class="form-control" placeholder="Se muestra a los clientes en lugar de tu correo electrónico" />
                 <br />
                 <ValidationMessage For="() => _options.DisplayName" />
             </div>
 
             <div class="form-group">
-                <label class="control-label">Theme</label>
+                <label class="control-label">Tema</label>
                 <br />
                 <InputSelect @bind-Value="_options.Theme" class="form-control">
                     @foreach (var setting in Enum.GetValues(typeof(Theme)))
@@ -39,13 +39,13 @@
                         <option @key="setting" value="@setting">@setting</option>
                     }
                 </InputSelect>
-                <div class="text-info small mt-1">* Requires browser refresh.</div>
+                <div class="text-info small mt-1">* Requiere actualizar el navegador.</div>
                 <ValidationMessage For="() => _options.Theme" />
             </div>
 
             <div class="form-group mt-5">
                 <label class="control-label">
-                    <span class="text-info">Command Shortcuts</span>
+                    <span class="text-info">Atajos de comandos</span>
                     <button type="button" class="btn btn-secondary btn-sm ms-2" @onclick="ShowShortcutHelp">
                         <span class="oi oi-question-mark pointer"></span>
                     </button>
@@ -82,7 +82,7 @@
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
         </EditForm>
     </div>
@@ -123,9 +123,9 @@
 
         DataService.UpdateUserOptions(UserName, _options);
 
-        _alertMessage = "Options saved";
+        _alertMessage = "Opciones guardadas";
 
-        ToastService.ShowToast("Options saved.");
+        ToastService.ShowToast("Opciones guardadas.");
 
         return Task.CompletedTask;
     }
@@ -137,10 +137,10 @@
 
     private void ShowShortcutHelp()
     {
-        var modalText = @"The shell shortcuts are used to quickly switch between terminal shells on the main page.
-        If you type one of these shortcuts into the terminal, it will select the corresponding command
-        mode (e.g. PowerShell Core, Bash, etc.).";
+        var modalText = @"Los atajos de shell se usan para cambiar rápidamente entre shells de terminal en la página principal.
+        Si escribes uno de estos atajos en la terminal, seleccionará el modo de comando
+        correspondiente (por ejemplo, PowerShell Core, Bash, etc.).";
 
-        ModalService.ShowModal("Shell Shortcuts", new[] { modalText });
+        ModalService.ShowModal("Atajos de shell", new[] { modalText });
     }
 }

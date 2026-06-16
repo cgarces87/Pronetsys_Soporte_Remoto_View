@@ -111,6 +111,7 @@ services.AddIdentityCore<RemotelyUser>(options =>
 })
     .AddEntityFrameworkStores<AppDb>()
     .AddSignInManager()
+    .AddErrorDescriber<SpanishIdentityErrorDescriber>()
     .AddDefaultTokenProviders();
 
 services.AddScoped<IAuthorizationHandler, TwoFactorRequiredHandler>();
@@ -294,6 +295,16 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 ConfigureStaticFiles();
+
+// Serve the app in Spanish: localizes framework messages (DataAnnotations
+// validation, etc.) and date/number formatting.
+var supportedCultures = new[] { new System.Globalization.CultureInfo("es") };
+app.UseRequestLocalization(new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("es"),
+    SupportedCultures = supportedCultures,
+    SupportedUICultures = supportedCultures,
+});
 
 app.UseRouting();
 

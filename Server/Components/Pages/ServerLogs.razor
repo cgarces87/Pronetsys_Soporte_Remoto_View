@@ -9,33 +9,33 @@
 @inject ILogsManager LogsManager
 @inject ILoaderService LoaderService
 
-<h3 class="mb-3">Server Logs</h3>
+<h3 class="mb-3">Registros del servidor</h3>
 
 <div class="buttons-row mb-3">
     <div>
         <button class="btn btn-danger" type="button" @onclick="ClearAllLogs">
-            Delete Logs
+            Eliminar registros
         </button>
     </div>
     <div>
         <button class="btn btn-primary"
                 onclick="window.open('/API/ServerLogs/Download', '_blank')">
-            Download Logs
+            Descargar registros
         </button>
     </div>
     <div>
         <button class="btn btn-primary"
                 onclick="window.open('/API/ScriptResults', '_blank')">
-            Download Script History
+            Descargar historial de scripts
         </button>
     </div>
 </div>
 <div class="filters-row mb-3">
     <div style="display:inline-block">
-        <strong>Type:</strong>
+        <strong>Tipo:</strong>
         <br />
         <select class="form-control-sm" @bind="LogLevel">
-            <option value="">All</option>
+            <option value="">Todos</option>
             @foreach (var eventType in Enum.GetValues(typeof(LogLevel)))
             {
                 <option @key="eventType" value="@eventType">@eventType</option>
@@ -43,17 +43,17 @@
         </select>
     </div>
     <div style="display:inline-block">
-        <strong>Filter:</strong>
+        <strong>Filtro:</strong>
         <br />
         <input type="text" @bind="MessageFilter" @bind:event="oninput" />
     </div>
     <div style="display:inline-block">
-        <strong>From:</strong>
+        <strong>Desde:</strong>
         <br />
         <input type="date" @bind="FromDate" />
     </div>
     <div style="display:inline-block">
-        <strong>To:</strong>
+        <strong>Hasta:</strong>
         <br />
         <input type="date" @bind="ToDate" />
     </div>
@@ -79,7 +79,7 @@
         {
             if (value > _toDate)
             {
-                ToastService.ShowToast("Invalid date range.", classString: "bg-warning");
+                ToastService.ShowToast("Rango de fechas no válido.", classString: "bg-warning");
                 return;
             }
             _fromDate = value;
@@ -118,7 +118,7 @@
         {
             if (value < _fromDate)
             {
-                ToastService.ShowToast("Invalid date range.", classString: "bg-warning");
+                ToastService.ShowToast("Rango de fechas no válido.", classString: "bg-warning");
                 return;
             }
             _toDate = value;
@@ -144,21 +144,21 @@
 
     private async Task ClearAllLogs()
     {
-        var result = await JsInterop.Confirm("Are you sure you want to delete all previous logs? Today's logs are retained.");
+        var result = await JsInterop.Confirm("¿Estás seguro de que deseas eliminar todos los registros anteriores? Los registros de hoy se conservan.");
         if (result)
         {
-            using (var _ = LoaderService.ShowLoader("Deleting logs"))
+            using (var _ = LoaderService.ShowLoader("Eliminando registros"))
             {
                 await LogsManager.DeleteLogs();
             }
             await RefreshLogs();
-            ToastService.ShowToast("Logs deleted.");
+            ToastService.ShowToast("Registros eliminados.");
         }
     }
 
     private async Task RefreshLogs()
     {
-        using var _ = await LoaderService.ShowLoader("Refreshing logs");
+        using var _ = await LoaderService.ShowLoader("Actualizando registros");
         _filteredLogs.Clear();
 
         var logsAsync = LogsManager.GetLogs(
