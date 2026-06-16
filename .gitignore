@@ -281,9 +281,9 @@ Server/wwwroot/Content/Win-x86/*
 /Server/wwwroot/Content/*.zip
 /Server/wwwroot/Content/*.appimage
 /Server/ScaffoldingReadMe.txt
-/Server/Remotely.db
-/Server/Remotely.db-wal
-/Server/Remotely.db-shm
+/Server/Pronetsys.db
+/Server/Pronetsys.db-wal
+/Server/Pronetsys.db-shm
 /Server/wwwroot/out.js
 /Server/wwwroot/out.js.map
 .vscode/launch.json

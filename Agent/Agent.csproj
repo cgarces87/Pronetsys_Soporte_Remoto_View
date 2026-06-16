@@ -5,11 +5,11 @@
     <TargetFramework>net8.0</TargetFramework>
     <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright © 2023 Immense Networks</Copyright>
+    <Copyright>Copyright © 2023 Pronetsys</Copyright>
     <Description>Background service that maintains a connection to the Remotely server.  The service is used for remote support and maintenance by this computer's administrators.</Description>
-    <Authors>Jared Goodwin</Authors>
-    <Product>Remotely Agent</Product>
-    <Company>Immense Networks</Company>
+    <Authors>Pronetsys</Authors>
+    <Product>Pronetsys Asistencia Remota (Agente)</Product>
+    <Company>Pronetsys</Company>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <Platforms>AnyCPU;x86;x64</Platforms>
     <AssemblyName>Pronetsys_Agent</AssemblyName>

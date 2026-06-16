@@ -29,7 +29,7 @@ var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 var services = builder.Services;
 
-configuration.AddEnvironmentVariables("Remotely_");
+configuration.AddEnvironmentVariables("Pronetsys_");
 
 services.Configure<ApplicationOptions>(
     configuration.GetSection(ApplicationOptions.SectionKey));

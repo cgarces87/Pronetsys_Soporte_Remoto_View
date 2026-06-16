@@ -114,7 +114,7 @@ public class LogsManager : ILogsManager
         var tempDir = Directory.CreateDirectory(Path.Combine(baseDir, "temp", Guid.NewGuid().ToString())).FullName;
         var zipFilePath = Path.Combine(
             tempDir, 
-            $"Remotely_Logs-{DateTimeOffset.Now:yyyy-MM-dd-HH-mm-ss}.zip");
+            $"Pronetsys_Logs-{DateTimeOffset.Now:yyyy-MM-dd-HH-mm-ss}.zip");
 
         using var zipArchive = ZipFile.Open(zipFilePath, ZipArchiveMode.Update);
 

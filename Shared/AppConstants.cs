@@ -2,8 +2,8 @@
 
 public class AppConstants
 {
-    public const string DefaultProductName = "Remotely";
-    public const string DefaultPublisherName = "Immense Networks";
+    public const string DefaultProductName = "Pronetsys Asistencia Remota";
+    public const string DefaultPublisherName = "Pronetsys";
     public const string DebugOrgId = "e8f4ad87-4a4b-4da1-bcb2-1788eaeb80e8";
     public const int EmbeddedDataBlockLength = 256;
     public const long MaxUploadFileSize = 100_000_000;

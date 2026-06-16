@@ -31,14 +31,14 @@ services:
       - Serilog__MinimumLevel__Override__System=Warning
 
       # Values for DbProvider are SQLite, SQLServer, and PostgreSQL.
-      - Remotely_ApplicationOptions__DbProvider=SQLite
+      - Pronetsys_ApplicationOptions__DbProvider=SQLite
       # The Docker gateway will be used in Forwarded Headers, which is necessary to
       # to correctly determine request hostname and scheme within the app.  If you change
       # the network config, you must update this value as well.
-      - Remotely_ApplicationOptions__DockerGateway=172.28.0.1
+      - Pronetsys_ApplicationOptions__DockerGateway=172.28.0.1
       # This path shouldn't be changed.  It points to the Docker volume.
-      - Remotely_ConnectionStrings__SQLite=Data Source=/app/AppData/Remotely.db
+      - Pronetsys_ConnectionStrings__SQLite=Data Source=/app/AppData/Pronetsys.db
       # If using SQL Server, change the connection string to point to your SQL Server instance.
-      - Remotely_ConnectionStrings__SQLServer=Server=(localdb)\\mssqllocaldb;Database=Remotely-Server-53bc9b9d-9d6a-45d4-8429-2a2761773502;Trusted_Connection=True;MultipleActiveResultSets=true
+      - Pronetsys_ConnectionStrings__SQLServer=Server=(localdb)\\mssqllocaldb;Database=Pronetsys-Server-53bc9b9d-9d6a-45d4-8429-2a2761773502;Trusted_Connection=True;MultipleActiveResultSets=true
       # If using PostgreSQL, change the connection string to point to your PostgreSQL instance.
-      - Remotely_ConnectionStrings__PostgreSQL=Host=localhost;Database=Remotely;Username=postgres;Password=changeme;
+      - Pronetsys_ConnectionStrings__PostgreSQL=Host=localhost;Database=Pronetsys;Username=postgres;Password=changeme;
