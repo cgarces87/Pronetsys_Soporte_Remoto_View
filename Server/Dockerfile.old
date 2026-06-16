@@ -21,15 +21,15 @@ RUN \
 RUN \
   mkdir -p /app && \
   mkdir /config && \
-  wget -q https://github.com/immense/Remotely/releases/latest/download/Remotely_Server_Linux-x64.zip && \
-  unzip -o Remotely_Server_Linux-x64.zip -d /app && \
-  rm Remotely_Server_Linux-x64.zip
+  wget -q https://github.com/immense/Pronetsys/releases/latest/download/Pronetsys_Server_Linux-x64.zip && \
+  unzip -o Pronetsys_Server_Linux-x64.zip -d /app && \
+  rm Pronetsys_Server_Linux-x64.zip
 
 RUN \
-  mkdir -p /remotely-data && \
-  sed -i 's/DataSource=Remotely.db/DataSource=\/remotely-data\/Remotely.db/' /app/appsettings.json
+  mkdir -p /pronetsys-data && \
+  sed -i 's/DataSource=Pronetsys.db/DataSource=\/pronetsys-data\/Pronetsys.db/' /app/appsettings.json
 
-VOLUME "/remotely-data"
+VOLUME "/pronetsys-data"
 
 WORKDIR /app
 

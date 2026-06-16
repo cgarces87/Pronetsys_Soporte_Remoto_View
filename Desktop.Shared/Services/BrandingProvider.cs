@@ -59,7 +59,7 @@ public class BrandingProvider : IBrandingProvider
 
         if (_brandingInfo.Icon is not { Length: > 0 })
         {
-            using var mrs = typeof(BrandingProvider).Assembly.GetManifestResourceStream("Pronetsys.Desktop.Shared.Assets.Remotely_Icon.png");
+            using var mrs = typeof(BrandingProvider).Assembly.GetManifestResourceStream("Pronetsys.Desktop.Shared.Assets.Pronetsys_Icon.png");
             using var ms = new MemoryStream();
             mrs!.CopyTo(ms);
 

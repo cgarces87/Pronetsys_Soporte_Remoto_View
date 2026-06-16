@@ -70,11 +70,11 @@ public interface IDataService
 
     bool DoesUserExist(string userName);
 
-    bool DoesUserHaveAccessToDevice(string deviceId, RemotelyUser remotelyUser);
+    bool DoesUserHaveAccessToDevice(string deviceId, PronetsysUser pronetsysUser);
 
-    bool DoesUserHaveAccessToDevice(string deviceId, string remotelyUserId);
+    bool DoesUserHaveAccessToDevice(string deviceId, string pronetsysUserId);
 
-    string[] FilterDeviceIdsByUserPermission(string[] deviceIds, RemotelyUser remotelyUser);
+    string[] FilterDeviceIdsByUserPermission(string[] deviceIds, PronetsysUser pronetsysUser);
 
     string[] FilterUsersByDevicePermission(IEnumerable<string> userIds, string deviceId);
 
@@ -96,9 +96,9 @@ public interface IDataService
 
     ScriptResult[] GetAllScriptResultsForUser(string orgId, string userName);
 
-    RemotelyUser[] GetAllUsersForServer();
+    PronetsysUser[] GetAllUsersForServer();
 
-    Task<RemotelyUser[]> GetAllUsersInOrganization(string orgId);
+    Task<PronetsysUser[]> GetAllUsersInOrganization(string orgId);
 
     Task<Result<ApiToken>> GetApiKey(string keyId);
 
@@ -114,7 +114,7 @@ public interface IDataService
 
     int GetDeviceCount();
 
-    int GetDeviceCount(RemotelyUser user);
+    int GetDeviceCount(PronetsysUser user);
 
     Task<Result<DeviceGroup>> GetDeviceGroup(
         string deviceGroupId,
@@ -168,13 +168,13 @@ public interface IDataService
 
     int GetTotalDevices();
 
-    Task<Result<RemotelyUser>> GetUserById(string userId);
+    Task<Result<PronetsysUser>> GetUserById(string userId);
 
-    Task<Result<RemotelyUser>> GetUserByName(
+    Task<Result<PronetsysUser>> GetUserByName(
         string userName, 
-        Action<IQueryable<RemotelyUser>>? queryBuilder = null);
+        Action<IQueryable<PronetsysUser>>? queryBuilder = null);
 
-    Task<Result<RemotelyUserOptions>> GetUserOptions(string userName);
+    Task<Result<PronetsysUserOptions>> GetUserOptions(string userName);
 
     Task<Result> JoinViaInvitation(string userName, string inviteId);
 
@@ -190,7 +190,7 @@ public interface IDataService
 
     Task SetAllDevicesNotOnline();
 
-    Task SetDisplayName(RemotelyUser user, string displayName);
+    Task SetDisplayName(PronetsysUser user, string displayName);
 
     Task SetIsDefaultOrganization(string orgId, bool isDefault);
 
@@ -213,7 +213,7 @@ public interface IDataService
 
     Task UpdateTags(string deviceID, string tags);
 
-    Task<Result> UpdateUserOptions(string userName, RemotelyUserOptions options);
+    Task<Result> UpdateUserOptions(string userName, PronetsysUserOptions options);
     Task<bool> ValidateApiKey(string keyId, string apiSecret, string requestPath, string remoteIP);
 }
 
@@ -751,17 +751,17 @@ public class DataService : IDataService
 
         try
         {
-            var user = new RemotelyUser()
+            var user = new PronetsysUser()
             {
                 UserName = userEmail.Trim().ToLower(),
                 Email = userEmail.Trim().ToLower(),
                 IsAdministrator = isAdmin,
                 OrganizationID = organizationId,
-                UserOptions = new RemotelyUserOptions(),
+                UserOptions = new PronetsysUserOptions(),
                 LockoutEnabled = true
             };
             var org = dbContext.Organizations
-                .Include(x => x.RemotelyUsers)
+                .Include(x => x.PronetsysUsers)
                 .FirstOrDefault(x => x.ID == organizationId);
 
             if (org is null)
@@ -770,7 +770,7 @@ public class DataService : IDataService
             }
 
             dbContext.Users.Add(user);
-            org.RemotelyUsers.Add(user);
+            org.PronetsysUsers.Add(user);
             await dbContext.SaveChangesAsync();
             return Result.Ok();
         }
@@ -952,7 +952,7 @@ public class DataService : IDataService
 
         var org = dbContext
             .Organizations
-            .Include(x => x.RemotelyUsers)
+            .Include(x => x.PronetsysUsers)
             .FirstOrDefault(x => x.ID == orgId);
 
         if (org is null)
@@ -1017,9 +1017,9 @@ public class DataService : IDataService
             .Any(x => x.UserName!.Trim().ToLower() == userName.Trim().ToLower());
     }
 
-    public bool DoesUserHaveAccessToDevice(string deviceId, RemotelyUser remotelyUser)
+    public bool DoesUserHaveAccessToDevice(string deviceId, PronetsysUser pronetsysUser)
     {
-        if (remotelyUser is null)
+        if (pronetsysUser is null)
         {
             return false;
         }
@@ -1030,29 +1030,29 @@ public class DataService : IDataService
             .Include(x => x.DeviceGroup)
             .ThenInclude(x => x!.Users)
             .Any(device => 
-                device.OrganizationID == remotelyUser.OrganizationID &&
+                device.OrganizationID == pronetsysUser.OrganizationID &&
                 device.ID == deviceId &&
                 (
-                    remotelyUser.IsAdministrator ||
-                    device.DeviceGroup!.Users.Any(user => user.Id == remotelyUser.Id
+                    pronetsysUser.IsAdministrator ||
+                    device.DeviceGroup!.Users.Any(user => user.Id == pronetsysUser.Id
                 )));
     }
 
-    public bool DoesUserHaveAccessToDevice(string deviceId, string remotelyUserId)
+    public bool DoesUserHaveAccessToDevice(string deviceId, string pronetsysUserId)
     {
         using var dbContext = _appDbFactory.GetContext();
 
-        var remotelyUser = dbContext.Users.Find(remotelyUserId);
+        var pronetsysUser = dbContext.Users.Find(pronetsysUserId);
 
-        if (remotelyUser is null)
+        if (pronetsysUser is null)
         {
             return false;
         }
 
-        return DoesUserHaveAccessToDevice(deviceId, remotelyUser);
+        return DoesUserHaveAccessToDevice(deviceId, pronetsysUser);
     }
 
-    public string[] FilterDeviceIdsByUserPermission(string[] deviceIds, RemotelyUser remotelyUser)
+    public string[] FilterDeviceIdsByUserPermission(string[] deviceIds, PronetsysUser pronetsysUser)
     {
         using var dbContext = _appDbFactory.GetContext();
 
@@ -1060,11 +1060,11 @@ public class DataService : IDataService
             .Include(x => x.DeviceGroup)
             .ThenInclude(x => x!.Users)
             .Where(device =>
-                device.OrganizationID == remotelyUser.OrganizationID &&
+                device.OrganizationID == pronetsysUser.OrganizationID &&
                 deviceIds.Contains(device.ID) &&
                 (
-                    remotelyUser.IsAdministrator ||
-                    device.DeviceGroup!.Users.Any(user => user.Id == remotelyUser.Id
+                    pronetsysUser.IsAdministrator ||
+                    device.DeviceGroup!.Users.Any(user => user.Id == pronetsysUser.Id
                 )))
             .Select(x => x.ID)
             .ToArray();
@@ -1192,7 +1192,7 @@ public class DataService : IDataService
             .ToArray();
     }
 
-    public RemotelyUser[] GetAllUsersForServer()
+    public PronetsysUser[] GetAllUsersForServer()
     {
         using var dbContext = _appDbFactory.GetContext();
 
@@ -1201,26 +1201,26 @@ public class DataService : IDataService
             .ToArray();
     }
 
-    public async Task<RemotelyUser[]> GetAllUsersInOrganization(string orgId)
+    public async Task<PronetsysUser[]> GetAllUsersInOrganization(string orgId)
     {
         if (string.IsNullOrWhiteSpace(orgId))
         {
-            return Array.Empty<RemotelyUser>();
+            return Array.Empty<PronetsysUser>();
         }
 
         using var dbContext = _appDbFactory.GetContext();
 
         var organization = await dbContext.Organizations
             .AsNoTracking()
-            .Include(x => x.RemotelyUsers)
+            .Include(x => x.PronetsysUsers)
             .FirstOrDefaultAsync(x => x.ID == orgId);
 
         if (organization is null)
         {
-            return Array.Empty<RemotelyUser>();
+            return Array.Empty<PronetsysUser>();
         }
 
-        return organization.RemotelyUsers.ToArray();
+        return organization.PronetsysUsers.ToArray();
     }
 
     public async Task<Result<ApiToken>> GetApiKey(string keyId)
@@ -1336,7 +1336,7 @@ public class DataService : IDataService
         return dbContext.Devices.Count();
     }
 
-    public int GetDeviceCount(RemotelyUser user)
+    public int GetDeviceCount(PronetsysUser user)
     {
         using var dbContext = _appDbFactory.GetContext();
 
@@ -1803,11 +1803,11 @@ public class DataService : IDataService
         return dbContext.Devices.Count();
     }
 
-    public async Task<Result<RemotelyUser>> GetUserById(string userId)
+    public async Task<Result<PronetsysUser>> GetUserById(string userId)
     {
         if (string.IsNullOrWhiteSpace(userId))
         {
-            return Result.Fail<RemotelyUser>("User ID cannot be empty.");
+            return Result.Fail<PronetsysUser>("User ID cannot be empty.");
         }
         using var dbContext = _appDbFactory.GetContext();
 
@@ -1817,18 +1817,18 @@ public class DataService : IDataService
 
         if (user is null)
         {
-            return Result.Fail<RemotelyUser>("User not found.");
+            return Result.Fail<PronetsysUser>("User not found.");
         }
         return Result.Ok(user);
     }
 
-    public async Task<Result<RemotelyUser>> GetUserByName(
+    public async Task<Result<PronetsysUser>> GetUserByName(
         string userName,
-        Action<IQueryable<RemotelyUser>>? queryBuilder = null)
+        Action<IQueryable<PronetsysUser>>? queryBuilder = null)
     {
         if (string.IsNullOrWhiteSpace(userName))
         {
-            return Result.Fail<RemotelyUser>("Username cannot be empty.");
+            return Result.Fail<PronetsysUser>("Username cannot be empty.");
         }
 
         using var dbContext = _appDbFactory.GetContext();
@@ -1841,12 +1841,12 @@ public class DataService : IDataService
 
         if (user is null)
         {
-            return Result.Fail<RemotelyUser>("User not found.");
+            return Result.Fail<PronetsysUser>("User not found.");
         }
         return Result.Ok(user);
     }
 
-    public async Task<Result<RemotelyUserOptions>> GetUserOptions(string userName)
+    public async Task<Result<PronetsysUserOptions>> GetUserOptions(string userName)
     {
         using var dbContext = _appDbFactory.GetContext();
 
@@ -1856,7 +1856,7 @@ public class DataService : IDataService
 
         if (user is null)
         {
-            return Result.Fail<RemotelyUserOptions>("User not found.");
+            return Result.Fail<PronetsysUserOptions>("User not found.");
         }
         return Result.Ok(user.UserOptions ?? new());
     }
@@ -1893,7 +1893,7 @@ public class DataService : IDataService
         }
 
         var organization = await dbContext.Organizations
-            .Include(x => x.RemotelyUsers)
+            .Include(x => x.PronetsysUsers)
             .FirstOrDefaultAsync(x => x.ID == invite.OrganizationID);
 
         if (organization is null)
@@ -1904,7 +1904,7 @@ public class DataService : IDataService
         user.Organization = organization;
         user.OrganizationID = organization.ID;
         user.IsAdministrator = invite.IsAdmin;
-        organization.RemotelyUsers.Add(user);
+        organization.PronetsysUsers.Add(user);
 
         await dbContext.SaveChangesAsync();
 
@@ -2042,7 +2042,7 @@ public class DataService : IDataService
         await dbContext.SaveChangesAsync();
     }
 
-    public async Task SetDisplayName(RemotelyUser user, string displayName)
+    public async Task SetDisplayName(PronetsysUser user, string displayName)
     {
         using var dbContext = _appDbFactory.GetContext();
 
@@ -2246,7 +2246,7 @@ public class DataService : IDataService
         await dbContext.SaveChangesAsync();
     }
 
-    public async Task<Result> UpdateUserOptions(string userName, RemotelyUserOptions options)
+    public async Task<Result> UpdateUserOptions(string userName, PronetsysUserOptions options)
     {
         using var dbContext = _appDbFactory.GetContext();
 

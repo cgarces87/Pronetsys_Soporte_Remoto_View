@@ -128,7 +128,7 @@ public class UpdaterWin : IUpdater
 
             _logger.LogInformation("Service Updater: Downloading install package.");
 
-            var zipPath = Path.Combine(Path.GetTempPath(), "RemotelyUpdate.zip");
+            var zipPath = Path.Combine(Path.GetTempPath(), "PronetsysUpdate.zip");
 
             var installerPath = Path.Combine(Path.GetTempPath(), "Install-Pronetsys.ps1");
             var platform = Environment.Is64BitOperatingSystem ? "x64" : "x86";

@@ -167,7 +167,7 @@ public partial class Initial : Migration
             });
 
         migrationBuilder.CreateTable(
-            name: "RemotelyUsers",
+            name: "PronetsysUsers",
             columns: table => new
             {
                 Id = table.Column<string>(nullable: false),
@@ -195,9 +195,9 @@ public partial class Initial : Migration
             },
             constraints: table =>
             {
-                table.PrimaryKey("PK_RemotelyUsers", x => x.Id);
+                table.PrimaryKey("PK_PronetsysUsers", x => x.Id);
                 table.ForeignKey(
-                    name: "FK_RemotelyUsers_Organizations_OrganizationID",
+                    name: "FK_PronetsysUsers_Organizations_OrganizationID",
                     column: x => x.OrganizationID,
                     principalTable: "Organizations",
                     principalColumn: "ID",
@@ -286,9 +286,9 @@ public partial class Initial : Migration
             {
                 table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
                 table.ForeignKey(
-                    name: "FK_AspNetUserClaims_RemotelyUsers_UserId",
+                    name: "FK_AspNetUserClaims_PronetsysUsers_UserId",
                     column: x => x.UserId,
-                    principalTable: "RemotelyUsers",
+                    principalTable: "PronetsysUsers",
                     principalColumn: "Id",
                     onDelete: ReferentialAction.Cascade);
             });
@@ -306,9 +306,9 @@ public partial class Initial : Migration
             {
                 table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
                 table.ForeignKey(
-                    name: "FK_AspNetUserLogins_RemotelyUsers_UserId",
+                    name: "FK_AspNetUserLogins_PronetsysUsers_UserId",
                     column: x => x.UserId,
-                    principalTable: "RemotelyUsers",
+                    principalTable: "PronetsysUsers",
                     principalColumn: "Id",
                     onDelete: ReferentialAction.Cascade);
             });
@@ -330,9 +330,9 @@ public partial class Initial : Migration
                     principalColumn: "Id",
                     onDelete: ReferentialAction.Cascade);
                 table.ForeignKey(
-                    name: "FK_AspNetUserRoles_RemotelyUsers_UserId",
+                    name: "FK_AspNetUserRoles_PronetsysUsers_UserId",
                     column: x => x.UserId,
-                    principalTable: "RemotelyUsers",
+                    principalTable: "PronetsysUsers",
                     principalColumn: "Id",
                     onDelete: ReferentialAction.Cascade);
             });
@@ -350,9 +350,9 @@ public partial class Initial : Migration
             {
                 table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
                 table.ForeignKey(
-                    name: "FK_AspNetUserTokens_RemotelyUsers_UserId",
+                    name: "FK_AspNetUserTokens_PronetsysUsers_UserId",
                     column: x => x.UserId,
-                    principalTable: "RemotelyUsers",
+                    principalTable: "PronetsysUsers",
                     principalColumn: "Id",
                     onDelete: ReferentialAction.Cascade);
             });
@@ -375,9 +375,9 @@ public partial class Initial : Migration
                     principalColumn: "ID",
                     onDelete: ReferentialAction.Restrict);
                 table.ForeignKey(
-                    name: "FK_PermissionLinks_RemotelyUsers_UserID",
+                    name: "FK_PermissionLinks_PronetsysUsers_UserID",
                     column: x => x.UserID,
-                    principalTable: "RemotelyUsers",
+                    principalTable: "PronetsysUsers",
                     principalColumn: "Id",
                     onDelete: ReferentialAction.Restrict);
             });
@@ -409,9 +409,9 @@ public partial class Initial : Migration
                     principalColumn: "ID",
                     onDelete: ReferentialAction.Restrict);
                 table.ForeignKey(
-                    name: "FK_Alerts_RemotelyUsers_UserID",
+                    name: "FK_Alerts_PronetsysUsers_UserID",
                     column: x => x.UserID,
-                    principalTable: "RemotelyUsers",
+                    principalTable: "PronetsysUsers",
                     principalColumn: "Id",
                     onDelete: ReferentialAction.Restrict);
             });
@@ -514,23 +514,23 @@ public partial class Initial : Migration
 
         migrationBuilder.CreateIndex(
             name: "EmailIndex",
-            table: "RemotelyUsers",
+            table: "PronetsysUsers",
             column: "NormalizedEmail");
 
         migrationBuilder.CreateIndex(
             name: "UserNameIndex",
-            table: "RemotelyUsers",
+            table: "PronetsysUsers",
             column: "NormalizedUserName",
             unique: true);
 
         migrationBuilder.CreateIndex(
-            name: "IX_RemotelyUsers_OrganizationID",
-            table: "RemotelyUsers",
+            name: "IX_PronetsysUsers_OrganizationID",
+            table: "PronetsysUsers",
             column: "OrganizationID");
 
         migrationBuilder.CreateIndex(
-            name: "IX_RemotelyUsers_UserName",
-            table: "RemotelyUsers",
+            name: "IX_PronetsysUsers_UserName",
+            table: "PronetsysUsers",
             column: "UserName");
 
         migrationBuilder.CreateIndex(
@@ -584,7 +584,7 @@ public partial class Initial : Migration
             name: "AspNetRoles");
 
         migrationBuilder.DropTable(
-            name: "RemotelyUsers");
+            name: "PronetsysUsers");
 
         migrationBuilder.DropTable(
             name: "DeviceGroups");

@@ -19,7 +19,7 @@ namespace Pronetsys.Server.Migrations.Sqlite
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.9");
 
-            modelBuilder.Entity("DeviceGroupRemotelyUser", b =>
+            modelBuilder.Entity("DeviceGroupPronetsysUser", b =>
                 {
                     b.Property<string>("DeviceGroupsID")
                         .HasColumnType("TEXT");
@@ -31,7 +31,7 @@ namespace Pronetsys.Server.Migrations.Sqlite
 
                     b.HasIndex("UsersId");
 
-                    b.ToTable("DeviceGroupRemotelyUser");
+                    b.ToTable("DeviceGroupPronetsysUser");
                 });
 
             modelBuilder.Entity("DeviceGroupScriptSchedule", b =>
@@ -208,7 +208,7 @@ namespace Pronetsys.Server.Migrations.Sqlite
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
 
-                    b.ToTable("RemotelyUsers", (string)null);
+                    b.ToTable("PronetsysUsers", (string)null);
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
@@ -829,7 +829,7 @@ namespace Pronetsys.Server.Migrations.Sqlite
                     b.ToTable("SharedFiles");
                 });
 
-            modelBuilder.Entity("Pronetsys.Shared.Models.RemotelyUser", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.PronetsysUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -852,10 +852,10 @@ namespace Pronetsys.Server.Migrations.Sqlite
 
                     b.HasIndex("UserName");
 
-                    b.HasDiscriminator().HasValue("RemotelyUser");
+                    b.HasDiscriminator().HasValue("PronetsysUser");
                 });
 
-            modelBuilder.Entity("DeviceGroupRemotelyUser", b =>
+            modelBuilder.Entity("DeviceGroupPronetsysUser", b =>
                 {
                     b.HasOne("Pronetsys.Shared.Models.DeviceGroup", null)
                         .WithMany()
@@ -863,7 +863,7 @@ namespace Pronetsys.Server.Migrations.Sqlite
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Pronetsys.Shared.Models.RemotelyUser", null)
+                    b.HasOne("Pronetsys.Shared.Models.PronetsysUser", null)
                         .WithMany()
                         .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -991,7 +991,7 @@ namespace Pronetsys.Server.Migrations.Sqlite
                         .WithMany("Alerts")
                         .HasForeignKey("OrganizationID");
 
-                    b.HasOne("Pronetsys.Shared.Models.RemotelyUser", "User")
+                    b.HasOne("Pronetsys.Shared.Models.PronetsysUser", "User")
                         .WithMany("Alerts")
                         .HasForeignKey("UserID");
 
@@ -1064,7 +1064,7 @@ namespace Pronetsys.Server.Migrations.Sqlite
 
             modelBuilder.Entity("Pronetsys.Shared.Models.SavedScript", b =>
                 {
-                    b.HasOne("Pronetsys.Shared.Models.RemotelyUser", "Creator")
+                    b.HasOne("Pronetsys.Shared.Models.PronetsysUser", "Creator")
                         .WithMany("SavedScripts")
                         .HasForeignKey("CreatorId");
 
@@ -1117,7 +1117,7 @@ namespace Pronetsys.Server.Migrations.Sqlite
 
             modelBuilder.Entity("Pronetsys.Shared.Models.ScriptSchedule", b =>
                 {
-                    b.HasOne("Pronetsys.Shared.Models.RemotelyUser", "Creator")
+                    b.HasOne("Pronetsys.Shared.Models.PronetsysUser", "Creator")
                         .WithMany("ScriptSchedules")
                         .HasForeignKey("CreatorId");
 
@@ -1139,10 +1139,10 @@ namespace Pronetsys.Server.Migrations.Sqlite
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("Pronetsys.Shared.Models.RemotelyUser", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.PronetsysUser", b =>
                 {
                     b.HasOne("Pronetsys.Shared.Models.Organization", "Organization")
-                        .WithMany("RemotelyUsers")
+                        .WithMany("PronetsysUsers")
                         .HasForeignKey("OrganizationID");
 
                     b.Navigation("Organization");
@@ -1176,7 +1176,7 @@ namespace Pronetsys.Server.Migrations.Sqlite
 
                     b.Navigation("InviteLinks");
 
-                    b.Navigation("RemotelyUsers");
+                    b.Navigation("PronetsysUsers");
 
                     b.Navigation("SavedScripts");
 
@@ -1199,7 +1199,7 @@ namespace Pronetsys.Server.Migrations.Sqlite
                     b.Navigation("ScriptRuns");
                 });
 
-            modelBuilder.Entity("Pronetsys.Shared.Models.RemotelyUser", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.PronetsysUser", b =>
                 {
                     b.Navigation("Alerts");
 

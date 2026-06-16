@@ -271,10 +271,10 @@ __pycache__/
 /Server/wwwroot/Downloads/*.exe
 /Server/wwwroot/Downloads/*.zip
 /Server/wwwroot/Downloads/*.appimage
-/Server/wwwroot/Downloads/Remotely_Desktop
+/Server/wwwroot/Downloads/Pronetsys_Desktop
 Server/wwwroot/Downloads/Win-x64/*
 Server/wwwroot/Downloads/Win-x86/*
-/Server/wwwroot/Content/Remotely_Desktop
+/Server/wwwroot/Content/Pronetsys_Desktop
 Server/wwwroot/Content/Win-x64/*
 Server/wwwroot/Content/Win-x86/*
 /Server/wwwroot/Content/*.exe
@@ -292,7 +292,7 @@ Server/.config/dotnet-tools.json
 /Server/Properties/ServiceDependencies/*
 Server.Installer/Properties/launchSettings.json
 .DS_Store
-/Server/wwwroot/Content/Linux-x64/Remotely_Desktop
+/Server/wwwroot/Content/Linux-x64/Pronetsys_Desktop
 !/.vscode/launch.json
 !/.vscode/tasks.json
 /Server/appsettings.Development.json

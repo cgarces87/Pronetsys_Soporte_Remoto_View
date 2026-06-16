@@ -1,8 +1,8 @@
 <#
 .SYNOPSIS
-   Publishes the Remotely clients.
+   Publishes the Pronetsys clients.
 .DESCRIPTION
-   Publishes the Remotely clients.
+   Publishes the Pronetsys clients.
    To deploy the server, supply the following arguments: -rid win-x64 -outdir path\to\dir -hostname https://mysite.mydomain.com
 .COPYRIGHT
    Copyright 2023 Immense Networks.  All rights reserved.

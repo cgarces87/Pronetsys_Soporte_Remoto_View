@@ -3,9 +3,9 @@ using Pronetsys.Shared.Entities;
 
 namespace Pronetsys.Server.Components.Account;
 
-internal sealed class IdentityUserAccessor(UserManager<RemotelyUser> userManager, IdentityRedirectManager redirectManager)
+internal sealed class IdentityUserAccessor(UserManager<PronetsysUser> userManager, IdentityRedirectManager redirectManager)
 {
-    public async Task<RemotelyUser> GetRequiredUserAsync(HttpContext context)
+    public async Task<PronetsysUser> GetRequiredUserAsync(HttpContext context)
     {
         var user = await userManager.GetUserAsync(context.User);
 

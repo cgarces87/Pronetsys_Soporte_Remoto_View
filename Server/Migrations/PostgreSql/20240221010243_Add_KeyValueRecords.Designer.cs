@@ -25,7 +25,7 @@ namespace Pronetsys.Server.Migrations.PostgreSql
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("DeviceGroupRemotelyUser", b =>
+            modelBuilder.Entity("DeviceGroupPronetsysUser", b =>
                 {
                     b.Property<string>("DeviceGroupsID")
                         .HasColumnType("text");
@@ -37,7 +37,7 @@ namespace Pronetsys.Server.Migrations.PostgreSql
 
                     b.HasIndex("UsersId");
 
-                    b.ToTable("DeviceGroupRemotelyUser");
+                    b.ToTable("DeviceGroupPronetsysUser");
                 });
 
             modelBuilder.Entity("DeviceGroupScriptSchedule", b =>
@@ -202,7 +202,7 @@ namespace Pronetsys.Server.Migrations.PostgreSql
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
 
-                    b.ToTable("RemotelyUsers", (string)null);
+                    b.ToTable("PronetsysUsers", (string)null);
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
 
@@ -804,7 +804,7 @@ namespace Pronetsys.Server.Migrations.PostgreSql
                     b.ToTable("SharedFiles");
                 });
 
-            modelBuilder.Entity("Pronetsys.Shared.Entities.RemotelyUser", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Entities.PronetsysUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -828,10 +828,10 @@ namespace Pronetsys.Server.Migrations.PostgreSql
 
                     b.HasIndex("UserName");
 
-                    b.HasDiscriminator().HasValue("RemotelyUser");
+                    b.HasDiscriminator().HasValue("PronetsysUser");
                 });
 
-            modelBuilder.Entity("DeviceGroupRemotelyUser", b =>
+            modelBuilder.Entity("DeviceGroupPronetsysUser", b =>
                 {
                     b.HasOne("Pronetsys.Shared.Entities.DeviceGroup", null)
                         .WithMany()
@@ -839,7 +839,7 @@ namespace Pronetsys.Server.Migrations.PostgreSql
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Pronetsys.Shared.Entities.RemotelyUser", null)
+                    b.HasOne("Pronetsys.Shared.Entities.PronetsysUser", null)
                         .WithMany()
                         .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -956,7 +956,7 @@ namespace Pronetsys.Server.Migrations.PostgreSql
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Pronetsys.Shared.Entities.RemotelyUser", "User")
+                    b.HasOne("Pronetsys.Shared.Entities.PronetsysUser", "User")
                         .WithMany("Alerts")
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.ClientCascade)
@@ -1030,7 +1030,7 @@ namespace Pronetsys.Server.Migrations.PostgreSql
 
             modelBuilder.Entity("Pronetsys.Shared.Entities.SavedScript", b =>
                 {
-                    b.HasOne("Pronetsys.Shared.Entities.RemotelyUser", "Creator")
+                    b.HasOne("Pronetsys.Shared.Entities.PronetsysUser", "Creator")
                         .WithMany("SavedScripts")
                         .HasForeignKey("CreatorId")
                         .OnDelete(DeleteBehavior.ClientCascade)
@@ -1109,7 +1109,7 @@ namespace Pronetsys.Server.Migrations.PostgreSql
 
             modelBuilder.Entity("Pronetsys.Shared.Entities.ScriptSchedule", b =>
                 {
-                    b.HasOne("Pronetsys.Shared.Entities.RemotelyUser", "Creator")
+                    b.HasOne("Pronetsys.Shared.Entities.PronetsysUser", "Creator")
                         .WithMany("ScriptSchedules")
                         .HasForeignKey("CreatorId")
                         .OnDelete(DeleteBehavior.ClientCascade)
@@ -1135,10 +1135,10 @@ namespace Pronetsys.Server.Migrations.PostgreSql
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("Pronetsys.Shared.Entities.RemotelyUser", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Entities.PronetsysUser", b =>
                 {
                     b.HasOne("Pronetsys.Shared.Entities.Organization", "Organization")
-                        .WithMany("RemotelyUsers")
+                        .WithMany("PronetsysUsers")
                         .HasForeignKey("OrganizationID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1172,7 +1172,7 @@ namespace Pronetsys.Server.Migrations.PostgreSql
 
                     b.Navigation("InviteLinks");
 
-                    b.Navigation("RemotelyUsers");
+                    b.Navigation("PronetsysUsers");
 
                     b.Navigation("SavedScripts");
 
@@ -1202,7 +1202,7 @@ namespace Pronetsys.Server.Migrations.PostgreSql
                     b.Navigation("ScriptRuns");
                 });
 
-            modelBuilder.Entity("Pronetsys.Shared.Entities.RemotelyUser", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Entities.PronetsysUser", b =>
                 {
                     b.Navigation("Alerts");
 

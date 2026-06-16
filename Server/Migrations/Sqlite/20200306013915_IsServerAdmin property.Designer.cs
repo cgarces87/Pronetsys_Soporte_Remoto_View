@@ -132,7 +132,7 @@ namespace Pronetsys.Server.Migrations.Sqlite
                         .IsUnique()
                         .HasName("UserNameIndex");
 
-                    b.ToTable("RemotelyUsers");
+                    b.ToTable("PronetsysUsers");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
@@ -512,7 +512,7 @@ namespace Pronetsys.Server.Migrations.Sqlite
                     b.ToTable("PermissionLinks");
                 });
 
-            modelBuilder.Entity("Pronetsys.Shared.Models.RemotelyUser", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.PronetsysUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -532,7 +532,7 @@ namespace Pronetsys.Server.Migrations.Sqlite
 
                     b.HasIndex("UserName");
 
-                    b.HasDiscriminator().HasValue("RemotelyUser");
+                    b.HasDiscriminator().HasValue("PronetsysUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -645,15 +645,15 @@ namespace Pronetsys.Server.Migrations.Sqlite
                         .WithMany("PermissionLinks")
                         .HasForeignKey("DeviceGroupID");
 
-                    b.HasOne("Pronetsys.Shared.Models.RemotelyUser", "User")
+                    b.HasOne("Pronetsys.Shared.Models.PronetsysUser", "User")
                         .WithMany("PermissionLinks")
                         .HasForeignKey("UserID");
                 });
 
-            modelBuilder.Entity("Pronetsys.Shared.Models.RemotelyUser", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.PronetsysUser", b =>
                 {
                     b.HasOne("Pronetsys.Shared.Models.Organization", "Organization")
-                        .WithMany("RemotelyUsers")
+                        .WithMany("PronetsysUsers")
                         .HasForeignKey("OrganizationID");
                 });
 #pragma warning restore 612, 618

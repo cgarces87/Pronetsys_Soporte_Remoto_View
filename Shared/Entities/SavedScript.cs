@@ -11,7 +11,7 @@ public class SavedScript
     public string? Content { get; set; }
 
     [JsonIgnore]
-    public RemotelyUser? Creator { get; set; }
+    public PronetsysUser? Creator { get; set; }
 
     public string CreatorId { get; set; } = null!;
 

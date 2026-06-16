@@ -48,7 +48,7 @@ public class UpgradeService : IUpgradeService
         try
         {
             using var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://github.com/immense/Remotely/releases/latest");
+            var response = await client.GetAsync("https://github.com/immense/Pronetsys/releases/latest");
             var versionTag = $"{response.RequestMessage?.RequestUri}".Split("/").LastOrDefault();
             if (string.IsNullOrWhiteSpace(versionTag))
             {

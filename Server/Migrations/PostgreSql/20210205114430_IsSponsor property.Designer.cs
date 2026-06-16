@@ -21,7 +21,7 @@ namespace Pronetsys.Server.Migrations.PostgreSql
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("DeviceGroupRemotelyUser", b =>
+            modelBuilder.Entity("DeviceGroupPronetsysUser", b =>
                 {
                     b.Property<string>("DeviceGroupsID")
                         .HasColumnType("text");
@@ -33,7 +33,7 @@ namespace Pronetsys.Server.Migrations.PostgreSql
 
                     b.HasIndex("UsersId");
 
-                    b.ToTable("DeviceGroupRemotelyUser");
+                    b.ToTable("DeviceGroupPronetsysUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -151,7 +151,7 @@ namespace Pronetsys.Server.Migrations.PostgreSql
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
 
-                    b.ToTable("RemotelyUsers");
+                    b.ToTable("PronetsysUsers");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
@@ -550,7 +550,7 @@ namespace Pronetsys.Server.Migrations.PostgreSql
                     b.ToTable("SharedFiles");
                 });
 
-            modelBuilder.Entity("Pronetsys.Shared.Models.RemotelyUser", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.PronetsysUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -577,10 +577,10 @@ namespace Pronetsys.Server.Migrations.PostgreSql
 
                     b.HasIndex("UserName");
 
-                    b.HasDiscriminator().HasValue("RemotelyUser");
+                    b.HasDiscriminator().HasValue("PronetsysUser");
                 });
 
-            modelBuilder.Entity("DeviceGroupRemotelyUser", b =>
+            modelBuilder.Entity("DeviceGroupPronetsysUser", b =>
                 {
                     b.HasOne("Pronetsys.Shared.Models.DeviceGroup", null)
                         .WithMany()
@@ -588,7 +588,7 @@ namespace Pronetsys.Server.Migrations.PostgreSql
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Pronetsys.Shared.Models.RemotelyUser", null)
+                    b.HasOne("Pronetsys.Shared.Models.PronetsysUser", null)
                         .WithMany()
                         .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -656,7 +656,7 @@ namespace Pronetsys.Server.Migrations.PostgreSql
                         .WithMany("Alerts")
                         .HasForeignKey("OrganizationID");
 
-                    b.HasOne("Pronetsys.Shared.Models.RemotelyUser", "User")
+                    b.HasOne("Pronetsys.Shared.Models.PronetsysUser", "User")
                         .WithMany("Alerts")
                         .HasForeignKey("UserID");
 
@@ -736,10 +736,10 @@ namespace Pronetsys.Server.Migrations.PostgreSql
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("Pronetsys.Shared.Models.RemotelyUser", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.PronetsysUser", b =>
                 {
                     b.HasOne("Pronetsys.Shared.Models.Organization", "Organization")
-                        .WithMany("RemotelyUsers")
+                        .WithMany("PronetsysUsers")
                         .HasForeignKey("OrganizationID");
 
                     b.Navigation("Organization");
@@ -771,12 +771,12 @@ namespace Pronetsys.Server.Migrations.PostgreSql
 
                     b.Navigation("InviteLinks");
 
-                    b.Navigation("RemotelyUsers");
+                    b.Navigation("PronetsysUsers");
 
                     b.Navigation("SharedFiles");
                 });
 
-            modelBuilder.Entity("Pronetsys.Shared.Models.RemotelyUser", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.PronetsysUser", b =>
                 {
                     b.Navigation("Alerts");
                 });

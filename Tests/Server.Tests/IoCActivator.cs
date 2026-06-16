@@ -35,7 +35,7 @@ public class IoCActivator
             optionsLifetime: ServiceLifetime.Transient);
 
         _builder.Services.
-            AddIdentity<RemotelyUser, IdentityRole>(options => options.Stores.MaxLengthForKeys = 128)
+            AddIdentity<PronetsysUser, IdentityRole>(options => options.Stores.MaxLengthForKeys = 128)
                 .AddEntityFrameworkStores<AppDb>()
                 .AddDefaultTokenProviders();
 

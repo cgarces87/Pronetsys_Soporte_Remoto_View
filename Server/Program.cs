@@ -104,7 +104,7 @@ builder.Services.AddAuthentication(options =>
 })
     .AddIdentityCookies();
 
-services.AddIdentityCore<RemotelyUser>(options =>
+services.AddIdentityCore<PronetsysUser>(options =>
 {
     options.Stores.MaxLengthForKeys = 128;
     options.Password.RequireNonAlphanumeric = false;
@@ -117,7 +117,7 @@ services.AddIdentityCore<RemotelyUser>(options =>
 services.AddScoped<IAuthorizationHandler, TwoFactorRequiredHandler>();
 services.AddScoped<IAuthorizationHandler, OrganizationAdminRequirementHandler>();
 services.AddScoped<IAuthorizationHandler, ServerAdminRequirementHandler>();
-services.AddSingleton<IEmailSender<RemotelyUser>, IdentityNoOpEmailSender>();
+services.AddSingleton<IEmailSender<PronetsysUser>, IdentityNoOpEmailSender>();
 
 services.AddAuthorization(options =>
 {
@@ -221,7 +221,7 @@ if (builder.Environment.IsDevelopment())
 }
 else
 {
-    services.AddScoped<IEmailSender<RemotelyUser>, EmailSenderEx>();
+    services.AddScoped<IEmailSender<PronetsysUser>, EmailSenderEx>();
     services.AddScoped<IEmailSenderEx, EmailSenderEx>();
 }
 services.AddSingleton<IAppDbFactory, AppDbFactory>();

@@ -4,8 +4,8 @@
 @using Microsoft.AspNetCore.Identity
 @using Pronetsys.Server.Data
 
-@inject UserManager<RemotelyUser> UserManager
-@inject SignInManager<RemotelyUser> SignInManager
+@inject UserManager<PronetsysUser> UserManager
+@inject SignInManager<PronetsysUser> SignInManager
 @inject IdentityUserAccessor UserAccessor
 @inject IdentityRedirectManager RedirectManager
 
@@ -34,7 +34,7 @@
 </div>
 
 @code {
-    private RemotelyUser user = default!;
+    private PronetsysUser user = default!;
     private string? username;
     private string? phoneNumber;
 

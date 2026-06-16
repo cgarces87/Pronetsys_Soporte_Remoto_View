@@ -24,9 +24,9 @@ public class ScriptingController : ControllerBase
     private readonly IAgentHubSessionCache _serviceSessionCache;
     private readonly IExpiringTokenService _expiringTokenService;
 
-    private readonly UserManager<RemotelyUser> _userManager;
+    private readonly UserManager<PronetsysUser> _userManager;
 
-    public ScriptingController(UserManager<RemotelyUser> userManager,
+    public ScriptingController(UserManager<PronetsysUser> userManager,
         IDataService dataService,
         IAgentHubSessionCache serviceSessionCache,
         IExpiringTokenService expiringTokenService,

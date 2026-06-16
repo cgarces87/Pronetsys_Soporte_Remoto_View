@@ -9,7 +9,7 @@ public class SqliteDbContextDesignTime : IDesignTimeDbContextFactory<SqliteDbCon
     {
         var appSettings = new Dictionary<string, string?>
         {
-            ["ConnectionStrings:SQLite"] = "Data Source=remotely.db",
+            ["ConnectionStrings:SQLite"] = "Data Source=pronetsys.db",
             ["ApplicationOptions:DbProvider"] = "sqlite"
         };
 
@@ -45,7 +45,7 @@ public class PostgreSqlDbContextDesignTime : IDesignTimeDbContextFactory<Postgre
     {
         var appSettings = new Dictionary<string, string?>
         {
-            ["ConnectionStrings:PostgreSql"] = "Host=localhost;Database=Remotely;Username=postgres;",
+            ["ConnectionStrings:PostgreSql"] = "Host=localhost;Database=Pronetsys;Username=postgres;",
             ["ApplicationOptions:DbProvider"] = "PostgreSql"
         };
 

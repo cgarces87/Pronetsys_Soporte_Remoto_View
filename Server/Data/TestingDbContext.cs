@@ -11,7 +11,7 @@ public class TestingDbContext : AppDb
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
-        options.UseInMemoryDatabase("Remotely");
+        options.UseInMemoryDatabase("Pronetsys");
         base.OnConfiguring(options);
     }
 }

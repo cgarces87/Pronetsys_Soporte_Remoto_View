@@ -8,7 +8,7 @@ public partial class DisplayName : Migration
     {
         migrationBuilder.AddColumn<string>(
             name: "DisplayName",
-            table: "RemotelyUsers",
+            table: "PronetsysUsers",
             maxLength: 100,
             nullable: true);
     }
@@ -17,6 +17,6 @@ public partial class DisplayName : Migration
     {
         migrationBuilder.DropColumn(
             name: "DisplayName",
-            table: "RemotelyUsers");
+            table: "PronetsysUsers");
     }
 }

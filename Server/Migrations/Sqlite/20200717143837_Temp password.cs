@@ -8,7 +8,7 @@ public partial class Temppassword : Migration
     {
         migrationBuilder.AddColumn<string>(
             name: "TempPassword",
-            table: "RemotelyUsers",
+            table: "PronetsysUsers",
             nullable: true);
     }
 
@@ -16,6 +16,6 @@ public partial class Temppassword : Migration
     {
         migrationBuilder.DropColumn(
             name: "TempPassword",
-            table: "RemotelyUsers");
+            table: "PronetsysUsers");
     }
 }

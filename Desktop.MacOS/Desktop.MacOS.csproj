@@ -18,9 +18,9 @@
 
   <ItemGroup>
     <AvaloniaResource Include="Assets\*" />
-    <AvaloniaResource Remove="Assets\Remotely_Icon.png" />
-    <None Remove="Assets\Remotely_Icon.png" />
-    <EmbeddedResource Include="Assets\Remotely_Icon.png" />
+    <AvaloniaResource Remove="Assets\Pronetsys_Icon.png" />
+    <None Remove="Assets\Pronetsys_Icon.png" />
+    <EmbeddedResource Include="Assets\Pronetsys_Icon.png" />
   </ItemGroup>
 
   <ItemGroup>

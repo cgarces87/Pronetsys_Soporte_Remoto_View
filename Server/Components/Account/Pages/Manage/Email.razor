@@ -7,8 +7,8 @@
 @using Microsoft.AspNetCore.WebUtilities
 @using Pronetsys.Server.Data
 
-@inject UserManager<RemotelyUser> UserManager
-@inject IEmailSender<RemotelyUser> EmailSender
+@inject UserManager<PronetsysUser> UserManager
+@inject IEmailSender<PronetsysUser> EmailSender
 @inject IdentityUserAccessor UserAccessor
 @inject NavigationManager NavigationManager
 
@@ -55,7 +55,7 @@
 
 @code {
     private string? message;
-    private RemotelyUser user = default!;
+    private PronetsysUser user = default!;
     private string? email;
     private bool isEmailConfirmed;
 

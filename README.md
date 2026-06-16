@@ -1,6 +1,6 @@
 # Pronetsys Asistencia Remota
 
-A remote control and remote support solution built with .NET, Blazor, and SignalR Core — the remote-management product used to support Pronetsys clients. Based on the open-source [Remotely](https://github.com/immense/Remotely) project.
+A remote control and remote support solution built with .NET, Blazor, and SignalR Core — the remote-management product used to support Pronetsys clients. Based on the open-source [Pronetsys](https://github.com/immense/Pronetsys) project.
 
 [![Tests](https://github.com/cgarces87/Pronetsys_Soporte_Remoto_View/actions/workflows/run_tests.yml/badge.svg?branch=master)](https://github.com/cgarces87/Pronetsys_Soporte_Remoto_View/actions/workflows/run_tests.yml)
 

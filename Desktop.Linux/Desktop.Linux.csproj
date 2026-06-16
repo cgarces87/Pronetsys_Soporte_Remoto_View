@@ -45,13 +45,13 @@
     <None Remove="Models\**" />
   </ItemGroup>
   <ItemGroup>
-    <AvaloniaResource Remove="Assets\Remotely_Icon.png" />
+    <AvaloniaResource Remove="Assets\Pronetsys_Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="Assets\Remotely_Icon.png" />
+    <None Remove="Assets\Pronetsys_Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Assets\Remotely_Icon.png" />
+    <EmbeddedResource Include="Assets\Pronetsys_Icon.png" />
   </ItemGroup>
   <ItemGroup>
     <!-- Security: pin patched version of transitive dep (pulled by Avalonia on Linux). -->

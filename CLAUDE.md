@@ -4,14 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Remotely is a remote control + remote scripting solution built with .NET 8, Blazor Server, and SignalR Core. It has three runtime roles that communicate over SignalR: a **Server** (web app), an **Agent** (background service on managed devices), and a **Desktop** client (screen-casting app used for the actual remote-control session).
+Pronetsys is a remote control + remote scripting solution built with .NET 8, Blazor Server, and SignalR Core. It has three runtime roles that communicate over SignalR: a **Server** (web app), an **Agent** (background service on managed devices), and a **Desktop** client (screen-casting app used for the actual remote-control session).
 
 ## Common commands
 
-Run from the repo root unless noted. Solution file: `Remotely.sln`.
+Run from the repo root unless noted. Solution file: `Pronetsys.sln`.
 
 ```bash
-dotnet build Remotely.sln                 # Build everything
+dotnet build Pronetsys.sln                 # Build everything
 dotnet test                               # Run all test projects (this is what CI runs)
 dotnet run --project Server               # Run the server (dev); agents connect to https://localhost:5001
 ```
@@ -37,19 +37,19 @@ Publishing clients/server: `Utilities/Publish.ps1` builds the Agent for win-x64/
 ## Development setup notes (from README)
 
 - In **Development** environment: the Agent connects to `https://localhost:5001` using a pre-defined device ID, and the server assigns every connecting agent to the **first organization**. This lets you debug Server + Agent + Desktop together and see your device in the list.
-- Visual Studio multi-project launch configs are in `Remotely.slnLaunch` / `Remotely.sln.startup.json` (e.g. "Server+Agent+Desktop", "Server+Agent").
+- Visual Studio multi-project launch configs are in `Pronetsys.slnLaunch` / `Pronetsys.sln.startup.json` (e.g. "Server+Agent+Desktop", "Server+Agent").
 - The Server project compiles TypeScript (`Microsoft.TypeScript.MSBuild`) and restores client-side JS libs via LibMan (`Server/libman.json`). The Shared project generates `.d.ts` files from select C# entities (DtsGenerator) so the TS code can share those types.
 
 ## Architecture
 
 ### Projects and their roles
 
-- **Server** (`Microsoft.NET.Sdk.Web`, assembly `Remotely_Server`) — ASP.NET Core Blazor Server app. Hosts the SignalR hubs, the REST API (`Server/API/`), EF Core data layer, ASP.NET Identity auth, and the Razor/Blazor UI (`Server/Components/`, `Server/Pages/`). Minimal-hosting entry point is `Server/Program.cs`.
-- **Agent** (`Remotely_Agent`) — background service (Windows Service / systemd) installed on managed devices. Maintains a SignalR connection to the server, executes scripts (embeds the PowerShell SDK), and launches the Desktop client when a remote-control session starts. Key service: `Agent/Services/AgentHubConnection.cs`.
+- **Server** (`Microsoft.NET.Sdk.Web`, assembly `Pronetsys_Server`) — ASP.NET Core Blazor Server app. Hosts the SignalR hubs, the REST API (`Server/API/`), EF Core data layer, ASP.NET Identity auth, and the Razor/Blazor UI (`Server/Components/`, `Server/Pages/`). Minimal-hosting entry point is `Server/Program.cs`.
+- **Agent** (`Pronetsys_Agent`) — background service (Windows Service / systemd) installed on managed devices. Maintains a SignalR connection to the server, executes scripts (embeds the PowerShell SDK), and launches the Desktop client when a remote-control session starts. Key service: `Agent/Services/AgentHubConnection.cs`.
 - **Shared** — the contract layer referenced by nearly everything: EF entities (`Shared/Entities/`), DTOs, enums, and the **SignalR hub client interfaces** (`Shared/Interfaces/IAgentHubClient`, `IDesktopHubClient`, `IViewerHubClient`). Uses MessagePack for hub serialization.
 - **Desktop.Shared** — the active cross-platform core of the desktop/remote-control client: screen capture, input injection, chat, and the SignalR connection to the desktop hub (`Desktop.Shared/Services/`).
 - **Desktop.UI** — cross-platform **Avalonia 11** UI for the desktop client.
-- **Desktop.Win** (`net8.0-windows`, WinExe, assembly `Remotely_Desktop`) — Windows entry point. Uses SharpDX (DXGI/Direct3D11) for screen capture and NAudio for audio. Its post-build step copies the output into `Agent/bin/.../Desktop/` so the Agent ships with the desktop client.
+- **Desktop.Win** (`net8.0-windows`, WinExe, assembly `Pronetsys_Desktop`) — Windows entry point. Uses SharpDX (DXGI/Direct3D11) for screen capture and NAudio for audio. Its post-build step copies the output into `Agent/bin/.../Desktop/` so the Agent ships with the desktop client.
 - **Desktop.Linux** — Linux entry point (Avalonia). Screen capture via X11 `XGetImage`, input via `libXtst`.
 - **Desktop.MacOS** — macOS entry point (Avalonia), mirrors Desktop.Linux. Screen capture via CoreGraphics `CGDisplayCreateImage`, input via CoreGraphics `CGEvent`. **Compiles on any OS but only runs on macOS** (P/Invoke is metadata), and is not yet validated on real hardware; needs the Screen Recording + Accessibility privacy permissions at runtime.
 - **Desktop.Native** — P/Invoke native interop split into `Windows/`, `Linux/`, and `MacOS/`.
@@ -76,7 +76,7 @@ Server-side connection/session state lives in singleton caches (`AgentHubSession
 
 - EF Core with **three interchangeable DB providers** selected at runtime by `ApplicationOptions.DbProvider` (`SQLite` default, `SQLServer`, `PostgreSQL`). Each has its own DbContext (`Server/Data/SqliteDbContext.cs`, etc., all deriving from `AppDb`) and its own migrations folder under `Server/Migrations/{Sqlite,SqlServer,PostgreSql}`. **Any schema change must be migrated for all three** — this is why the migration scripts run `dotnet ef` three times.
 - Migrations are applied automatically at startup (`appDb.Database.MigrateAsync()` in `Program.cs`).
-- **Only the DB provider, connection strings, and ASP.NET port are configured via environment variables** (prefixed `Remotely_`, e.g. `Remotely_ApplicationOptions__DbProvider`, `Remotely_ConnectionStrings__SQLite`; port via `ASPNETCORE_HTTP_PORTS`). **All other settings** (CORS origins, known proxies, 2FA enforcement, data retention, SMTP, theme, etc.) are stored in the database and edited at runtime on the **Server Config** page — read in code via the app settings (`SettingsModel`), not appsettings.json.
+- **Only the DB provider, connection strings, and ASP.NET port are configured via environment variables** (prefixed `Pronetsys_`, e.g. `Pronetsys_ApplicationOptions__DbProvider`, `Pronetsys_ConnectionStrings__SQLite`; port via `ASPNETCORE_HTTP_PORTS`). **All other settings** (CORS origins, known proxies, 2FA enforcement, data retention, SMTP, theme, etc.) are stored in the database and edited at runtime on the **Server Config** page — read in code via the app settings (`SettingsModel`), not appsettings.json.
 
 ### Multi-tenancy & auth
 
@@ -85,4 +85,4 @@ Data is grouped into **Organizations** (users, devices, scripts). The first regi
 ### Conventions
 
 - `Nullable` is enabled solution-wide (`Directory.Build.props`); `ImplicitUsings` is on for the Server and several Desktop projects (see `Usings.cs` / `GlobalUsings.cs` for the global using sets).
-- Root namespaces follow `Remotely.<ProjectName>`.
+- Root namespaces follow `Pronetsys.<ProjectName>`.

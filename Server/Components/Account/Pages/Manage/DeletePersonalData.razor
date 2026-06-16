@@ -4,8 +4,8 @@
 @using Microsoft.AspNetCore.Identity
 @using Pronetsys.Server.Data
 
-@inject UserManager<RemotelyUser> UserManager
-@inject SignInManager<RemotelyUser> SignInManager
+@inject UserManager<PronetsysUser> UserManager
+@inject SignInManager<PronetsysUser> SignInManager
 @inject IdentityUserAccessor UserAccessor
 @inject IdentityRedirectManager RedirectManager
 @inject ILogger<DeletePersonalData> Logger
@@ -40,7 +40,7 @@
 
 @code {
     private string? message;
-    private RemotelyUser user = default!;
+    private PronetsysUser user = default!;
     private bool requirePassword;
 
     [CascadingParameter]

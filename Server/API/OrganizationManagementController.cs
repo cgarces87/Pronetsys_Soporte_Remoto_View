@@ -21,10 +21,10 @@ public class OrganizationManagementController : ControllerBase
     private readonly IDataService _dataService;
     private readonly IEmailSenderEx _emailSender;
     private readonly ILogger<OrganizationManagementController> _logger;
-    private readonly UserManager<RemotelyUser> _userManager;
+    private readonly UserManager<PronetsysUser> _userManager;
 
     public OrganizationManagementController(
-        UserManager<RemotelyUser> userManager,
+        UserManager<PronetsysUser> userManager,
         IDataService dataService,
         IEmailSenderEx emailSender,
         ILogger<OrganizationManagementController> logger)
@@ -315,8 +315,8 @@ public class OrganizationManagementController : ControllerBase
             }
 
             var inviteURL = $"{Request.Scheme}://{Request.Host}/Invite/{newInvite.Value.ID}";
-            var emailResult = await _emailSender.SendEmailAsync(invite.InvitedUser, "Invitation to Organization in Remotely",
-                        $@"<img src='{Request.Scheme}://{Request.Host}/images/Remotely_Logo.png'/>
+            var emailResult = await _emailSender.SendEmailAsync(invite.InvitedUser, "Invitation to Organization in Pronetsys",
+                        $@"<img src='{Request.Scheme}://{Request.Host}/images/Pronetsys_Logo.png'/>
                             <br><br>
                             Hello!
                             <br><br>

@@ -128,9 +128,9 @@ public class UpdaterLinux : IUpdater
 
             _logger.LogInformation("Service Updater: Downloading install package.");
 
-            var zipPath = Path.Combine(Path.GetTempPath(), "RemotelyUpdate.zip");
+            var zipPath = Path.Combine(Path.GetTempPath(), "PronetsysUpdate.zip");
 
-            var installerPath = Path.Combine(Path.GetTempPath(), "RemotelyUpdate.sh");
+            var installerPath = Path.Combine(Path.GetTempPath(), "PronetsysUpdate.sh");
 
             string platform;
 

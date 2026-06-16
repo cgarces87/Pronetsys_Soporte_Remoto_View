@@ -19,7 +19,7 @@ public interface ICircuitConnection
 {
     string ConnectionId { get; }
 
-    RemotelyUser User { get; }
+    PronetsysUser User { get; }
 
     Task DeleteRemoteLogs(string deviceId);
 
@@ -73,7 +73,7 @@ public class CircuitConnection : CircuitHandler, ICircuitConnection
     private readonly IAgentHubSessionCache _agentSessionCache;
     private readonly IMessenger _messenger;
     private readonly IToastService _toastService;
-    private RemotelyUser? _user;
+    private PronetsysUser? _user;
 
     public CircuitConnection(
         IAuthService authService,
@@ -104,7 +104,7 @@ public class CircuitConnection : CircuitHandler, ICircuitConnection
 
     public string ConnectionId { get; } = Guid.NewGuid().ToString();
 
-    public RemotelyUser User
+    public PronetsysUser User
     {
         get => _user ?? throw new InvalidOperationException("User is not set.");
         internal set => _user = value;
@@ -311,7 +311,7 @@ public class CircuitConnection : CircuitHandler, ICircuitConnection
         var username = string.Empty;
         if (runAsHostedService)
         {
-            username = "Remotely Server";
+            username = "Pronetsys Server";
         }
         else if (User is not null)
         {

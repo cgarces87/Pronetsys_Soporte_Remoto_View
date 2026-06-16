@@ -14,7 +14,7 @@ public static class FileLoggerDefaults
             {
                 var logsPath = Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData),
-                    "Remotely",
+                    "Pronetsys",
                     "Logs");
 
                 if (EnvironmentHelper.IsDebug)
@@ -28,9 +28,9 @@ public static class FileLoggerDefaults
             {
                 if (EnvironmentHelper.IsDebug)
                 {
-                    return "/var/log/remotely_debug";
+                    return "/var/log/pronetsys_debug";
                 }
-                return "/var/log/remotely";
+                return "/var/log/pronetsys";
             }
 
             throw new PlatformNotSupportedException();

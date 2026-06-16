@@ -4,11 +4,11 @@ HostName=
 Organization=
 GUID="$(uuidgen)"
 UpdatePackagePath=""
-InstallDir="/usr/local/bin/Remotely"
+InstallDir="/usr/local/bin/Pronetsys"
 ETag=$(curl --head $HostName/Content/Pronetsys-MacOS-arm64.zip | grep -i "etag" | cut -d' ' -f 2)
-LogPath="/var/log/remotely/Agent_Install.log"
+LogPath="/var/log/pronetsys/Agent_Install.log"
 
-mkdir -p /var/log/remotely
+mkdir -p /var/log/pronetsys
 
 Args=( "$@" )
 ArgLength=${#Args[@]}
@@ -16,9 +16,9 @@ ArgLength=${#Args[@]}
 for (( i=0; i<${ArgLength}; i+=2 ));
 do
     if [ "${Args[$i]}" = "--uninstall" ]; then
-        sudo launchctl bootout system /Library/LaunchDaemons/remotely-agent.plist
+        sudo launchctl bootout system /Library/LaunchDaemons/pronetsys-agent.plist
         rm -r -f $InstallDir/
-        rm -f /Library/LaunchDaemons/remotely-agent.plist
+        rm -f /Library/LaunchDaemons/pronetsys-agent.plist
         exit
     elif [ "${Args[$i]}" = "--path" ]; then
         UpdatePackagePath="${Args[$i+1]}"
@@ -53,17 +53,17 @@ if [ -f "$InstallDir/ConnectionInfo.json" ]; then
     fi
 fi
 
-rm -r -f /Applications/Remotely
-rm -f /Library/LaunchDaemons/remotely-agent.plist
+rm -r -f /Applications/Pronetsys
+rm -f /Library/LaunchDaemons/pronetsys-agent.plist
 
 mkdir -p $InstallDir
 chmod -R 755 $InstallDir
 
 if [ -z "$UpdatePackagePath" ]; then
-    echo  "Downloading client..." >> /tmp/Remotely_Install.log
+    echo  "Downloading client..." >> /tmp/Pronetsys_Install.log
     curl $HostName/Content/Pronetsys-MacOS-arm64.zip --output $InstallDir/Pronetsys-MacOS-arm64.zip
 else
-    echo  "Copying install files..." >> /tmp/Remotely_Install.log
+    echo  "Copying install files..." >> /tmp/Pronetsys_Install.log
     cp "$UpdatePackagePath" $InstallDir/Pronetsys-MacOS-arm64.zip
     rm -f "$UpdatePackagePath"
 fi
@@ -90,7 +90,7 @@ plistFile="<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 <plist version=\"1.0\">
 <dict>
     <key>Label</key>
-    <string>com.translucency.remotely-agent</string>
+    <string>com.pronetsys.agent</string>
     <key>ProgramArguments</key>
     <array>
         <string>$InstallDir/Pronetsys_Agent</string>
@@ -99,8 +99,8 @@ plistFile="<?xml version=\"1.0\" encoding=\"UTF-8\"?>
     <true/>
 </dict>
 </plist>"
-echo "$plistFile" > "/Library/LaunchDaemons/remotely-agent.plist"
+echo "$plistFile" > "/Library/LaunchDaemons/pronetsys-agent.plist"
 
 
-sudo launchctl bootstrap system /Library/LaunchDaemons/remotely-agent.plist
-sudo launchctl kickstart -k system/com.translucency.remotely-agent
+sudo launchctl bootstrap system /Library/LaunchDaemons/pronetsys-agent.plist
+sudo launchctl kickstart -k system/com.pronetsys.agent

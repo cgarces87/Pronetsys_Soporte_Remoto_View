@@ -12,7 +12,7 @@ public partial class Add_KeyValueRecords : Migration
     {
         migrationBuilder.AlterColumn<string>(
             name: "Discriminator",
-            table: "RemotelyUsers",
+            table: "PronetsysUsers",
             type: "character varying(13)",
             maxLength: 13,
             nullable: false,
@@ -40,7 +40,7 @@ public partial class Add_KeyValueRecords : Migration
 
         migrationBuilder.AlterColumn<string>(
             name: "Discriminator",
-            table: "RemotelyUsers",
+            table: "PronetsysUsers",
             type: "text",
             nullable: false,
             oldClrType: typeof(string),

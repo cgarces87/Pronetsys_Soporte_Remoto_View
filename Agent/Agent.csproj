@@ -6,7 +6,7 @@
     <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Copyright>Copyright © 2023 Pronetsys</Copyright>
-    <Description>Background service that maintains a connection to the Remotely server.  The service is used for remote support and maintenance by this computer's administrators.</Description>
+    <Description>Background service that maintains a connection to the Pronetsys server.  The service is used for remote support and maintenance by this computer's administrators.</Description>
     <Authors>Pronetsys</Authors>
     <Product>Pronetsys Asistencia Remota (Agente)</Product>
     <Company>Pronetsys</Company>

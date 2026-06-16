@@ -1,11 +1,11 @@
 ﻿<#
 .SYNOPSIS
-   Installs the Remotely Client.
+   Installs the Pronetsys Client.
 .DESCRIPTION
    Do not modify this script.  It was generated specifically for your account.
 .EXAMPLE
-   powershell.exe -f Install-Remotely.ps1
-   powershell.exe -f Install-Remotely.ps1 -DeviceAlias "My Super Computer" -DeviceGroup "My Stuff"
+   powershell.exe -f Install-Pronetsys.ps1
+   powershell.exe -f Install-Pronetsys.ps1 -DeviceAlias "My Super Computer" -DeviceGroup "My Stuff"
 #>
 
 param (
@@ -30,7 +30,7 @@ param (
 #endregion
 
 #region Set Variables
-$LogPath = "$env:TEMP\Remotely_Install.txt"
+$LogPath = "$env:TEMP\Pronetsys_Asistencia_Remota_Install.txt"
 
 [string]$HostName = $null
 if ($ServerUrl) {
@@ -51,7 +51,7 @@ else {
 	$Platform = "x86"
 }
 
-$InstallPath = "$env:ProgramFiles\Remotely"
+$InstallPath = "$env:ProgramFiles\Pronetsys_Asistencia_Remota"
 #endregion
 
 #region Functions
@@ -110,19 +110,19 @@ function Run-StartupChecks {
 	}
 }
 
-function Stop-Remotely {
-	Start-Process -FilePath "cmd.exe" -ArgumentList "/c sc delete Remotely_Service" -Wait -WindowStyle Hidden
+function Stop-Pronetsys {
+	Start-Process -FilePath "cmd.exe" -ArgumentList "/c sc delete Pronetsys_Asistencia_Remota" -Wait -WindowStyle Hidden
 	Stop-Process -Name Pronetsys_Agent -Force -ErrorAction SilentlyContinue
 	Stop-Process -Name Pronetsys_Desktop -Force -ErrorAction SilentlyContinue
 }
 
-function Uninstall-Remotely {
-	Stop-Remotely
+function Uninstall-Pronetsys {
+	Stop-Pronetsys
 	Remove-Item -Path $InstallPath -Force -Recurse -ErrorAction SilentlyContinue
-	Remove-NetFirewallRule -Name "Remotely Desktop Unattended" -ErrorAction SilentlyContinue
+	Remove-NetFirewallRule -Name "Pronetsys Desktop Unattended" -ErrorAction SilentlyContinue
 }
 
-function Install-Remotely {
+function Install-Pronetsys {
 	$HeadResponse = Invoke-WebRequest -Uri "$HostName/Content/Pronetsys-Win-$Platform.zip" -Method Head -UseBasicParsing
 	$ETag = $HeadResponse.Headers["ETag"]
 	if (!$Etag) {
@@ -172,7 +172,7 @@ function Install-Remotely {
 		Do-Exit
 	}
 
-	Stop-Remotely
+	Stop-Pronetsys
 	Get-ChildItem -Path $InstallPath | Where-Object { $_.Name -notlike "ConnectionInfo.json" } | Remove-Item -Recurse -Force
 
 	Expand-Archive -Path "$env:TEMP\Pronetsys-Win-$Platform.zip" -DestinationPath "$InstallPath" -Force
@@ -193,9 +193,9 @@ function Install-Remotely {
 		Invoke-RestMethod -Method Post -ContentType "application/json" -Uri "$HostName/api/devices" -Body $Body
 	}
 
-	New-Service -Name "Remotely_Service" -BinaryPathName "`"$InstallPath\Pronetsys_Agent.exe`"" -DisplayName "Remotely Service" -StartupType Automatic -Description "Background service that maintains a connection to the Remotely server.  The service is used for remote support and maintenance by this computer's administrators."
-	Start-Process -FilePath "cmd.exe" -ArgumentList "/c sc.exe failure `"Remotely_Service`" reset=5 actions=restart/5000" -Wait -WindowStyle Hidden
-	Start-Service -Name Remotely_Service
+	New-Service -Name "Pronetsys_Asistencia_Remota" -BinaryPathName "`"$InstallPath\Pronetsys_Agent.exe`"" -DisplayName "Pronetsys Asistencia Remota" -StartupType Automatic -Description "Background service that maintains a connection to the Pronetsys server.  The service is used for remote support and maintenance by this computer's administrators."
+	Start-Process -FilePath "cmd.exe" -ArgumentList "/c sc.exe failure `"Pronetsys_Asistencia_Remota`" reset=5 actions=restart/5000" -Wait -WindowStyle Hidden
+	Start-Service -Name Pronetsys_Asistencia_Remota
 }
 
 #endregion
@@ -209,13 +209,13 @@ try {
 
 	if ($Uninstall) {
 		Write-Log "Uninstall started."
-		Uninstall-Remotely
+		Uninstall-Pronetsys
 		Write-Log "Uninstall completed."
 		exit
 	}
 	else {
 		Write-Log "Install started."
-		Install-Remotely
+		Install-Pronetsys
 		Write-Log "Install completed."
 		exit
 	}

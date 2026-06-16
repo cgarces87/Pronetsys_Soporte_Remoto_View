@@ -77,7 +77,7 @@ public class AgentUpdateController : ControllerBase
 
             var fileStream = System.IO.File.OpenRead(filePath);
 
-            return File(fileStream, "application/octet-stream", "RemotelyUpdate.zip");
+            return File(fileStream, "application/octet-stream", "PronetsysUpdate.zip");
         }
         catch (Exception ex)
         {

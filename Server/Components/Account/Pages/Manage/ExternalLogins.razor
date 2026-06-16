@@ -4,10 +4,10 @@
 @using Microsoft.AspNetCore.Identity
 @using Pronetsys.Server.Data
 
-@inject UserManager<RemotelyUser> UserManager
-@inject SignInManager<RemotelyUser> SignInManager
+@inject UserManager<PronetsysUser> UserManager
+@inject SignInManager<PronetsysUser> SignInManager
 @inject IdentityUserAccessor UserAccessor
-@inject IUserStore<RemotelyUser> UserStore
+@inject IUserStore<PronetsysUser> UserStore
 @inject IdentityRedirectManager RedirectManager
 
 <PageTitle>Administra tus inicios de sesión externos</PageTitle>
@@ -66,7 +66,7 @@
 @code {
     public const string LinkLoginCallbackAction = "LinkLoginCallback";
 
-    private RemotelyUser user = default!;
+    private PronetsysUser user = default!;
     private IList<UserLoginInfo>? currentLogins;
     private IList<AuthenticationScheme>? otherLogins;
     private bool showRemoveButton;
@@ -92,7 +92,7 @@
             .ToList();
 
         string? passwordHash = null;
-        if (UserStore is IUserPasswordStore<RemotelyUser> userPasswordStore)
+        if (UserStore is IUserPasswordStore<PronetsysUser> userPasswordStore)
         {
             passwordHash = await userPasswordStore.GetPasswordHashAsync(user, HttpContext.RequestAborted);
         }

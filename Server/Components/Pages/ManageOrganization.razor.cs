@@ -16,7 +16,7 @@ public partial class ManageOrganization : AuthComponentBase
 {
     private readonly List<DeviceGroup> _deviceGroups = new();
     private readonly List<InviteLink> _invites = new();
-    private readonly List<RemotelyUser> _orgUsers = new();
+    private readonly List<PronetsysUser> _orgUsers = new();
     private bool _inviteAsAdmin;
     private string _inviteEmail = string.Empty;
     private bool _isLoading = true;
@@ -42,7 +42,7 @@ public partial class ManageOrganization : AuthComponentBase
     [Inject]
     private IToastService ToastService { get; set; } = null!;
     [Inject]
-    private UserManager<RemotelyUser> UserManager { get; set; } = null!;
+    private UserManager<PronetsysUser> UserManager { get; set; } = null!;
 
 
     protected override async Task OnInitializedAsync()
@@ -153,7 +153,7 @@ public partial class ManageOrganization : AuthComponentBase
         _selectedDeviceGroupId = string.Empty;
     }
 
-    private async Task DeleteUser(RemotelyUser user)
+    private async Task DeleteUser(PronetsysUser user)
     {
         EnsureUserSet();
 
@@ -179,7 +179,7 @@ public partial class ManageOrganization : AuthComponentBase
         ToastService.ShowToast("User deleted.");
     }
 
-    private async Task EditDeviceGroups(RemotelyUser user)
+    private async Task EditDeviceGroups(PronetsysUser user)
     {
         void editDeviceGroupsModal(RenderTreeBuilder builder)
         {
@@ -265,7 +265,7 @@ public partial class ManageOrganization : AuthComponentBase
         var orgUsers = await DataService.GetAllUsersInOrganization(User.OrganizationID);
         _orgUsers.AddRange(orgUsers.OrderBy(x => x.UserName));
     }
-    private async Task ResetPassword(RemotelyUser user)
+    private async Task ResetPassword(PronetsysUser user)
     {
         EnsureUserSet();
 
@@ -341,8 +341,8 @@ public partial class ManageOrganization : AuthComponentBase
             }
 
             var inviteURL = $"{NavManager.BaseUri}Invite/{newInvite.Value.ID}";
-            var emailResult = await EmailSender.SendEmailAsync(invite.InvitedUser, "Invitation to Organization in Remotely",
-                    $@"<img src='{NavManager.BaseUri}images/Remotely_Logo.png'/>
+            var emailResult = await EmailSender.SendEmailAsync(invite.InvitedUser, "Invitation to Organization in Pronetsys",
+                    $@"<img src='{NavManager.BaseUri}images/Pronetsys_Logo.png'/>
                             <br><br>
                             Hello!
                             <br><br>
@@ -365,7 +365,7 @@ public partial class ManageOrganization : AuthComponentBase
         }
     }
 
-    private async Task SetUserIsAdmin(ChangeEventArgs args, RemotelyUser orgUser)
+    private async Task SetUserIsAdmin(ChangeEventArgs args, PronetsysUser orgUser)
     {
         EnsureUserSet();
 

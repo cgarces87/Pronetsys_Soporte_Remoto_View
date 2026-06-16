@@ -4,10 +4,10 @@
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "composeLaunchAction": "LaunchBrowser",
-      "composeLaunchServiceName": "remotely",
+      "composeLaunchServiceName": "pronetsys",
       "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}",
       "serviceActions": {
-        "remotely": "StartDebugging"
+        "pronetsys": "StartDebugging"
       }
     }
   }

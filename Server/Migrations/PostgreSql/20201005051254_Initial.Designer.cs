@@ -136,7 +136,7 @@ namespace Pronetsys.Server.Migrations.PostgreSql
                         .IsUnique()
                         .HasName("UserNameIndex");
 
-                    b.ToTable("RemotelyUsers");
+                    b.ToTable("PronetsysUsers");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
@@ -549,7 +549,7 @@ namespace Pronetsys.Server.Migrations.PostgreSql
                     b.ToTable("PermissionLinks");
                 });
 
-            modelBuilder.Entity("Pronetsys.Shared.Models.RemotelyUser", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.PronetsysUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -576,7 +576,7 @@ namespace Pronetsys.Server.Migrations.PostgreSql
 
                     b.HasIndex("UserName");
 
-                    b.HasDiscriminator().HasValue("RemotelyUser");
+                    b.HasDiscriminator().HasValue("PronetsysUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -640,7 +640,7 @@ namespace Pronetsys.Server.Migrations.PostgreSql
                         .WithMany("Alerts")
                         .HasForeignKey("OrganizationID");
 
-                    b.HasOne("Pronetsys.Shared.Models.RemotelyUser", "User")
+                    b.HasOne("Pronetsys.Shared.Models.PronetsysUser", "User")
                         .WithMany("Alerts")
                         .HasForeignKey("UserID");
                 });
@@ -704,15 +704,15 @@ namespace Pronetsys.Server.Migrations.PostgreSql
                         .WithMany("PermissionLinks")
                         .HasForeignKey("DeviceGroupID");
 
-                    b.HasOne("Pronetsys.Shared.Models.RemotelyUser", "User")
+                    b.HasOne("Pronetsys.Shared.Models.PronetsysUser", "User")
                         .WithMany("PermissionLinks")
                         .HasForeignKey("UserID");
                 });
 
-            modelBuilder.Entity("Pronetsys.Shared.Models.RemotelyUser", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.PronetsysUser", b =>
                 {
                     b.HasOne("Pronetsys.Shared.Models.Organization", "Organization")
-                        .WithMany("RemotelyUsers")
+                        .WithMany("PronetsysUsers")
                         .HasForeignKey("OrganizationID");
                 });
 #pragma warning restore 612, 618

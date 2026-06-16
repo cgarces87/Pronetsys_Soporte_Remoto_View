@@ -16,12 +16,12 @@ public class LoginController : ControllerBase
     private readonly IDataService _dataService;
     private readonly IHubContext<DesktopHub> _desktopHub;
     private readonly IRemoteControlSessionCache _remoteControlSessionCache;
-    private readonly SignInManager<RemotelyUser> _signInManager;
+    private readonly SignInManager<PronetsysUser> _signInManager;
     private readonly IHubContext<ViewerHub> _viewerHub;
     private readonly ILogger<LoginController> _logger;
 
     public LoginController(
-        SignInManager<RemotelyUser> signInManager,
+        SignInManager<PronetsysUser> signInManager,
         IDataService dataService,
         IHubContext<DesktopHub> casterHubContext,
         IRemoteControlSessionCache remoteControlSessionCache,

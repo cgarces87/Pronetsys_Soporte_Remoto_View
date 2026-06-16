@@ -39,7 +39,7 @@ public class AppDb : IdentityDbContext
     public DbSet<ScriptRun> ScriptRuns { get; set; }
     public DbSet<ScriptSchedule> ScriptSchedules { get; set; }
     public DbSet<SharedFile> SharedFiles { get; set; }
-    public new DbSet<RemotelyUser> Users { get; set; }
+    public new DbSet<PronetsysUser> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
@@ -59,13 +59,13 @@ public class AppDb : IdentityDbContext
 
         base.OnModelCreating(builder);
 
-        builder.Entity<IdentityUser>().ToTable("RemotelyUsers");
+        builder.Entity<IdentityUser>().ToTable("PronetsysUsers");
 
         builder.Entity<Organization>()
             .HasMany(x => x.Devices)
             .WithOne(x => x.Organization);
         builder.Entity<Organization>()
-            .HasMany(x => x.RemotelyUsers)
+            .HasMany(x => x.PronetsysUsers)
             .WithOne(x => x.Organization);
         builder.Entity<Organization>()
             .HasMany(x => x.DeviceGroups)
@@ -107,34 +107,34 @@ public class AppDb : IdentityDbContext
             .OnDelete(DeleteBehavior.ClientSetNull);
 
 
-        builder.Entity<RemotelyUser>()
+        builder.Entity<PronetsysUser>()
             .HasMany(x => x.DeviceGroups)
             .WithMany(x => x.Users);
 
-        builder.Entity<RemotelyUser>()
+        builder.Entity<PronetsysUser>()
             .HasMany(x => x.Alerts)
             .WithOne(x => x.User)
             .OnDelete(DeleteBehavior.ClientCascade);
 
-        builder.Entity<RemotelyUser>()
+        builder.Entity<PronetsysUser>()
             .Property(x => x.UserOptions)
             .HasConversion(
                 x => JsonSerializer.Serialize(x, jsonOptions),
-                x => JsonSerializer.Deserialize<RemotelyUserOptions>(x, jsonOptions));
+                x => JsonSerializer.Deserialize<PronetsysUserOptions>(x, jsonOptions));
 
-        builder.Entity<RemotelyUser>()
+        builder.Entity<PronetsysUser>()
             .HasMany(x => x.SavedScripts)
             .WithOne(x => x.Creator)
             .HasForeignKey(x => x.CreatorId)
             .OnDelete(DeleteBehavior.ClientCascade);
 
-        builder.Entity<RemotelyUser>()
+        builder.Entity<PronetsysUser>()
             .HasMany(x => x.ScriptSchedules)
             .WithOne(x => x.Creator)
             .HasForeignKey(x => x.CreatorId)
             .OnDelete(DeleteBehavior.ClientCascade);
 
-        builder.Entity<RemotelyUser>()
+        builder.Entity<PronetsysUser>()
             .HasIndex(x => x.UserName);
 
         builder.Entity<Device>()

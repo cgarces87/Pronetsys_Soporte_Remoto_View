@@ -483,7 +483,7 @@ public class AgentHubConnection : IAgentHubConnection, IDisposable
 
             _logger.LogInformation("File upload started by {requesterID}.", requesterId);
 
-            var sharedFilePath = Directory.CreateDirectory(Path.Combine(Path.GetTempPath(), "RemotelySharedFiles")).FullName;
+            var sharedFilePath = Directory.CreateDirectory(Path.Combine(Path.GetTempPath(), "PronetsysSharedFiles")).FullName;
 
             foreach (var fileID in fileIds)
             {

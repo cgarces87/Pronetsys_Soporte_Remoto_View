@@ -23,11 +23,11 @@ public class RemoteControlController : ControllerBase
     private readonly IAgentHubSessionCache _serviceSessionCache;
     private readonly IDataService _dataService;
     private readonly IOtpProvider _otpProvider;
-    private readonly SignInManager<RemotelyUser> _signInManager;
+    private readonly SignInManager<PronetsysUser> _signInManager;
     private readonly ILogger<RemoteControlController> _logger;
 
     public RemoteControlController(
-        SignInManager<RemotelyUser> signInManager,
+        SignInManager<PronetsysUser> signInManager,
         IDataService dataService,
         IRemoteControlSessionCache remoteControlSessionCache,
         IHubContext<AgentHub, IAgentHubClient> agentHub,

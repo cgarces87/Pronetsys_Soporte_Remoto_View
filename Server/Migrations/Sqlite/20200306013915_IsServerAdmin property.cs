@@ -8,7 +8,7 @@ public partial class IsServerAdminproperty : Migration
     {
         migrationBuilder.AddColumn<bool>(
             name: "IsServerAdmin",
-            table: "RemotelyUsers",
+            table: "PronetsysUsers",
             nullable: true);
     }
 
@@ -16,6 +16,6 @@ public partial class IsServerAdminproperty : Migration
     {
         migrationBuilder.DropColumn(
             name: "IsServerAdmin",
-            table: "RemotelyUsers");
+            table: "PronetsysUsers");
     }
 }

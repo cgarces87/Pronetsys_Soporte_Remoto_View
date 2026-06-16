@@ -19,27 +19,27 @@ RUN \
   apt-get -y install aspnetcore-runtime-8.0
 
 RUN \
-  adduser --disabled-password --gecos '' -u 2001 remotely && \
-  mkdir -p /var/www/remotely && \
+  adduser --disabled-password --gecos '' -u 2001 pronetsys && \
+  mkdir -p /var/www/pronetsys && \
   mkdir /config && \
-  wget -q https://github.com/immense/Remotely/releases/latest/download/Remotely_Server_Linux-x64.zip && \
-  unzip -o Remotely_Server_Linux-x64.zip -d /var/www/remotely && \
-  rm Remotely_Server_Linux-x64.zip && \
-  chown -R remotely:remotely /var/www/remotely
+  wget -q https://github.com/immense/Pronetsys/releases/latest/download/Pronetsys_Server_Linux-x64.zip && \
+  unzip -o Pronetsys_Server_Linux-x64.zip -d /var/www/pronetsys && \
+  rm Pronetsys_Server_Linux-x64.zip && \
+  chown -R pronetsys:pronetsys /var/www/pronetsys
 
 RUN \
-  mkdir -p /remotely-data && \
-  sed -i 's/DataSource=Remotely.db/DataSource=\/remotely-data\/Remotely.db/' /var/www/remotely/appsettings.json && \
-  chown -R remotely:remotely /remotely-data
+  mkdir -p /pronetsys-data && \
+  sed -i 's/DataSource=Pronetsys.db/DataSource=\/pronetsys-data\/Pronetsys.db/' /var/www/pronetsys/appsettings.json && \
+  chown -R pronetsys:pronetsys /pronetsys-data
 
-VOLUME "/remotely-data"
+VOLUME "/pronetsys-data"
 
-WORKDIR /var/www/remotely
+WORKDIR /var/www/pronetsys
 
 COPY DockerMain.sh /
 
 RUN chmod 755 /DockerMain.sh
 
-USER remotely
+USER pronetsys
 
 ENTRYPOINT ["/DockerMain.sh"]

@@ -33,9 +33,9 @@ public partial class Alerts : Migration
                     principalColumn: "ID",
                     onDelete: ReferentialAction.Restrict);
                 table.ForeignKey(
-                    name: "FK_Alerts_RemotelyUsers_UserID",
+                    name: "FK_Alerts_PronetsysUsers_UserID",
                     column: x => x.UserID,
-                    principalTable: "RemotelyUsers",
+                    principalTable: "PronetsysUsers",
                     principalColumn: "Id",
                     onDelete: ReferentialAction.Restrict);
             });

@@ -3,11 +3,11 @@ HostName=
 Organization=
 GUID=$(cat /proc/sys/kernel/random/uuid)
 UpdatePackagePath=""
-InstallDir="/usr/local/bin/Remotely"
+InstallDir="/usr/local/bin/Pronetsys"
 ETag=$(curl --head $HostName/Content/Pronetsys-Linux.zip | grep -i "etag" | cut -d' ' -f 2)
-LogPath="/var/log/remotely/Agent_Install.log"
+LogPath="/var/log/pronetsys/Agent_Install.log"
 
-mkdir -p /var/log/remotely
+mkdir -p /var/log/pronetsys
 
 Args=( "$@" )
 ArgLength=${#Args[@]}
@@ -15,9 +15,9 @@ ArgLength=${#Args[@]}
 for (( i=0; i<${ArgLength}; i+=2 ));
 do
     if [ "${Args[$i]}" = "--uninstall" ]; then
-        systemctl stop remotely-agent
+        systemctl stop pronetsys-agent
         rm -r -f $InstallDir
-        rm -f /etc/systemd/system/remotely-agent.service
+        rm -f /etc/systemd/system/pronetsys-agent.service
         systemctl daemon-reload
         exit
     elif [ "${Args[$i]}" = "--path" ]; then
@@ -48,7 +48,7 @@ if [ -f "$InstallDir/ConnectionInfo.json" ]; then
 fi
 
 rm -r -f $InstallDir
-rm -f /etc/systemd/system/remotely-agent.service
+rm -f /etc/systemd/system/pronetsys-agent.service
 
 mkdir -p $InstallDir
 
@@ -80,7 +80,7 @@ curl --head $HostName/Content/Pronetsys-Linux.zip | grep -i "etag" | cut -d' ' -
 echo Creating service... | tee -a $LogPath
 
 serviceConfig="[Unit]
-Description=The Remotely agent used for remote access.
+Description=The Pronetsys agent used for remote access.
 
 [Service]
 WorkingDirectory=$InstallDir
@@ -92,9 +92,9 @@ RestartSec=10
 [Install]
 WantedBy=graphical.target"
 
-echo "$serviceConfig" > /etc/systemd/system/remotely-agent.service
+echo "$serviceConfig" > /etc/systemd/system/pronetsys-agent.service
 
-systemctl enable remotely-agent
-systemctl restart remotely-agent
+systemctl enable pronetsys-agent
+systemctl restart pronetsys-agent
 
 echo Install complete. | tee -a $LogPath

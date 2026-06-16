@@ -12,7 +12,7 @@ public class AuthComponentBase : MessengerSubscriber
     [Inject]
     protected IAuthService AuthService { get; set; } = null!;
 
-    protected RemotelyUser? User { get; private set; }
+    protected PronetsysUser? User { get; private set; }
 
     protected string? UserName => User?.UserName;
 

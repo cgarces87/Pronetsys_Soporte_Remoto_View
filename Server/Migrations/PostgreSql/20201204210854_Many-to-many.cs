@@ -10,7 +10,7 @@ public partial class Manytomany : Migration
             name: "PermissionLinks");
 
         migrationBuilder.CreateTable(
-            name: "DeviceGroupRemotelyUser",
+            name: "DeviceGroupPronetsysUser",
             columns: table => new
             {
                 DeviceGroupsID = table.Column<string>(type: "text", nullable: false),
@@ -18,31 +18,31 @@ public partial class Manytomany : Migration
             },
             constraints: table =>
             {
-                table.PrimaryKey("PK_DeviceGroupRemotelyUser", x => new { x.DeviceGroupsID, x.UsersId });
+                table.PrimaryKey("PK_DeviceGroupPronetsysUser", x => new { x.DeviceGroupsID, x.UsersId });
                 table.ForeignKey(
-                    name: "FK_DeviceGroupRemotelyUser_DeviceGroups_DeviceGroupsID",
+                    name: "FK_DeviceGroupPronetsysUser_DeviceGroups_DeviceGroupsID",
                     column: x => x.DeviceGroupsID,
                     principalTable: "DeviceGroups",
                     principalColumn: "ID",
                     onDelete: ReferentialAction.Cascade);
                 table.ForeignKey(
-                    name: "FK_DeviceGroupRemotelyUser_RemotelyUsers_UsersId",
+                    name: "FK_DeviceGroupPronetsysUser_PronetsysUsers_UsersId",
                     column: x => x.UsersId,
-                    principalTable: "RemotelyUsers",
+                    principalTable: "PronetsysUsers",
                     principalColumn: "Id",
                     onDelete: ReferentialAction.Cascade);
             });
 
         migrationBuilder.CreateIndex(
-            name: "IX_DeviceGroupRemotelyUser_UsersId",
-            table: "DeviceGroupRemotelyUser",
+            name: "IX_DeviceGroupPronetsysUser_UsersId",
+            table: "DeviceGroupPronetsysUser",
             column: "UsersId");
     }
 
     protected override void Down(MigrationBuilder migrationBuilder)
     {
         migrationBuilder.DropTable(
-            name: "DeviceGroupRemotelyUser");
+            name: "DeviceGroupPronetsysUser");
 
         migrationBuilder.CreateTable(
             name: "PermissionLinks",
@@ -62,9 +62,9 @@ public partial class Manytomany : Migration
                     principalColumn: "ID",
                     onDelete: ReferentialAction.Restrict);
                 table.ForeignKey(
-                    name: "FK_PermissionLinks_RemotelyUsers_UserID",
+                    name: "FK_PermissionLinks_PronetsysUsers_UserID",
                     column: x => x.UserID,
-                    principalTable: "RemotelyUsers",
+                    principalTable: "PronetsysUsers",
                     principalColumn: "Id",
                     onDelete: ReferentialAction.Restrict);
             });

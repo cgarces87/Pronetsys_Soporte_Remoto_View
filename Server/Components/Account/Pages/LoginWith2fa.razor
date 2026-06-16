@@ -4,8 +4,8 @@
 @using Microsoft.AspNetCore.Identity
 @using Pronetsys.Server.Data
 
-@inject SignInManager<RemotelyUser> SignInManager
-@inject UserManager<RemotelyUser> UserManager
+@inject SignInManager<PronetsysUser> SignInManager
+@inject UserManager<PronetsysUser> UserManager
 @inject IdentityRedirectManager RedirectManager
 @inject ILogger<LoginWith2fa> Logger
 
@@ -46,7 +46,7 @@
 
 @code {
     private string? message;
-    private RemotelyUser user = default!;
+    private PronetsysUser user = default!;
 
     [SupplyParameterFromForm]
     private InputModel Input { get; set; } = new();

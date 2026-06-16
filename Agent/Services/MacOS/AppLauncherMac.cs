@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Pronetsys.Agent.Services.MacOS;
 
 /// <summary>
-/// Launches the Remotely desktop (screen-control) client on macOS.
+/// Launches the Pronetsys desktop (screen-control) client on macOS.
 /// Mirrors <see cref="Linux.AppLauncherLinux"/>.
 ///
 /// Caveats (to validate on real hardware):

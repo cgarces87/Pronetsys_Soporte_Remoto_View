@@ -29,7 +29,7 @@ public class EmailSender : IEmailSender
     }
 }
 
-public class EmailSenderEx : IEmailSenderEx, IEmailSender<RemotelyUser>
+public class EmailSenderEx : IEmailSenderEx, IEmailSender<PronetsysUser>
 {
     private readonly IDataService _dataService;
     private readonly ILogger<EmailSenderEx> _logger;
@@ -42,12 +42,12 @@ public class EmailSenderEx : IEmailSenderEx, IEmailSender<RemotelyUser>
         _logger = logger;
     }
 
-    public async Task SendConfirmationLinkAsync(RemotelyUser user, string email, string confirmationLink)
+    public async Task SendConfirmationLinkAsync(PronetsysUser user, string email, string confirmationLink)
     {
         await SendEmailAsync(
             email,
-            "Remotely Account Confirmation",
-            "Please confirm your Remotely account by clicking the following link: " +
+            "Pronetsys Account Confirmation",
+            "Please confirm your Pronetsys account by clicking the following link: " +
             $"<a href=\"{confirmationLink}\">{confirmationLink}</a>",
             user.OrganizationID);
     }
@@ -110,20 +110,20 @@ public class EmailSenderEx : IEmailSenderEx, IEmailSender<RemotelyUser>
         return await SendEmailAsync(email, settings.SmtpEmail, subject, htmlMessage, organizationID);
     }
 
-    public async Task SendPasswordResetCodeAsync(RemotelyUser user, string email, string resetCode)
+    public async Task SendPasswordResetCodeAsync(PronetsysUser user, string email, string resetCode)
     {
         await SendEmailAsync(
             email,
-            "Remotely Password Reset",
+            "Pronetsys Password Reset",
             $"A password reset code has been requested for your account.  Reset Code: {resetCode}",
             user.OrganizationID);
     }
 
-    public async Task SendPasswordResetLinkAsync(RemotelyUser user, string email, string resetLink)
+    public async Task SendPasswordResetLinkAsync(PronetsysUser user, string email, string resetLink)
     {
         await SendEmailAsync(
             email,
-            "Remotely Password Reset",
+            "Pronetsys Password Reset",
             "A password reset has been requested for your account.  If this was not requested by you, you can ignore this email.<br/><br/>" +
             "Otherwise, please follow this link to reset your password: " +
             $"<a href=\"{resetLink}\">{resetLink}</a>",
