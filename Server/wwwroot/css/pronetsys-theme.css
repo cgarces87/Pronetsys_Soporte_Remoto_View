@@ -205,9 +205,21 @@ body {
         justify-content: center;
     }
 
+    .sidebar .navbar-brand {
+        margin-right: 0;
+    }
+
+    /* Center the icon glyphs in the rail. The fixed 2rem width is only needed
+       to keep the labels aligned when expanded. */
+    .sidebar .oi {
+        width: auto;
+    }
+
     .sidebar .nav-link,
     .sidebar .nav-link-button {
         justify-content: center;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     /* Aspecto expandido (hover o fijado): logo + textos. */
@@ -241,6 +253,14 @@ body {
     .sidebar-collapse-cb:checked ~ .sidebar .nav-link,
     .sidebar-collapse-cb:checked ~ .sidebar .nav-link-button {
         justify-content: flex-start;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* Restore the fixed icon width so labels line up when expanded. */
+    .sidebar:hover .oi,
+    .sidebar-collapse-cb:checked ~ .sidebar .oi {
+        width: 2rem;
     }
 
     .sidebar:hover .sidebar-toggle,
