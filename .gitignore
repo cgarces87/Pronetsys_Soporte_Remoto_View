@@ -293,6 +293,8 @@ Server/.config/dotnet-tools.json
 Server.Installer/Properties/launchSettings.json
 .DS_Store
 /Server/wwwroot/Content/Linux-x64/Pronetsys_Desktop
+/Server/wwwroot/Content/MacOS-x64/*
+/Server/wwwroot/Content/MacOS-arm64/*
 !/.vscode/launch.json
 !/.vscode/tasks.json
 /Server/appsettings.Development.json
