@@ -1,37 +1,22 @@
-﻿@page "/"
-@inject IDataService DataService
- 
+@page "/"
+@using Pronetsys.Server.Components.Account.Shared
+
 <AuthorizeView>
     <NotAuthorized>
-        <div class="jumbotron">
-            <h3 class="display-4">Pronetsys Asistencia Remota</h3>
-            <p class="lead">
-                Una solución de soporte remoto de código abierto.
-            </p>
-            <hr class="my-4">
-            <p class="lead">
-                <a class="btn btn-primary btn-lg me-2" href="Account/Login" role="button">Iniciar sesión</a>
-
-                @if (_isRegistrationEnabled)
-                {
-                    <a class="btn btn-primary btn-lg" href="Account/Register" role="button">Registrarse</a>
-                }
-            </p>
+        <div class="pronetsys-auth">
+            <div class="pronetsys-auth-card">
+                <div class="pronetsys-auth-brand">
+                    <img src="/images/pronetsys-logo-color.png" alt="Pronetsys" />
+                </div>
+                <h1>Iniciar sesión</h1>
+                <LoginForm />
+            </div>
+            <div class="pronetsys-auth-footer">
+                &copy; @DateTime.Now.Year Pronetsys &mdash; Asistencia Remota
+            </div>
         </div>
     </NotAuthorized>
     <Authorized>
         <AuthorizedIndex />
     </Authorized>
 </AuthorizeView>
-
-@code 
-{
-    private bool _isRegistrationEnabled;
-
-    protected override async Task OnInitializedAsync()
-    {
-        var settings = await DataService.GetSettings();
-        _isRegistrationEnabled = settings.MaxOrganizationCount < 0 || DataService.GetOrganizationCount() < settings.MaxOrganizationCount;
-        await base.OnInitializedAsync();
-    }
-}
