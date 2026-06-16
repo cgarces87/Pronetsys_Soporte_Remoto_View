@@ -8,7 +8,7 @@ namespace Pronetsys.Shared.Services;
 
 public interface IEmbeddedServerDataProvider
 {
-    string GetEncodedFileName(string filePath, EmbeddedServerData serverData);
+    string GetEncodedFileName(string filePath, EmbeddedServerData serverData, string? downloadName = null);
     Result<EmbeddedServerData> TryGetEmbeddedData(string filePath);
 }
 
@@ -16,9 +16,14 @@ public class EmbeddedServerDataProvider : IEmbeddedServerDataProvider
 {
     public static EmbeddedServerDataProvider Instance { get; } = new();
 
-    public string GetEncodedFileName(string filePath, EmbeddedServerData serverData)
+    public string GetEncodedFileName(string filePath, EmbeddedServerData serverData, string? downloadName = null)
     {
-        var fileName = Path.GetFileNameWithoutExtension(filePath);
+        // The prefix (before the brackets) is purely cosmetic; only the data inside
+        // the [brackets] is read back by TryGetEmbeddedData. So callers may pass a
+        // friendly downloadName without breaking the embedded-server-data mechanism.
+        var fileName = string.IsNullOrWhiteSpace(downloadName)
+            ? Path.GetFileNameWithoutExtension(filePath)
+            : downloadName;
         var ext = Path.GetExtension(filePath);
 
         // Make the base64 string safe file paths and URIs.

@@ -5,6 +5,7 @@ using Pronetsys.Server.Services;
 using Pronetsys.Shared.Extensions;
 using Pronetsys.Shared.Models;
 using Pronetsys.Shared.Services;
+using Pronetsys.Shared.Utilities;
 using System.Text;
 using FileIO = System.IO.File;
 
@@ -155,8 +156,34 @@ public class ClientDownloadsController : ControllerBase
         var serverUrl = $"{effectiveScheme}://{Request.Host}";
 
         var embeddedData = new EmbeddedServerData(new Uri(serverUrl), organizationId);
-        var fileName = _embeddedDataSearcher.GetEncodedFileName(relativeFilePath, embeddedData);
+
+        // Friendly download name: Pronetsys-AsistenciaRemota_v{version}_{fecha}[datos].ext
+        // The [datos] block must stay so the client can read its server URL from its own file name.
+        var version = GetClientVersion(relativeFilePath);
+        var downloadName = $"Pronetsys-AsistenciaRemota_v{version}_{DateTime.Now:yyyy-MM-dd}";
+        var fileName = _embeddedDataSearcher.GetEncodedFileName(relativeFilePath, embeddedData, downloadName);
         return File(relativeFilePath, "application/octet-stream", fileName);
+    }
+
+    private string GetClientVersion(string relativeFilePath)
+    {
+        try
+        {
+            var absolutePath = Path.Combine(_hostEnv.WebRootPath, relativeFilePath);
+            if (FileIO.Exists(absolutePath))
+            {
+                var info = System.Diagnostics.FileVersionInfo.GetVersionInfo(absolutePath);
+                if (!string.IsNullOrWhiteSpace(info.FileVersion) && info.FileVersion != "0.0.0.0")
+                {
+                    return info.FileVersion;
+                }
+            }
+        }
+        catch
+        {
+            // Fall back to the server's version below.
+        }
+        return AppVersionHelper.GetAppVersion();
     }
 
     private async Task<IActionResult> GetInstallFile(string organizationId, string platformID)
