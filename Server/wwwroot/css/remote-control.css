@@ -44,6 +44,11 @@ body {
     transform: translateX(-50%);
 }
 
+.viewer-logo {
+    max-width: 220px;
+    height: auto;
+}
+
 .connection-box-wrapper {
     position: fixed;
     top: 40%;
@@ -185,7 +190,7 @@ button {
             border: 1px solid #384346;
         }
         #menuFrame #disconnectButton:active {
-            border: 1px solid #009888;
+            border: 1px solid #0057ad;
         }
 
 .menu-column {

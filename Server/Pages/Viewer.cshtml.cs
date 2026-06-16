@@ -9,10 +9,10 @@ namespace Pronetsys.Server.Pages;
 [ServiceFilter(typeof(ViewerAuthorizationFilter))]
 public class ViewerModel(IDataService _dataService) : PageModel
 {
-    public string FaviconUrl { get; } = "favicon.ico";
+    public string FaviconUrl { get; } = "/images/favicon.png";
     public string LogoUrl { get; set; } = string.Empty;
-    public string PageDescription { get; } = "Open-source remote support tools.";
-    public string PageTitle { get; } = "Remotely Remote Control";
+    public string PageDescription { get; } = "Herramientas de soporte remoto de Pronetsys.";
+    public string PageTitle { get; } = "Pronetsys Asistencia Remota";
     public string ThemeUrl { get; private set; } = string.Empty;
     public string UserDisplayName { get; private set; } = string.Empty;
 
@@ -33,8 +33,8 @@ public class ViewerModel(IDataService _dataService) : PageModel
     private async Task<string> GetLogoUrl()
     {
         return await GetTheme() == ViewerPageTheme.Dark ?
-           "/images/viewer/remotely-logo-dark.svg" :
-           "/images/viewer/remotely-logo-light.svg";
+           "/images/pronetsys-logo-white.png" :
+           "/images/pronetsys-logo-color.png";
     }
 
     private Task<ViewerPageTheme> GetTheme()

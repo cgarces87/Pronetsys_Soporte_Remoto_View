@@ -36,7 +36,7 @@ button {
   button.toggled {
     background-color: #16191a;
     border: 1px solid #16191a;
-    color: #07b5a4;
+    color: #3b9bff;
   }
 
   button:hover {
@@ -44,7 +44,7 @@ button {
   }
 
   button:active {
-    border: 1px solid #009888;
+    border: 1px solid #0057ad;
   }
 
 .menu-options-header {
@@ -52,12 +52,12 @@ button {
 }
 
 #menuButton {
-  color: #01EAD1;
+  color: #3b9bff;
   background-color: #212526;
 }
 
   #menuButton:hover {
-    color: #33ffe9;
+    color: #66b5ff;
   }
 
 
@@ -72,18 +72,18 @@ button {
 }
 
 #connectButton {
-  color: black;
-  background-color: #01EAD1;
+  color: white;
+  background-color: #0065cb;
 }
 
   #connectButton:active {
-    border: 1px solid #009888;
-    background-color: #01ad9b;
+    border: 1px solid #0057ad;
+    background-color: #0057ad;
   }
 
   #connectButton:disabled {
-    background-color: #152826;
-    color: #01EAD1;
+    background-color: #15233a;
+    color: #3b9bff;
     cursor: no-drop;
     border: none;
   }
