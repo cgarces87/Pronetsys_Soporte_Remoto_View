@@ -4,6 +4,7 @@ using Pronetsys.Server.Services;
 using Pronetsys.Shared.Enums;
 using Pronetsys.Shared.Interfaces;
 using Microsoft.AspNetCore.SignalR;
+using System.Security.Cryptography;
 
 namespace Pronetsys.Server.Hubs;
 
@@ -70,16 +71,15 @@ public class DesktopHub : Hub<IDesktopHubClient>
 
         SessionInfo.Mode = RemoteControlMode.Attended;
 
-        var random = new Random();
         var sessionId = string.Empty;
 
         while (true)
         {
-            sessionId = "";
-            for (var i = 0; i < 3; i++)
-            {
-                sessionId += random.Next(0, 999).ToString().PadLeft(3, '0');
-            }
+            // Use a cryptographically-secure RNG so the attended session code
+            // can't be predicted from the (time-seeded) System.Random sequence.
+            sessionId = RandomNumberGenerator.GetInt32(0, 1_000_000_000)
+                .ToString()
+                .PadLeft(9, '0');
 
             SessionInfo.AttendedSessionId = sessionId;
             if (_sessionCache.TryAdd(sessionId, SessionInfo))
