@@ -38,6 +38,9 @@ public class DeviceClientDto
     public string OrganizationID { get; set; } = string.Empty;
 
     [DataMember]
+    public string? ServerVerificationToken { get; set; }
+
+    [DataMember]
     public Architecture OSArchitecture { get; set; }
 
     [DataMember]

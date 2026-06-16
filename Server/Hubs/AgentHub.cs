@@ -10,6 +10,8 @@ using Pronetsys.Shared.Enums;
 using Pronetsys.Shared.Interfaces;
 using Pronetsys.Shared.Models;
 using Pronetsys.Shared.Utilities;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Pronetsys.Server.Hubs;
 
@@ -172,6 +174,26 @@ public class AgentHub : Hub<IAgentHubClient>
             if (await CheckForDeviceBan(device.PublicIP))
             {
                 return false;
+            }
+
+            // Authenticate returning agents: once a device has a server verification
+            // token, the connecting agent must present a matching one. New devices
+            // (no token yet) enroll on first connect (trust-on-first-use).
+            var existingDeviceResult = await _dataService.GetDevice(device.ID);
+            if (existingDeviceResult.IsSuccess &&
+                !string.IsNullOrWhiteSpace(existingDeviceResult.Value.ServerVerificationToken))
+            {
+                var presented = Encoding.UTF8.GetBytes(device.ServerVerificationToken ?? string.Empty);
+                var stored = Encoding.UTF8.GetBytes(existingDeviceResult.Value.ServerVerificationToken!);
+                if (!CryptographicOperations.FixedTimeEquals(presented, stored))
+                {
+                    _logger.LogWarning(
+                        "Device {deviceId} failed the server verification token check from {ip}.  Aborting connection.",
+                        device.ID,
+                        device.PublicIP);
+                    Context.Abort();
+                    return false;
+                }
             }
 
             var result = await _dataService.AddOrUpdateDevice(device);
