@@ -7,7 +7,7 @@ COPY Server/bin/publish /app
 
 WORKDIR /app
 
-ENTRYPOINT ["dotnet", "Remotely_Server.dll"]
+ENTRYPOINT ["dotnet", "Pronetsys_Server.dll"]
 
 HEALTHCHECK \
   CMD curl -f http://localhost:${ASPNETCORE_HTTP_PORTS}/api/healthcheck || exit 1
