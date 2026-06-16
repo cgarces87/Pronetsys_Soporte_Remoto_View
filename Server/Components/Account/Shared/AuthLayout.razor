@@ -1,19 +1,49 @@
 @inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
 
 @*
     Corporate full-screen layout for the login / register screens.
     Standalone (no app sidebar): branded gradient background + centered card
     with the Pronetsys logo.
+
+    The HttpContext guard mirrors AccountLayout: these identity pages must run
+    server-rendered (they set cookies and read HttpContext). If this layout is
+    momentarily rendered inside an interactive circuit (HttpContext is null,
+    e.g. when navigated to from an interactive page), force a full reload so it
+    comes back as a static server-rendered page.
 *@
 
-<div class="pronetsys-auth">
-    <div class="pronetsys-auth-card">
-        <div class="pronetsys-auth-brand">
-            <img src="/images/pronetsys-logo-color.png" alt="Pronetsys" />
+@if (HttpContext is null)
+{
+    <p>Cargando...</p>
+}
+else
+{
+    <div class="pronetsys-auth">
+        <div class="pronetsys-auth-card">
+            <div class="pronetsys-auth-brand">
+                <img src="/images/pronetsys-logo-color.png" alt="Pronetsys" />
+            </div>
+            @Body
         </div>
-        @Body
+        <div class="pronetsys-auth-footer">
+            &copy; @DateTime.Now.Year Pronetsys &mdash; Asistencia Remota
+        </div>
     </div>
-    <div class="pronetsys-auth-footer">
-        &copy; @DateTime.Now.Year Pronetsys &mdash; Asistencia Remota
-    </div>
-</div>
+}
+
+@code {
+    [CascadingParameter]
+    private HttpContext? HttpContext { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        if (HttpContext is null)
+        {
+            // Running interactively (no HttpContext). The identity pages need
+            // an HttpContext for cookies, so transition back to a server-rendered
+            // page via a full reload.
+            NavigationManager.Refresh(forceReload: true);
+        }
+    }
+}
