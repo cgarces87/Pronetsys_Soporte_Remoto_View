@@ -105,6 +105,8 @@ else
         // Count login failures towards account lockout to throttle online
         // password-guessing against the web sign-in form.
         var result = await SignInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
+        Logger.LogWarning("DIAG login {Email}: Succeeded={S} NotAllowed={NA} LockedOut={LO} TwoFactor={TF}",
+            Input.Email, result.Succeeded, result.IsNotAllowed, result.IsLockedOut, result.RequiresTwoFactor);
         if (result.Succeeded)
         {
             Logger.LogInformation("User logged in.");
