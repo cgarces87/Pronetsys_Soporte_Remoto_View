@@ -5,12 +5,10 @@
 
 <AuthorizeView Policy="@PolicyNames.TwoFactorRequired">
     <Authorized>
-            <div class="page @(_sidebarCollapsed ? "sidebar-collapsed" : null)">
-                <button type="button" class="sidebar-toggle" @onclick="ToggleSidebar"
-                        title="@(_sidebarCollapsed ? "Mostrar menú" : "Ocultar menú")"
-                        aria-label="Alternar menú">
-                    <span class="oi oi-menu" aria-hidden="true"></span>
-                </button>
+            <div class="page">
+                @* CSS-only collapse state. Checked = menú fijado (expandido).
+                   Sin marcar (por defecto) = riel de favicon que se expande al pasar el mouse. *@
+                <input type="checkbox" id="sidebarCollapseToggle" class="sidebar-collapse-cb" />
                 <div class="sidebar">
                     <NavMenu />
                 </div>
@@ -51,13 +49,6 @@
 <ModalHarness />
 
 @code {
-    private bool _sidebarCollapsed;
-
-    private void ToggleSidebar()
-    {
-        _sidebarCollapsed = !_sidebarCollapsed;
-    }
-
     private void NavigateToTwoFactor()
     {
         NavMan.NavigateTo("/Account/Manage/TwoFactorAuthentication", true);

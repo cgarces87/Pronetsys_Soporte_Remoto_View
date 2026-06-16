@@ -148,3 +148,103 @@ body {
     padding: 0.6rem;
     font-weight: 600;
 }
+
+/* ============================================================
+   Menú lateral colapsable: riel con favicon + auto-expansión
+   - Por defecto (escritorio): riel angosto mostrando el favicon
+     de Pronetsys y solo los íconos (colapso automático).
+   - Al pasar el mouse: se expande mostrando logo + textos.
+   - Botón "fijar" (checkbox): lo mantiene expandido.
+   ============================================================ */
+
+/* El checkbox solo guarda el estado; no se ve. */
+.sidebar-collapse-cb {
+    display: none;
+}
+
+/* Base / móvil: logo completo visible, favicon e ícono de fijar ocultos. */
+.sidebar-logo-full {
+    display: block;
+}
+
+.sidebar-logo-icon {
+    display: none;
+}
+
+.sidebar-toggle {
+    display: none;
+}
+
+@media (min-width: 641px) {
+    /* Colapsado a riel por defecto (automático). */
+    .sidebar {
+        min-width: 72px !important;
+        width: 72px;
+        transition: width .2s ease, min-width .2s ease;
+    }
+
+    /* Se expande al pasar el mouse, o queda fijo si se marcó el botón. */
+    .sidebar:hover,
+    .sidebar-collapse-cb:checked ~ .sidebar {
+        min-width: 250px !important;
+        width: 250px;
+    }
+
+    /* Aspecto del riel (colapsado): solo íconos + favicon. */
+    .sidebar .nav-label,
+    .sidebar .logo-subtitle,
+    .sidebar .sidebar-logo-full {
+        display: none;
+    }
+
+    .sidebar .sidebar-logo-icon {
+        display: block;
+    }
+
+    .sidebar .sidebar-brand {
+        justify-content: center;
+    }
+
+    .sidebar .nav-link,
+    .sidebar .nav-link-button {
+        justify-content: center;
+    }
+
+    /* Aspecto expandido (hover o fijado): logo + textos. */
+    .sidebar:hover .nav-label,
+    .sidebar-collapse-cb:checked ~ .sidebar .nav-label {
+        display: inline;
+    }
+
+    .sidebar:hover .logo-subtitle,
+    .sidebar-collapse-cb:checked ~ .sidebar .logo-subtitle {
+        display: block;
+    }
+
+    .sidebar:hover .sidebar-logo-full,
+    .sidebar-collapse-cb:checked ~ .sidebar .sidebar-logo-full {
+        display: block;
+    }
+
+    .sidebar:hover .sidebar-logo-icon,
+    .sidebar-collapse-cb:checked ~ .sidebar .sidebar-logo-icon {
+        display: none;
+    }
+
+    .sidebar:hover .sidebar-brand,
+    .sidebar-collapse-cb:checked ~ .sidebar .sidebar-brand {
+        justify-content: space-between;
+    }
+
+    .sidebar:hover .nav-link,
+    .sidebar:hover .nav-link-button,
+    .sidebar-collapse-cb:checked ~ .sidebar .nav-link,
+    .sidebar-collapse-cb:checked ~ .sidebar .nav-link-button {
+        justify-content: flex-start;
+    }
+
+    .sidebar:hover .sidebar-toggle,
+    .sidebar-collapse-cb:checked ~ .sidebar .sidebar-toggle {
+        display: inline-flex;
+    }
+}
