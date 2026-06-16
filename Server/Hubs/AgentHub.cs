@@ -360,6 +360,14 @@ public class AgentHub : Hub<IAgentHubClient>
         {
             return;
         }
+        // Only allow setting the token during initial enrollment. Once a device
+        // has a verification token it must not be overwritable by a (re)connecting
+        // client, otherwise anyone who can claim a device ID (DeviceCameOnline is
+        // not authenticated) could reset/hijack its verification token.
+        if (!string.IsNullOrWhiteSpace(Device.ServerVerificationToken))
+        {
+            return;
+        }
         Device.ServerVerificationToken = verificationToken;
         _dataService.SetServerVerificationToken(Device.ID, verificationToken);
     }
