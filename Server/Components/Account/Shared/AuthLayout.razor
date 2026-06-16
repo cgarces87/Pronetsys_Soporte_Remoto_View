@@ -1,10 +1,10 @@
 @inherits LayoutComponentBase
+@layout Pronetsys.Server.Components.Layout.MainLayout
 @inject NavigationManager NavigationManager
 
 @*
-    Corporate full-screen layout for the login / register screens.
-    Standalone (no app sidebar): branded gradient background + centered card
-    with the Pronetsys logo.
+    Corporate login / register card, rendered INSIDE the app layout
+    (sidebar + content area) — not a separate full-screen page.
 
     The HttpContext guard mirrors AccountLayout: these identity pages must run
     server-rendered (they set cookies and read HttpContext). If this layout is
