@@ -57,7 +57,7 @@ public class UpgradeService : IUpgradeService
             var versionString = versionTag[1..];
             var remoteVersion = Version.Parse(versionString);
 
-            var filePath = Directory.GetFiles(Directory.GetCurrentDirectory(), "Remotely_Server.dll", SearchOption.AllDirectories).First();
+            var filePath = Directory.GetFiles(Directory.GetCurrentDirectory(), "Pronetsys_Server.dll", SearchOption.AllDirectories).First();
             var fileVersion = System.Diagnostics.FileVersionInfo.GetVersionInfo(filePath).FileVersion;
             if (string.IsNullOrWhiteSpace(fileVersion))
             {

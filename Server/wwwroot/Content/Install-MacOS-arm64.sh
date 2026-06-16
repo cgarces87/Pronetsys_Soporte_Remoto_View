@@ -5,7 +5,7 @@ Organization=
 GUID="$(uuidgen)"
 UpdatePackagePath=""
 InstallDir="/usr/local/bin/Remotely"
-ETag=$(curl --head $HostName/Content/Remotely-MacOS-arm64.zip | grep -i "etag" | cut -d' ' -f 2)
+ETag=$(curl --head $HostName/Content/Pronetsys-MacOS-arm64.zip | grep -i "etag" | cut -d' ' -f 2)
 LogPath="/var/log/remotely/Agent_Install.log"
 
 mkdir -p /var/log/remotely
@@ -61,17 +61,17 @@ chmod -R 755 $InstallDir
 
 if [ -z "$UpdatePackagePath" ]; then
     echo  "Downloading client..." >> /tmp/Remotely_Install.log
-    curl $HostName/Content/Remotely-MacOS-arm64.zip --output $InstallDir/Remotely-MacOS-arm64.zip
+    curl $HostName/Content/Pronetsys-MacOS-arm64.zip --output $InstallDir/Pronetsys-MacOS-arm64.zip
 else
     echo  "Copying install files..." >> /tmp/Remotely_Install.log
-    cp "$UpdatePackagePath" $InstallDir/Remotely-MacOS-arm64.zip
+    cp "$UpdatePackagePath" $InstallDir/Pronetsys-MacOS-arm64.zip
     rm -f "$UpdatePackagePath"
 fi
 
-unzip -o $InstallDir/Remotely-MacOS-arm64.zip -d $InstallDir
-rm -f $InstallDir/Remotely-MacOS-arm64.zip
-chmod +x $InstallDir/Remotely_Agent
-chmod +x $InstallDir/Desktop/Remotely_Desktop
+unzip -o $InstallDir/Pronetsys-MacOS-arm64.zip -d $InstallDir
+rm -f $InstallDir/Pronetsys-MacOS-arm64.zip
+chmod +x $InstallDir/Pronetsys_Agent
+chmod +x $InstallDir/Desktop/Pronetsys_Desktop
 
 connectionInfo="{
     \"DeviceID\":\"$GUID\", 
@@ -82,7 +82,7 @@ connectionInfo="{
 
 echo "$connectionInfo" > $InstallDir/ConnectionInfo.json
 
-curl --head $HostName/Content/Remotely-MacOS-arm64.zip | grep -i "etag" | cut -d' ' -f 2 > $InstallDir/etag.txt
+curl --head $HostName/Content/Pronetsys-MacOS-arm64.zip | grep -i "etag" | cut -d' ' -f 2 > $InstallDir/etag.txt
 
 
 plistFile="<?xml version=\"1.0\" encoding=\"UTF-8\"?>
@@ -93,7 +93,7 @@ plistFile="<?xml version=\"1.0\" encoding=\"UTF-8\"?>
     <string>com.translucency.remotely-agent</string>
     <key>ProgramArguments</key>
     <array>
-        <string>$InstallDir/Remotely_Agent</string>
+        <string>$InstallDir/Pronetsys_Agent</string>
     </array>
     <key>KeepAlive</key>
     <true/>

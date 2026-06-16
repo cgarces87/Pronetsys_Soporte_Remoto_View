@@ -112,8 +112,8 @@ function Run-StartupChecks {
 
 function Stop-Remotely {
 	Start-Process -FilePath "cmd.exe" -ArgumentList "/c sc delete Remotely_Service" -Wait -WindowStyle Hidden
-	Stop-Process -Name Remotely_Agent -Force -ErrorAction SilentlyContinue
-	Stop-Process -Name Remotely_Desktop -Force -ErrorAction SilentlyContinue
+	Stop-Process -Name Pronetsys_Agent -Force -ErrorAction SilentlyContinue
+	Stop-Process -Name Pronetsys_Desktop -Force -ErrorAction SilentlyContinue
 }
 
 function Uninstall-Remotely {
@@ -123,7 +123,7 @@ function Uninstall-Remotely {
 }
 
 function Install-Remotely {
-	$HeadResponse = Invoke-WebRequest -Uri "$HostName/Content/Remotely-Win-$Platform.zip" -Method Head -UseBasicParsing
+	$HeadResponse = Invoke-WebRequest -Uri "$HostName/Content/Pronetsys-Win-$Platform.zip" -Method Head -UseBasicParsing
 	$ETag = $HeadResponse.Headers["ETag"]
 	if (!$Etag) {
 		Write-Log "Failed to get ETag from server.  Aborting install."
@@ -157,17 +157,17 @@ function Install-Remotely {
 
 	if ($Path) {
 		Write-Log "Copying install files..."
-		Copy-Item -Path $Path -Destination "$env:TEMP\Remotely-Win-$Platform.zip"
+		Copy-Item -Path $Path -Destination "$env:TEMP\Pronetsys-Win-$Platform.zip"
 
 	}
 	else {
 		$ProgressPreference = 'SilentlyContinue'
 		Write-Log "Downloading client..."
-		Invoke-WebRequest -Uri "$HostName/Content/Remotely-Win-$Platform.zip" -OutFile "$env:TEMP\Remotely-Win-$Platform.zip" -UseBasicParsing
+		Invoke-WebRequest -Uri "$HostName/Content/Pronetsys-Win-$Platform.zip" -OutFile "$env:TEMP\Pronetsys-Win-$Platform.zip" -UseBasicParsing
 		$ProgressPreference = 'Continue'
 	}
 
-	if (!(Test-Path -Path "$env:TEMP\Remotely-Win-$Platform.zip")) {
+	if (!(Test-Path -Path "$env:TEMP\Pronetsys-Win-$Platform.zip")) {
 		Write-Log "Client files failed to download."
 		Do-Exit
 	}
@@ -175,7 +175,7 @@ function Install-Remotely {
 	Stop-Remotely
 	Get-ChildItem -Path $InstallPath | Where-Object { $_.Name -notlike "ConnectionInfo.json" } | Remove-Item -Recurse -Force
 
-	Expand-Archive -Path "$env:TEMP\Remotely-Win-$Platform.zip" -DestinationPath "$InstallPath" -Force
+	Expand-Archive -Path "$env:TEMP\Pronetsys-Win-$Platform.zip" -DestinationPath "$InstallPath" -Force
 
 	New-Item -ItemType File -Path "$InstallPath\ConnectionInfo.json" -Value (ConvertTo-Json -InputObject $ConnectionInfo) -Force
 
@@ -193,7 +193,7 @@ function Install-Remotely {
 		Invoke-RestMethod -Method Post -ContentType "application/json" -Uri "$HostName/api/devices" -Body $Body
 	}
 
-	New-Service -Name "Remotely_Service" -BinaryPathName "`"$InstallPath\Remotely_Agent.exe`"" -DisplayName "Remotely Service" -StartupType Automatic -Description "Background service that maintains a connection to the Remotely server.  The service is used for remote support and maintenance by this computer's administrators."
+	New-Service -Name "Remotely_Service" -BinaryPathName "`"$InstallPath\Pronetsys_Agent.exe`"" -DisplayName "Remotely Service" -StartupType Automatic -Description "Background service that maintains a connection to the Remotely server.  The service is used for remote support and maintenance by this computer's administrators."
 	Start-Process -FilePath "cmd.exe" -ArgumentList "/c sc.exe failure `"Remotely_Service`" reset=5 actions=restart/5000" -Wait -WindowStyle Hidden
 	Start-Service -Name Remotely_Service
 }

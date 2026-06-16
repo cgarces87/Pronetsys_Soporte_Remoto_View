@@ -27,7 +27,7 @@ public class SqlServerDbContextDesignTime : IDesignTimeDbContextFactory<SqlServe
     {
         var appSettings = new Dictionary<string, string?>
         {
-            ["ConnectionStrings:SqlServer"] = "Server=(localdb)\\mssqllocaldb;Database=Remotely-Server-53bc9b9d-9d6a-45d4-8429-2a2761773502;Trusted_Connection=True;MultipleActiveResultSets=true",
+            ["ConnectionStrings:SqlServer"] = "Server=(localdb)\\mssqllocaldb;Database=Pronetsys-Server-53bc9b9d-9d6a-45d4-8429-2a2761773502;Trusted_Connection=True;MultipleActiveResultSets=true",
             ["ApplicationOptions:DbProvider"] = "SqlServer"
         };
 

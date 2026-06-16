@@ -135,7 +135,7 @@ dotnet publish /p:Version=$CurrentVersion /p:FileVersion=$CurrentVersion -p:Publ
 dotnet publish /p:Version=$CurrentVersion /p:FileVersion=$CurrentVersion -p:PublishProfile=desktop-win-x64 --configuration Release "$Root\Desktop.Win"
 
 if ($SignAssemblies) {
-    &"$Root\Utilities\signtool.exe" sign /fd SHA256 /f "$CertificatePath" /p $CertificatePassword /t http://timestamp.digicert.com "$Root\Server\wwwroot\Content\Win-x64\Remotely_Desktop.exe"
+    &"$Root\Utilities\signtool.exe" sign /fd SHA256 /f "$CertificatePath" /p $CertificatePassword /t http://timestamp.digicert.com "$Root\Server\wwwroot\Content\Win-x64\Pronetsys_Desktop.exe"
 }
 
 
@@ -143,34 +143,34 @@ if ($SignAssemblies) {
 dotnet publish /p:Version=$CurrentVersion /p:FileVersion=$CurrentVersion -p:PublishProfile=desktop-win-x86 --configuration Release "$Root\Desktop.Win"
 
 if ($SignAssemblies) {
-    &"$Root\Utilities\signtool.exe" sign /fd SHA256 /f "$CertificatePath" /p $CertificatePassword /t http://timestamp.digicert.com "$Root\Server\wwwroot\Content\Win-x86\Remotely_Desktop.exe"
+    &"$Root\Utilities\signtool.exe" sign /fd SHA256 /f "$CertificatePath" /p $CertificatePassword /t http://timestamp.digicert.com "$Root\Server\wwwroot\Content\Win-x86\Pronetsys_Desktop.exe"
 }
 
 # Compress Agents.
 $PublishDir = "$Root\Agent\bin\publish\win-x64"
-Compress-Archive -Path "$PublishDir\*" -DestinationPath "$PublishDir\Remotely-Win-x64.zip" -Force
-Wait-ForExists -FilePath "$PublishDir\Remotely-Win-x64.zip"
-Move-Item -Path "$PublishDir\Remotely-Win-x64.zip" -Destination "$Root\Server\wwwroot\Content\Remotely-Win-x64.zip" -Force
+Compress-Archive -Path "$PublishDir\*" -DestinationPath "$PublishDir\Pronetsys-Win-x64.zip" -Force
+Wait-ForExists -FilePath "$PublishDir\Pronetsys-Win-x64.zip"
+Move-Item -Path "$PublishDir\Pronetsys-Win-x64.zip" -Destination "$Root\Server\wwwroot\Content\Pronetsys-Win-x64.zip" -Force
 
 $PublishDir = "$Root\Agent\bin\publish\win-x86"
-Compress-Archive -Path "$PublishDir\*" -DestinationPath "$PublishDir\Remotely-Win-x86.zip" -Force
-Wait-ForExists -FilePath "$PublishDir\Remotely-Win-x86.zip"
-Move-Item -Path "$PublishDir\Remotely-Win-x86.zip" -Destination "$Root\Server\wwwroot\Content\Remotely-Win-x86.zip" -Force
+Compress-Archive -Path "$PublishDir\*" -DestinationPath "$PublishDir\Pronetsys-Win-x86.zip" -Force
+Wait-ForExists -FilePath "$PublishDir\Pronetsys-Win-x86.zip"
+Move-Item -Path "$PublishDir\Pronetsys-Win-x86.zip" -Destination "$Root\Server\wwwroot\Content\Pronetsys-Win-x86.zip" -Force
 
 $PublishDir = "$Root\Agent\bin\publish\linux-x64"
-Compress-Archive -Path "$PublishDir\*" -DestinationPath "$PublishDir\Remotely-Linux.zip" -Force
-Wait-ForExists -FilePath "$PublishDir\Remotely-Linux.zip"
-Move-Item -Path "$PublishDir\Remotely-Linux.zip" -Destination "$Root\Server\wwwroot\Content\Remotely-Linux.zip" -Force
+Compress-Archive -Path "$PublishDir\*" -DestinationPath "$PublishDir\Pronetsys-Linux.zip" -Force
+Wait-ForExists -FilePath "$PublishDir\Pronetsys-Linux.zip"
+Move-Item -Path "$PublishDir\Pronetsys-Linux.zip" -Destination "$Root\Server\wwwroot\Content\Pronetsys-Linux.zip" -Force
 
 $PublishDir = "$Root\Agent\bin\publish\osx-x64"
-Compress-Archive -Path "$PublishDir\*" -DestinationPath "$PublishDir\Remotely-MacOS-x64.zip" -Force
-Wait-ForExists -FilePath "$PublishDir\Remotely-MacOS-x64.zip"
-Move-Item -Path "$PublishDir\Remotely-MacOS-x64.zip" -Destination "$Root\Server\wwwroot\Content\Remotely-MacOS-x64.zip" -Force
+Compress-Archive -Path "$PublishDir\*" -DestinationPath "$PublishDir\Pronetsys-MacOS-x64.zip" -Force
+Wait-ForExists -FilePath "$PublishDir\Pronetsys-MacOS-x64.zip"
+Move-Item -Path "$PublishDir\Pronetsys-MacOS-x64.zip" -Destination "$Root\Server\wwwroot\Content\Pronetsys-MacOS-x64.zip" -Force
 
 $PublishDir = "$Root\Agent\bin\publish\osx-arm64"
-Compress-Archive -Path "$PublishDir\*" -DestinationPath "$PublishDir\Remotely-MacOS-arm64.zip" -Force
-Wait-ForExists -FilePath "$PublishDir\Remotely-MacOS-arm64.zip"
-Move-Item -Path "$PublishDir\Remotely-MacOS-arm64.zip" -Destination "$Root\Server\wwwroot\Content\Remotely-MacOS-arm64.zip" -Force
+Compress-Archive -Path "$PublishDir\*" -DestinationPath "$PublishDir\Pronetsys-MacOS-arm64.zip" -Force
+Wait-ForExists -FilePath "$PublishDir\Pronetsys-MacOS-arm64.zip"
+Move-Item -Path "$PublishDir\Pronetsys-MacOS-arm64.zip" -Destination "$Root\Server\wwwroot\Content\Pronetsys-MacOS-arm64.zip" -Force
 
 
 if ($RID.Length -gt 0 -and $OutDir.Length -gt 0) {

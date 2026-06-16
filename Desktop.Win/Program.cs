@@ -27,7 +27,7 @@ public class Program
     public static async Task Main(string[] args)
     {
         var version = AppVersionHelper.GetAppVersion();
-        var logger = new FileLogger("Remotely_Desktop", version, "Program.cs");
+        var logger = new FileLogger("Pronetsys_Desktop", version, "Program.cs");
         var filePath = Environment.ProcessPath ?? Environment.GetCommandLineArgs().First();
         var serverUrl = Debugger.IsAttached ? "https://localhost:5001" : string.Empty;
         var getEmbeddedResult =  EmbeddedServerDataProvider.Instance.TryGetEmbeddedData(filePath);
@@ -53,7 +53,7 @@ public class Program
             {
                 builder.SetMinimumLevel(LogLevel.Debug);
             }
-            builder.AddProvider(new FileLoggerProvider("Remotely_Desktop", version));
+            builder.AddProvider(new FileLoggerProvider("Pronetsys_Desktop", version));
         });
 
         var provider = services.BuildServiceProvider();

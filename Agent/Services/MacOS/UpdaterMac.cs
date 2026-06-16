@@ -75,7 +75,7 @@ public class UpdaterMac : IUpdater
             var connectionInfo = _configService.GetConnectionInfo();
             var serverUrl = _configService.GetConnectionInfo().Host;
 
-            var fileUrl = serverUrl + $"/Content/Remotely-MacOS-{_achitecture}.zip";
+            var fileUrl = serverUrl + $"/Content/Pronetsys-MacOS-{_achitecture}.zip";
 
             using var httpClient = _httpClientFactory.CreateClient();
             using var request = new HttpRequestMessage(HttpMethod.Head, fileUrl);

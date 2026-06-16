@@ -50,19 +50,19 @@ public class AgentUpdateController : ControllerBase
             switch (platform.ToLower())
             {
                 case "win-x64":
-                    filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Remotely-Win-x64.zip");
+                    filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Pronetsys-Win-x64.zip");
                     break;
                 case "win-x86":
-                    filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Remotely-Win-x86.zip");
+                    filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Pronetsys-Win-x86.zip");
                     break;
                 case "linux":
-                    filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Remotely-Linux.zip");
+                    filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Pronetsys-Linux.zip");
                     break;
                 case "macos-x64":
-                    filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Remotely-MacOS-x64.zip");
+                    filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Pronetsys-MacOS-x64.zip");
                     break;
                 case "macos-arm64":
-                    filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Remotely-MacOS-arm64.zip");
+                    filePath = Path.Combine(_hostEnv.WebRootPath, "Content", "Pronetsys-MacOS-arm64.zip");
                     break;
                 default:
                     _logger.LogWarning(

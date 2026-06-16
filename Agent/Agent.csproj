@@ -12,7 +12,7 @@
     <Company>Immense Networks</Company>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <Platforms>AnyCPU;x86;x64</Platforms>
-    <AssemblyName>Remotely_Agent</AssemblyName>
+    <AssemblyName>Pronetsys_Agent</AssemblyName>
     <ApplicationIcon>Assets\favicon.ico</ApplicationIcon>
     <Nullable>enable</Nullable>
   </PropertyGroup>

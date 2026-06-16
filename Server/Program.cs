@@ -380,7 +380,7 @@ void ConfigureSerilog(WebApplicationBuilder webAppBuilder, SettingsModel setting
                 .Enrich.FromLogContext()
                 .Enrich.WithThreadId()
                 .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj} {Properties}{NewLine}{Exception}")
-                .WriteTo.File($"{logPath}/Remotely_Server.log",
+                .WriteTo.File($"{logPath}/Pronetsys_Server.log",
                     rollingInterval: RollingInterval.Day,
                     retainedFileTimeLimit: TimeSpan.FromDays(dataRetentionDays),
                     outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj} {Properties}{NewLine}{Exception}",

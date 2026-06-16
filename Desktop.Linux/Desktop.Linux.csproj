@@ -3,7 +3,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <ApplicationIcon>Assets\favicon.ico</ApplicationIcon>
-    <AssemblyName>Remotely_Desktop</AssemblyName>
+    <AssemblyName>Pronetsys_Desktop</AssemblyName>
     <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
   <PropertyGroup>
