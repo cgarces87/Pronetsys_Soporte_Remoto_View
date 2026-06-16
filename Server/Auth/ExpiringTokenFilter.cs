@@ -88,9 +88,17 @@ public class ExpiringTokenFilter : ActionFilterAttribute, IAsyncAuthorizationFil
 
         if (http.Request.Headers.TryGetValue(AppConstants.ExpiringTokenHeaderName, out var expiringToken))
         {
-            if (_expiringTokenService.TryGetExpiration(expiringToken.ToString(), out var expiration) &&
+            var token = expiringToken.ToString();
+            if (_expiringTokenService.TryGetExpiration(token, out var expiration) &&
                 expiration > Time.Now)
             {
+                // Scope the request to the organization the token was minted for so that
+                // resource lookups can enforce tenant isolation (prevents cross-org IDOR).
+                if (_expiringTokenService.TryGetOrganizationId(token, out var tokenOrg) &&
+                    !string.IsNullOrEmpty(tokenOrg))
+                {
+                    http.Request.Headers["OrganizationID"] = tokenOrg;
+                }
                 _logger.LogDebug("Expiring token authorized.  Token: {token}.  Expiration: {expiration}", expiringToken, expiration);
                 return;
             }

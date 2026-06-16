@@ -21,7 +21,12 @@ public class FileSharingController : ControllerBase
     [ServiceFilter(typeof(ExpiringTokenFilter))]
     public async Task<IActionResult> Get(string id)
     {
-        var sharedFileResult = await _dataService.GetSharedFiled(id);
+        if (!Request.Headers.TryGetOrganizationId(out var orgId))
+        {
+            return NotFound();
+        }
+
+        var sharedFileResult = await _dataService.GetSharedFiled(id, orgId);
 
         if (!sharedFileResult.IsSuccess)
         {

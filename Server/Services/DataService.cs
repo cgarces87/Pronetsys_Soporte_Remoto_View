@@ -145,6 +145,7 @@ public interface IDataService
     Task<List<SavedScript>> GetQuickScripts(string userId);
 
     Task<Result<SavedScript>> GetSavedScript(Guid scriptId);
+    Task<Result<SavedScript>> GetSavedScript(Guid scriptId, string organizationId);
 
     Task<Result<SavedScript>> GetSavedScript(string userId, Guid scriptId);
 
@@ -163,6 +164,7 @@ public interface IDataService
     Task<SettingsModel> GetSettings();
 
     Task<Result<SharedFile>> GetSharedFiled(string fileId);
+    Task<Result<SharedFile>> GetSharedFiled(string fileId, string organizationId);
 
     int GetTotalDevices();
 
@@ -1639,6 +1641,23 @@ public class DataService : IDataService
         return Result.Ok(script);
     }
 
+    public async Task<Result<SavedScript>> GetSavedScript(Guid scriptId, string organizationId)
+    {
+        using var dbContext = _appDbFactory.GetContext();
+        var script = await dbContext.SavedScripts
+            .AsNoTracking()
+            .Include(x => x.Creator)
+            .FirstOrDefaultAsync(x =>
+                x.Id == scriptId &&
+                x.Creator!.OrganizationID == organizationId);
+
+        if (script is null)
+        {
+            return Result.Fail<SavedScript>("Script not found.");
+        }
+        return Result.Ok(script);
+    }
+
     public async Task<List<SavedScript>> GetSavedScriptsWithoutContent(string userId, string organizationId)
     {
         using var dbContext = _appDbFactory.GetContext();
@@ -1755,6 +1774,20 @@ public class DataService : IDataService
         using var dbContext = _appDbFactory.GetContext();
 
         var file = await dbContext.SharedFiles.FindAsync(fileId);
+
+        if (file is null)
+        {
+            return Result.Fail<SharedFile>("File not found.");
+        }
+        return Result.Ok(file);
+    }
+
+    public async Task<Result<SharedFile>> GetSharedFiled(string fileId, string organizationId)
+    {
+        using var dbContext = _appDbFactory.GetContext();
+
+        var file = await dbContext.SharedFiles
+            .FirstOrDefaultAsync(x => x.ID == fileId && x.OrganizationID == organizationId);
 
         if (file is null)
         {

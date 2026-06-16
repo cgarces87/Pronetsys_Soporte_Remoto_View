@@ -138,7 +138,7 @@ public class CircuitConnection : CircuitHandler, ICircuitConnection
               command,
               string.Join(", ", deviceIDs));
 
-        var authTokenForUploadingResults = _expiringTokenService.GetToken(Time.Now.AddMinutes(5));
+        var authTokenForUploadingResults = _expiringTokenService.GetToken(Time.Now.AddMinutes(5), User.OrganizationID);
 
         await _agentHubContext.Clients.Clients(connections).ExecuteCommand(
             shell,
@@ -319,7 +319,7 @@ public class CircuitConnection : CircuitHandler, ICircuitConnection
             deviceIds = _dataService.FilterDeviceIdsByUserPermission(deviceIds.ToArray(), User);
         }
 
-        var authToken = _expiringTokenService.GetToken(Time.Now.AddMinutes(AppConstants.ScriptRunExpirationMinutes));
+        var authToken = _expiringTokenService.GetToken(Time.Now.AddMinutes(AppConstants.ScriptRunExpirationMinutes), User?.OrganizationID ?? string.Empty);
 
         var connectionIds = _agentSessionCache.GetConnectionIdsByDeviceIds(deviceIds).ToArray();
 
@@ -387,7 +387,7 @@ public class CircuitConnection : CircuitHandler, ICircuitConnection
             return false;
         }
 
-        var authToken = _expiringTokenService.GetToken(Time.Now.AddMinutes(5));
+        var authToken = _expiringTokenService.GetToken(Time.Now.AddMinutes(5), User.OrganizationID);
 
         await _agentHubContext.Clients
             .Client(connectionId)

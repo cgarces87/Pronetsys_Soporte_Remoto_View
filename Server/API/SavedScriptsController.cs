@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Pronetsys.Server.Auth;
+using Pronetsys.Server.Extensions;
 using Pronetsys.Server.Services;
 using Pronetsys.Shared.Entities;
 
@@ -20,7 +21,12 @@ public class SavedScriptsController : ControllerBase
     [HttpGet("{scriptId}")]
     public async Task<ActionResult<SavedScript>> GetScript(Guid scriptId)
     {
-        var result =  await _dataService.GetSavedScript(scriptId);
+        if (!Request.Headers.TryGetOrganizationId(out var orgId))
+        {
+            return NotFound();
+        }
+
+        var result = await _dataService.GetSavedScript(scriptId, orgId);
         if (!result.IsSuccess)
         {
             return NotFound();
