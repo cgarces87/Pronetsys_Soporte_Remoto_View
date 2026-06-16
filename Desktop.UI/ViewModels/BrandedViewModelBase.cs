@@ -43,8 +43,8 @@ public class BrandedViewModelBase : ObservableObject, IBrandedViewModelBase
 
     public string ProductName
     {
-        get => Get<string?>() ?? "Remote Control";
-        set => Set(value ?? "Remote Control");
+        get => Get<string?>() ?? "Pronetsys Asistencia Remota";
+        set => Set(value ?? "Pronetsys Asistencia Remota");
     }
 
     public WindowIcon? WindowIcon

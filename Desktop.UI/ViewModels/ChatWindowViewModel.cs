@@ -48,7 +48,7 @@ public class ChatWindowViewModel : BrandedViewModelBase, IChatWindowViewModel
 
     public ObservableCollection<ChatMessage> ChatMessages { get; } = new ObservableCollection<ChatMessage>();
 
-    public string ChatSessionHeader => $"Chat session with {OrganizationName}";
+    public string ChatSessionHeader => $"Sesión de chat con {OrganizationName}";
 
     public ICommand CloseCommand { get; }
 
@@ -62,7 +62,7 @@ public class ChatWindowViewModel : BrandedViewModelBase, IChatWindowViewModel
 
     public string OrganizationName
     {
-        get => Get<string>() ?? "your IT provider";
+        get => Get<string>() ?? "su proveedor de TI";
         set
         {
             Set(value);
@@ -72,7 +72,7 @@ public class ChatWindowViewModel : BrandedViewModelBase, IChatWindowViewModel
 
     public string SenderName
     {
-        get => Get<string>() ?? "a technician";
+        get => Get<string>() ?? "un técnico";
         set => Set(value);
     }
 
@@ -90,7 +90,7 @@ public class ChatWindowViewModel : BrandedViewModelBase, IChatWindowViewModel
             InputText = string.Empty;
             await _streamWriter.WriteLineAsync(JsonSerializer.Serialize(chatMessage));
             await _streamWriter.FlushAsync();
-            chatMessage.SenderName = "You";
+            chatMessage.SenderName = "Usted";
             ChatMessages.Add(chatMessage);
         }
         catch (Exception ex)

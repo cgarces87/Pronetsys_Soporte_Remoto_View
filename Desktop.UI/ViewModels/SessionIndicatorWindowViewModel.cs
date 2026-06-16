@@ -28,7 +28,7 @@ public class SessionIndicatorWindowViewModel : BrandedViewModelBase, ISessionInd
 
     public async Task PromptForExit()
     {
-        var result = await _dialogProvider.Show("Stop the remote control session?", "Stop Session", MessageBoxType.YesNo);
+        var result = await _dialogProvider.Show("¿Detener la sesión de control remoto?", "Detener sesión", MessageBoxType.YesNo);
         if (result == MessageBoxResult.Yes)
         {
             await _shutdownService.Shutdown();

@@ -167,15 +167,15 @@ public class MainViewViewModel : BrandedViewModelBase, IMainViewViewModel
             OperatingSystem.IsLinux() && 
             !_environment.IsElevated)
         {
-            await _dialogProvider.Show("Please run with sudo.", "Sudo Required", MessageBoxType.OK);
+            await _dialogProvider.Show("Ejecute la aplicación con sudo.", "Se requiere sudo", MessageBoxType.OK);
             Environment.Exit(0);
         }
 
-        StatusMessage = "Initializing...";
+        StatusMessage = "Inicializando...";
 
         await InstallDependencies();
 
-        StatusMessage = "Retrieving...";
+        StatusMessage = "Obteniendo ID...";
 
         while (string.IsNullOrWhiteSpace(Host))
         {
@@ -197,7 +197,7 @@ public class MainViewViewModel : BrandedViewModelBase, IMainViewViewModel
                     await _dispatcher.InvokeAsync(() =>
                     {
                         Viewers.Clear();
-                        StatusMessage = "Disconnected";
+                        StatusMessage = "Desconectado";
                     });
                 };
 
@@ -206,7 +206,7 @@ public class MainViewViewModel : BrandedViewModelBase, IMainViewViewModel
                     await _dispatcher.InvokeAsync(() =>
                     {
                         Viewers.Clear();
-                        StatusMessage = "Reconnecting";
+                        StatusMessage = "Reconectando";
                     });
                 };
 
@@ -227,8 +227,8 @@ public class MainViewViewModel : BrandedViewModelBase, IMainViewViewModel
         }
 
         // If we got here, something went wrong.
-        StatusMessage = "Failed";
-        await _dialogProvider.Show("Failed to connect to server.", "Connection Failed", MessageBoxType.OK);
+        StatusMessage = "Error";
+        await _dialogProvider.Show("No se pudo conectar al servidor.", "Error de conexión", MessageBoxType.OK);
     }
 
     public async Task PromptForHostName()
@@ -252,7 +252,7 @@ public class MainViewViewModel : BrandedViewModelBase, IMainViewViewModel
             serverUri.Scheme != Uri.UriSchemeHttp && serverUri.Scheme != Uri.UriSchemeHttps)
         {
             _logger.LogWarning("Server URL is not valid.");
-            await _dialogProvider.Show("Server URL must be a valid Uri (e.g. https://example.com).", "Invalid Server URL", MessageBoxType.OK);
+            await _dialogProvider.Show("La URL del servidor debe ser válida (p. ej. https://ejemplo.com).", "URL de servidor no válida", MessageBoxType.OK);
             return;
         }
 
@@ -309,8 +309,8 @@ public class MainViewViewModel : BrandedViewModelBase, IMainViewViewModel
     private async void ScreenCastRequested(object? sender, ScreenCastRequest screenCastRequest)
     {
         var result = await _dialogProvider.Show(
-            $"You've received a connection request from {screenCastRequest.RequesterName}.  Accept?",
-            "Connection Request",
+            $"Ha recibido una solicitud de conexión de {screenCastRequest.RequesterName}.  ¿Aceptar?",
+            "Solicitud de conexión",
             MessageBoxType.YesNo);
 
         if (result == MessageBoxResult.Yes)

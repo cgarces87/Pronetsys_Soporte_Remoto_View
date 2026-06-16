@@ -26,13 +26,13 @@
       <Button Classes="NormalButton" HorizontalAlignment="Right" IsVisible="{Binding IsOkButtonVisible}"
               Command="{Binding OKCommand}"
               CommandParameter="{Binding #MessageBoxWindow}"
-              Content="OK">
+              Content="Aceptar">
       </Button>
       <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
         <Button Classes="NormalButton" HorizontalAlignment="Right" IsVisible="{Binding AreYesNoButtonsVisible}" Margin="5,0,5,0"
                 Command="{Binding YesCommand}"
                 CommandParameter="{Binding #MessageBoxWindow}"
-                Content="Yes">
+                Content="Sí">
         </Button>
         <Button Classes="NormalButton" HorizontalAlignment="Right" IsVisible="{Binding AreYesNoButtonsVisible}" Margin="5,0,5,0"
                 Command="{Binding NoCommand}"

@@ -112,7 +112,7 @@ public class ChatClientService : IChatClientService
             if (chatSession.PipeStream?.IsConnected != true)
             {
                 _chatClients.Remove(senderConnectionID);
-                await hubConnection.SendAsync("DisplayMessage", "Chat disconnected.  Please try again.", "Chat disconnected.", "bg-warning", senderConnectionID);
+                await hubConnection.SendAsync("DisplayMessage", "Chat desconectado.  Inténtelo de nuevo.", "Chat desconectado.", "bg-warning", senderConnectionID);
                 return;
             }
 
