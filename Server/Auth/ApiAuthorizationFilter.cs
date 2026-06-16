@@ -28,6 +28,10 @@ public class ApiAuthorizationFilter : IAsyncAuthorizationFilter
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error while authorizing API key.");
+            // Fail closed: if authorization throws, deny the request rather than
+            // letting it fall through to the action.
+            context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Forbidden;
+            context.Result = new UnauthorizedResult();
         }
     }
 

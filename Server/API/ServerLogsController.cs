@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Remotely.Server.Auth;
 using Remotely.Server.Services;
 
@@ -19,6 +20,8 @@ public class ServerLogsController : ControllerBase
         _logger = logger;
     }
 
+    // Server-wide logs span all tenants, so restrict to server admins only.
+    [Authorize(Policy = PolicyNames.ServerAdminRequired)]
     [ServiceFilter(typeof(ApiAuthorizationFilter))]
     [HttpGet("Download")]
     public async Task<IActionResult> Download()
