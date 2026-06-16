@@ -1,8 +1,8 @@
 version: '3.4'
 
 networks:
-  remotely:
-    name: remotely-network
+  pronetsys:
+    name: pronetsys-network
     driver: bridge
     ipam:
       config:
@@ -10,16 +10,16 @@ networks:
           gateway: 172.28.0.1
 
 services:
-  remotely:
-    image: immybot/remotely:latest
-    container_name: remotely
+  pronetsys:
+    image: pronetsys/asistencia-remota:latest
+    container_name: pronetsys
     volumes:
-      - /var/www/remotely:/app/AppData
+      - /var/www/pronetsys:/app/AppData
     restart: unless-stopped
     ports:
       - "5000:5000"
     networks:
-      - remotely
+      - pronetsys
     environment:
       # ASPNETCORE environment variables should *not* be changed.
       - ASPNETCORE_ENVIRONMENT=Production
