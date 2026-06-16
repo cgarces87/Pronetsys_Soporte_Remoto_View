@@ -1,16 +1,16 @@
-﻿using Remotely.Server.Hubs;
-using Remotely.Server.Services;
+﻿using Pronetsys.Server.Hubs;
+using Pronetsys.Server.Services;
 using Bitbound.SimpleMessenger;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Remotely.Shared.Extensions;
-using Remotely.Shared.Interfaces;
+using Pronetsys.Shared.Extensions;
+using Pronetsys.Shared.Interfaces;
 using System.Threading.Tasks;
 
-namespace Remotely.Server.Tests;
+namespace Pronetsys.Server.Tests;
 
 [TestClass]
 public class AgentHubTests

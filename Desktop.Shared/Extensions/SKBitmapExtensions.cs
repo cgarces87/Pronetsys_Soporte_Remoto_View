@@ -1,6 +1,6 @@
 ﻿using SkiaSharp;
 
-namespace Remotely.Desktop.Shared.Extensions;
+namespace Pronetsys.Desktop.Shared.Extensions;
 
 public static class SKBitmapExtensions
 {

@@ -1,7 +1,7 @@
-﻿using Remotely.Desktop.Shared.Enums;
-using Remotely.Desktop.Shared.Services;
+﻿using Pronetsys.Desktop.Shared.Enums;
+using Pronetsys.Desktop.Shared.Services;
 
-namespace Remotely.Desktop.Shared.Abstractions;
+namespace Pronetsys.Desktop.Shared.Abstractions;
 
 public interface IKeyboardMouseInput
 {

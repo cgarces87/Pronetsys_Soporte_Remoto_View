@@ -1,5 +1,5 @@
-﻿using Remotely.Server.Enums;
+﻿using Pronetsys.Server.Enums;
 
-namespace Remotely.Server.Models.Messages;
+namespace Pronetsys.Server.Models.Messages;
 
 public record DeviceCardStateChangedMessage(string DeviceId, DeviceCardState State);

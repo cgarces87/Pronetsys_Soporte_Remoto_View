@@ -1,4 +1,4 @@
-﻿using Remotely.Shared.Services;
+﻿using Pronetsys.Shared.Services;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Remotely.Agent.Services;
+namespace Pronetsys.Agent.Services;
 
 public interface IFileLogsManager
 {

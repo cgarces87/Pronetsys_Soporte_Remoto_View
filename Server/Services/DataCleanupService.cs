@@ -1,6 +1,6 @@
-﻿using Remotely.Shared.Services;
+﻿using Pronetsys.Shared.Services;
 
-namespace Remotely.Server.Services;
+namespace Pronetsys.Server.Services;
 
 public class DataCleanupService : BackgroundService, IDisposable
 {

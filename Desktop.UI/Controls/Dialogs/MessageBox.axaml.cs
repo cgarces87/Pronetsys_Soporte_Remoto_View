@@ -1,10 +1,10 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using CommunityToolkit.Diagnostics;
-using Remotely.Desktop.Shared;
+using Pronetsys.Desktop.Shared;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Remotely.Desktop.UI.Controls.Dialogs;
+namespace Pronetsys.Desktop.UI.Controls.Dialogs;
 
 public partial class MessageBox : Window
 {

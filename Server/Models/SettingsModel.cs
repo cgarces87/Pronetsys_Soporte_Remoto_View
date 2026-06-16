@@ -1,6 +1,6 @@
-﻿using Remotely.Shared.Enums;
+﻿using Pronetsys.Shared.Enums;
 
-namespace Remotely.Server.Models;
+namespace Pronetsys.Server.Models;
 
 public class SettingsModel
 {

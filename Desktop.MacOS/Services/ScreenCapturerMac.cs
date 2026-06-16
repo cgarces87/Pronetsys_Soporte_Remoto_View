@@ -1,12 +1,12 @@
-using Remotely.Desktop.Shared.Abstractions;
-using Remotely.Desktop.Shared.Services;
+using Pronetsys.Desktop.Shared.Abstractions;
+using Pronetsys.Desktop.Shared.Services;
 using Microsoft.Extensions.Logging;
-using Remotely.Shared.Primitives;
+using Pronetsys.Shared.Primitives;
 using SkiaSharp;
 using System.Drawing;
-using Remotely.Desktop.Native.MacOS;
+using Pronetsys.Desktop.Native.MacOS;
 
-namespace Remotely.Desktop.MacOS.Services;
+namespace Pronetsys.Desktop.MacOS.Services;
 
 /// <summary>
 /// Screen capturer for macOS using CoreGraphics (CGDisplayCreateImage).

@@ -1,10 +1,10 @@
 ﻿#nullable enable
 
 using MessagePack;
-using Remotely.Shared.Models;
-using Remotely.Shared.Primitives;
+using Pronetsys.Shared.Models;
+using Pronetsys.Shared.Primitives;
 
-namespace Remotely.Shared.Services;
+namespace Pronetsys.Shared.Services;
 
 public interface IEmbeddedServerDataProvider
 {

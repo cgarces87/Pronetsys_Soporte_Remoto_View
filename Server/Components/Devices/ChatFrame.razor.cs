@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Remotely.Server.Hubs;
-using Remotely.Server.Models.Messages;
-using Remotely.Server.Services.Stores;
-using Remotely.Shared.Enums;
-using Remotely.Shared.ViewModels;
+using Pronetsys.Server.Hubs;
+using Pronetsys.Server.Models.Messages;
+using Pronetsys.Server.Services.Stores;
+using Pronetsys.Shared.Enums;
+using Pronetsys.Shared.ViewModels;
 
-namespace Remotely.Server.Components.Devices;
+namespace Pronetsys.Server.Components.Devices;
 
 public partial class ChatFrame : AuthComponentBase
 {

@@ -1,8 +1,8 @@
-using Remotely.Desktop.Shared.Abstractions;
-using Remotely.Shared.Models;
+using Pronetsys.Desktop.Shared.Abstractions;
+using Pronetsys.Shared.Models;
 using System.Drawing;
 
-namespace Remotely.Desktop.MacOS.Services;
+namespace Pronetsys.Desktop.MacOS.Services;
 
 public class CursorIconWatcherMac : ICursorIconWatcher
 {

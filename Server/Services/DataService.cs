@@ -1,18 +1,18 @@
-﻿using Remotely.Shared.Models;
+﻿using Pronetsys.Shared.Models;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Remotely.Server.Data;
-using Remotely.Server.Extensions;
-using Remotely.Server.Models;
-using Remotely.Shared;
-using Remotely.Shared.Dtos;
-using Remotely.Shared.Entities;
-using Remotely.Shared.Utilities;
-using Remotely.Shared.ViewModels;
+using Pronetsys.Server.Data;
+using Pronetsys.Server.Extensions;
+using Pronetsys.Server.Models;
+using Pronetsys.Shared;
+using Pronetsys.Shared.Dtos;
+using Pronetsys.Shared.Entities;
+using Pronetsys.Shared.Utilities;
+using Pronetsys.Shared.ViewModels;
 using System.Text.Json;
 
-namespace Remotely.Server.Services;
+namespace Pronetsys.Server.Services;
 
 // TODO: Separate this into domain-specific services.
 public interface IDataService

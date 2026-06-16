@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using Remotely.Server.Data;
-using Remotely.Server.Services;
-using Remotely.Shared.Dtos;
-using Remotely.Shared.Entities;
-using Remotely.Shared.Models;
+using Pronetsys.Server.Data;
+using Pronetsys.Server.Services;
+using Pronetsys.Shared.Dtos;
+using Pronetsys.Shared.Entities;
+using Pronetsys.Shared.Models;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Remotely.Server.Tests;
+namespace Pronetsys.Server.Tests;
 
 public class TestData
 {

@@ -1,15 +1,15 @@
-using Remotely.Desktop.Shared.Abstractions;
-using Remotely.Desktop.Shared.Services;
-using Remotely.Desktop.Shared.ViewModels;
+using Pronetsys.Desktop.Shared.Abstractions;
+using Pronetsys.Desktop.Shared.Services;
+using Pronetsys.Desktop.Shared.ViewModels;
 using Microsoft.Extensions.Logging;
 using System.Collections.Concurrent;
-using Remotely.Desktop.UI.Controls.Dialogs;
-using Remotely.Desktop.UI.Views;
-using Remotely.Desktop.UI.Services;
+using Pronetsys.Desktop.UI.Controls.Dialogs;
+using Pronetsys.Desktop.UI.Views;
+using Pronetsys.Desktop.UI.Services;
 using System.Threading;
 using System.IO;
 
-namespace Remotely.Desktop.MacOS.Services;
+namespace Pronetsys.Desktop.MacOS.Services;
 
 public class FileTransferServiceMac : IFileTransferService
 {

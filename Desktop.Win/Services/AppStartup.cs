@@ -1,11 +1,11 @@
-using Remotely.Desktop.Native.Windows;
-using Remotely.Desktop.Shared.Abstractions;
-using Remotely.Desktop.Shared.Enums;
-using Remotely.Desktop.Shared.Services;
-using Remotely.Desktop.UI.Services;
-using Remotely.Shared.Models;
+using Pronetsys.Desktop.Native.Windows;
+using Pronetsys.Desktop.Shared.Abstractions;
+using Pronetsys.Desktop.Shared.Enums;
+using Pronetsys.Desktop.Shared.Services;
+using Pronetsys.Desktop.UI.Services;
+using Pronetsys.Shared.Models;
 
-namespace Remotely.Desktop.Win.Services;
+namespace Pronetsys.Desktop.Win.Services;
 
 internal class AppStartup : IAppStartup
 {

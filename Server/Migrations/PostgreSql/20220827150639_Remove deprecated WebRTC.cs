@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Remotely.Server.Migrations.PostgreSql;
+namespace Pronetsys.Server.Migrations.PostgreSql;
 
 public partial class RemovedeprecatedWebRTC : Migration
 {

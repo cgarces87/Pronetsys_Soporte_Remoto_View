@@ -1,4 +1,4 @@
-﻿namespace Remotely.Server.Services;
+﻿namespace Pronetsys.Server.Services;
 
 public interface IUpgradeService
 {

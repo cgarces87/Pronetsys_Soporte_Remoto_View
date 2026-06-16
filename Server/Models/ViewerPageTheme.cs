@@ -1,4 +1,4 @@
-﻿namespace Remotely.Server.Models;
+﻿namespace Pronetsys.Server.Models;
 
 public enum ViewerPageTheme
 {

@@ -1,4 +1,4 @@
-﻿namespace Remotely.Server.RateLimiting;
+﻿namespace Pronetsys.Server.RateLimiting;
 
 public static class PolicyNames
 {

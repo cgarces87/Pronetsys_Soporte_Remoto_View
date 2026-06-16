@@ -1,11 +1,11 @@
 ﻿using Avalonia.Controls;
-using Remotely.Desktop.Shared.Reactive;
+using Pronetsys.Desktop.Shared.Reactive;
 using Microsoft.Extensions.Logging;
 using System.Windows.Input;
-using Remotely.Desktop.Shared.Services;
+using Pronetsys.Desktop.Shared.Services;
 
 
-namespace Remotely.Desktop.UI.ViewModels;
+namespace Pronetsys.Desktop.UI.ViewModels;
 
 public interface IPromptForAccessWindowViewModel : IBrandedViewModelBase
 {

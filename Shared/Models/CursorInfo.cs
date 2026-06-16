@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Remotely.Shared.Models;
+namespace Pronetsys.Shared.Models;
 
 public class CursorInfo
 {

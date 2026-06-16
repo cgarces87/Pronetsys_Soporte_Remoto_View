@@ -1,4 +1,4 @@
-﻿namespace Remotely.Desktop.Shared.Enums;
+﻿namespace Pronetsys.Desktop.Shared.Enums;
 
 public enum AppMode
 {

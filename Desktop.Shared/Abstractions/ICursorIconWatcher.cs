@@ -1,6 +1,6 @@
-﻿using Remotely.Shared.Models;
+﻿using Pronetsys.Shared.Models;
 
-namespace Remotely.Desktop.Shared.Abstractions;
+namespace Pronetsys.Desktop.Shared.Abstractions;
 
 public interface ICursorIconWatcher
 {

@@ -3,14 +3,14 @@ using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.WebUtilities;
-using Remotely.Server.Components.ModalContents;
-using Remotely.Server.Services;
-using Remotely.Shared.Entities;
-using Remotely.Shared.ViewModels;
+using Pronetsys.Server.Components.ModalContents;
+using Pronetsys.Server.Services;
+using Pronetsys.Shared.Entities;
+using Pronetsys.Shared.ViewModels;
 using System.Text;
 using System.Text.Encodings.Web;
 
-namespace Remotely.Server.Components.Pages;
+namespace Pronetsys.Server.Components.Pages;
 
 public partial class ManageOrganization : AuthComponentBase
 {
@@ -346,7 +346,7 @@ public partial class ManageOrganization : AuthComponentBase
                             <br><br>
                             Hello!
                             <br><br>
-                            You've been invited to join an organization in Remotely.
+                            You've been invited to join an organization in Pronetsys.
                             <br><br>
                             You can join the organization by <a href='{HtmlEncoder.Default.Encode(inviteURL)}'>clicking here</a>.",
                     User.OrganizationID);

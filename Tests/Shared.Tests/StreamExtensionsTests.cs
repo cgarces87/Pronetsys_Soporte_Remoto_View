@@ -1,7 +1,7 @@
 using System.Security.Cryptography;
-using Remotely.Shared.Extensions;
+using Pronetsys.Shared.Extensions;
 
-namespace Remotely.Shared.Tests;
+namespace Pronetsys.Shared.Tests;
 
 [TestClass]
 public class StreamExtensionsTests

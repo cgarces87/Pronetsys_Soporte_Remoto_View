@@ -1,13 +1,13 @@
-using Remotely.Desktop.Shared.Messages;
-using Remotely.Desktop.UI.Services;
-using Remotely.Shared.Enums;
+using Pronetsys.Desktop.Shared.Messages;
+using Pronetsys.Desktop.UI.Services;
+using Pronetsys.Shared.Enums;
 using Bitbound.SimpleMessenger;
 using Microsoft.Win32;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 
-namespace Remotely.Desktop.Win.Services;
+namespace Pronetsys.Desktop.Win.Services;
 
 public interface IMessageLoop
 {

@@ -1,9 +1,9 @@
-﻿using Remotely.Server.Hubs;
-using Remotely.Shared.Entities;
-using Remotely.Shared.Enums;
-using Remotely.Shared.Utilities;
+﻿using Pronetsys.Server.Hubs;
+using Pronetsys.Shared.Entities;
+using Pronetsys.Shared.Enums;
+using Pronetsys.Shared.Utilities;
 
-namespace Remotely.Server.Services;
+namespace Pronetsys.Server.Services;
 
 public interface IScriptScheduleDispatcher
 {

@@ -1,8 +1,8 @@
-﻿using Remotely.Shared.Entities;
+﻿using Pronetsys.Shared.Entities;
 using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Remotely.Server.Services;
+namespace Pronetsys.Server.Services;
 
 public interface IAgentHubSessionCache
 {

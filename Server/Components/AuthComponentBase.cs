@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
-using Remotely.Server.Services;
-using Remotely.Shared.Entities;
+using Pronetsys.Server.Services;
+using Pronetsys.Shared.Entities;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Remotely.Server.Components;
+namespace Pronetsys.Server.Components;
 
 [Authorize]
 public class AuthComponentBase : MessengerSubscriber

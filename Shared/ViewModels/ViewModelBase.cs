@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Remotely.Shared.ViewModels;
+namespace Pronetsys.Shared.ViewModels;
 
 public interface IInvokePropertyChanged
 {

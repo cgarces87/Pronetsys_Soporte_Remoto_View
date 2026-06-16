@@ -1,22 +1,22 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Remotely.Agent.Interfaces;
-using Remotely.Agent.Services;
-using Remotely.Shared.Utilities;
-using Remotely.Shared.Services;
+using Pronetsys.Agent.Interfaces;
+using Pronetsys.Agent.Services;
+using Pronetsys.Shared.Utilities;
+using Pronetsys.Shared.Services;
 using System;
 using System.IO;
 using System.Threading.Tasks;
 using System.Runtime.Versioning;
-using Remotely.Agent.Services.Linux;
-using Remotely.Agent.Services.MacOS;
-using Remotely.Agent.Services.Windows;
+using Pronetsys.Agent.Services.Linux;
+using Pronetsys.Agent.Services.MacOS;
+using Pronetsys.Agent.Services.Windows;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
 using Microsoft.Win32;
 using System.Reflection;
 
-namespace Remotely.Agent;
+namespace Pronetsys.Agent;
 
 public class Program
 {

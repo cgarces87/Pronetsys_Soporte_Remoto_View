@@ -1,8 +1,8 @@
-using Remotely.Desktop.Shared.Abstractions;
-using Remotely.Shared.Models;
+using Pronetsys.Desktop.Shared.Abstractions;
+using Pronetsys.Shared.Models;
 using System.Drawing;
 
-namespace Remotely.Desktop.Linux.Services;
+namespace Pronetsys.Desktop.Linux.Services;
 
 public class CursorIconWatcherLinux : ICursorIconWatcher
 {

@@ -1,13 +1,13 @@
 ﻿using Avalonia.Threading;
-using Remotely.Desktop.Shared.Services;
-using Remotely.Desktop.Shared.ViewModels;
+using Pronetsys.Desktop.Shared.Services;
+using Pronetsys.Desktop.Shared.ViewModels;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using Remotely.Desktop.Shared.Abstractions;
+using Pronetsys.Desktop.Shared.Abstractions;
 using Microsoft.Extensions.Logging;
-using Remotely.Desktop.Shared.Reactive;
+using Pronetsys.Desktop.Shared.Reactive;
 
-namespace Remotely.Desktop.UI.ViewModels;
+namespace Pronetsys.Desktop.UI.ViewModels;
 
 public interface IFileTransferWindowViewModel : IBrandedViewModelBase
 {

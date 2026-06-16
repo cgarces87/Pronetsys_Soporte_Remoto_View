@@ -1,18 +1,18 @@
-﻿using Remotely.Desktop.Shared.Abstractions;
+﻿using Pronetsys.Desktop.Shared.Abstractions;
 using System.Threading;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Remotely.Shared.Services;
-using Remotely.Desktop.Shared.Services;
+using Pronetsys.Shared.Services;
+using Pronetsys.Desktop.Shared.Services;
 using System.Diagnostics;
-using Remotely.Shared.Utilities;
-using Remotely.Desktop.Shared.Startup;
-using Remotely.Desktop.Linux.Startup;
-using Remotely.Desktop.UI.Services;
+using Pronetsys.Shared.Utilities;
+using Pronetsys.Desktop.Shared.Startup;
+using Pronetsys.Desktop.Linux.Startup;
+using Pronetsys.Desktop.UI.Services;
 using Avalonia;
-using Remotely.Desktop.UI;
+using Pronetsys.Desktop.UI;
 
-namespace Remotely.Desktop.Linux;
+namespace Pronetsys.Desktop.Linux;
 
 public class Program
 {
@@ -70,7 +70,7 @@ public class Program
 
         var result = await provider.UseRemoteControlClient(
             args,
-            "The remote control client for Remotely.",
+            "The remote control client for Pronetsys.",
             serverUrl,
             false);
 

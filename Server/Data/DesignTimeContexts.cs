@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.FileProviders;
 
-namespace Remotely.Server.Data;
+namespace Pronetsys.Server.Data;
 
 public class SqliteDbContextDesignTime : IDesignTimeDbContextFactory<SqliteDbContext>
 {

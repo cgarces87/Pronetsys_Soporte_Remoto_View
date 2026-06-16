@@ -1,7 +1,7 @@
-﻿using Remotely.Desktop.Native.Linux;
+﻿using Pronetsys.Desktop.Native.Linux;
 using System.Security.Principal;
 
-namespace Remotely.Desktop.Shared.Services;
+namespace Pronetsys.Desktop.Shared.Services;
 
 public interface IDesktopEnvironment
 {

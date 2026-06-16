@@ -1,7 +1,7 @@
-using Remotely.Desktop.Shared.Abstractions;
+using Pronetsys.Desktop.Shared.Abstractions;
 using Microsoft.Extensions.Logging;
 
-namespace Remotely.Desktop.UI.Services;
+namespace Pronetsys.Desktop.UI.Services;
 
 public class ClipboardService : IClipboardService
 {

@@ -1,9 +1,9 @@
-﻿using Remotely.Shared.Models;
+﻿using Pronetsys.Shared.Models;
 using System.Drawing;
 using System.Numerics;
 using System.Runtime.InteropServices;
 
-namespace Remotely.Desktop.Win.Helpers;
+namespace Pronetsys.Desktop.Win.Helpers;
 
 internal static class DisplaysEnumerationHelper
 {

@@ -1,18 +1,18 @@
-﻿using Remotely.Desktop.Shared.Abstractions;
-using Remotely.Desktop.Shared.Services;
-using Remotely.Desktop.Shared.ViewModels;
-using Remotely.Desktop.UI.Controls.Dialogs;
-using Remotely.Desktop.UI.Services;
-using Remotely.Desktop.UI.Views;
+﻿using Pronetsys.Desktop.Shared.Abstractions;
+using Pronetsys.Desktop.Shared.Services;
+using Pronetsys.Desktop.Shared.ViewModels;
+using Pronetsys.Desktop.UI.Controls.Dialogs;
+using Pronetsys.Desktop.UI.Services;
+using Pronetsys.Desktop.UI.Views;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Runtime.Versioning;
 using System.Security.AccessControl;
 using System.Security.Principal;
-using Remotely.Shared.Extensions;
+using Pronetsys.Shared.Extensions;
 using System.IO;
 
-namespace Remotely.Desktop.Win.Services;
+namespace Pronetsys.Desktop.Win.Services;
 
 public class FileTransferServiceWin : IFileTransferService
 {

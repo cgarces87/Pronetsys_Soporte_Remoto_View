@@ -2,12 +2,12 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Remotely.Agent.Extensions;
-using Remotely.Agent.Interfaces;
-using Remotely.Shared;
-using Remotely.Shared.Enums;
-using Remotely.Shared.Interfaces;
-using Remotely.Shared.Models;
+using Pronetsys.Agent.Extensions;
+using Pronetsys.Agent.Interfaces;
+using Pronetsys.Shared;
+using Pronetsys.Shared.Enums;
+using Pronetsys.Shared.Interfaces;
+using Pronetsys.Shared.Models;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
@@ -18,9 +18,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using Timer = System.Timers.Timer;
-using Remotely.Desktop.Native.Windows;
+using Pronetsys.Desktop.Native.Windows;
 
-namespace Remotely.Agent.Services;
+namespace Pronetsys.Agent.Services;
 
 public interface IAgentHubConnection : IAgentHubClient
 {

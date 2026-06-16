@@ -1,7 +1,7 @@
-﻿using Remotely.Shared.Primitives;
-using Remotely.Shared.Utilities;
+﻿using Pronetsys.Shared.Primitives;
+using Pronetsys.Shared.Utilities;
 
-namespace Remotely.Shared.Services;
+namespace Pronetsys.Shared.Services;
 public static class FileLoggerDefaults
 {
     private static readonly SemaphoreSlim _logLock = new(1, 1);

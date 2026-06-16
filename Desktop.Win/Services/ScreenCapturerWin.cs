@@ -21,12 +21,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using Remotely.Desktop.Shared.Abstractions;
-using Remotely.Desktop.Shared.Services;
-using Remotely.Shared.Models;
+using Pronetsys.Desktop.Shared.Abstractions;
+using Pronetsys.Desktop.Shared.Services;
+using Pronetsys.Shared.Models;
 using Bitbound.SimpleMessenger;
-using Remotely.Desktop.Win.Helpers;
-using Remotely.Desktop.Win.Models;
+using Pronetsys.Desktop.Win.Helpers;
+using Pronetsys.Desktop.Win.Models;
 using SharpDX;
 using SharpDX.Direct3D11;
 using SharpDX.DXGI;
@@ -38,12 +38,12 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
-using Result = Remotely.Shared.Primitives.Result;
-using Remotely.Desktop.Shared.Messages;
-using Remotely.Shared.Primitives;
-using Remotely.Desktop.Native.Windows;
+using Result = Pronetsys.Shared.Primitives.Result;
+using Pronetsys.Desktop.Shared.Messages;
+using Pronetsys.Shared.Primitives;
+using Pronetsys.Desktop.Native.Windows;
 
-namespace Remotely.Desktop.Win.Services;
+namespace Pronetsys.Desktop.Win.Services;
 
 [SupportedOSPlatform("windows")]
 public class ScreenCapturerWin : IScreenCapturer

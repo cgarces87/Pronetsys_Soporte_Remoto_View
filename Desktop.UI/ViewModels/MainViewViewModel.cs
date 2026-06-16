@@ -1,15 +1,15 @@
 ﻿using Avalonia.Controls;
-using Remotely.Desktop.Shared.Services;
-using Remotely.Shared.Models;
+using Pronetsys.Desktop.Shared.Services;
+using Pronetsys.Shared.Models;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows.Input;
 using Microsoft.Extensions.Logging;
-using Remotely.Desktop.Shared.Reactive;
+using Pronetsys.Desktop.Shared.Reactive;
 using Microsoft.Extensions.DependencyInjection;
-using Remotely.Desktop.UI.Controls.Dialogs;
+using Pronetsys.Desktop.UI.Controls.Dialogs;
 
-namespace Remotely.Desktop.UI.ViewModels;
+namespace Pronetsys.Desktop.UI.ViewModels;
 
 public interface IMainViewViewModel : IBrandedViewModelBase
 {

@@ -3,11 +3,11 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Input.Platform;
 using Avalonia.Threading;
-using Remotely.Shared.Helpers;
+using Pronetsys.Shared.Helpers;
 using Microsoft.Extensions.Logging;
-using Remotely.Shared.Primitives;
+using Pronetsys.Shared.Primitives;
 
-namespace Remotely.Desktop.UI.Services;
+namespace Pronetsys.Desktop.UI.Services;
 
 public interface IUiDispatcher
 {

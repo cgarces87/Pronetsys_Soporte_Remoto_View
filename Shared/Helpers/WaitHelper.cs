@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace Remotely.Shared.Helpers;
+namespace Pronetsys.Shared.Helpers;
 
 public static class WaitHelper
 {

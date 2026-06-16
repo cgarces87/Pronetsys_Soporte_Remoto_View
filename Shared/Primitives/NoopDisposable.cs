@@ -1,4 +1,4 @@
-﻿namespace Remotely.Shared.Primitives;
+﻿namespace Pronetsys.Shared.Primitives;
 public class NoopDisposable : IDisposable
 {
     public void Dispose()

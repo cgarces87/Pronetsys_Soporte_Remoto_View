@@ -1,6 +1,6 @@
-﻿using Remotely.Shared.Enums;
+﻿using Pronetsys.Shared.Enums;
 
-namespace Remotely.Shared.ViewModels;
+namespace Pronetsys.Shared.ViewModels;
 
 public class ChatHistoryItem
 {

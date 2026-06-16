@@ -1,9 +1,9 @@
-using Remotely.Desktop.Shared.Abstractions;
+using Pronetsys.Desktop.Shared.Abstractions;
 using System.ComponentModel;
-using Remotely.Desktop.UI.Controls.Dialogs;
-using Remotely.Shared.Models;
+using Pronetsys.Desktop.UI.Controls.Dialogs;
+using Pronetsys.Shared.Models;
 
-namespace Remotely.Desktop.UI.Services;
+namespace Pronetsys.Desktop.UI.Services;
 
 public class ChatUiService : IChatUiService
 {

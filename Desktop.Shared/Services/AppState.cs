@@ -1,11 +1,11 @@
-using Remotely.Desktop.Shared.Enums;
-using Remotely.Desktop.Shared.Messages;
-using Remotely.Shared.Models;
+using Pronetsys.Desktop.Shared.Enums;
+using Pronetsys.Desktop.Shared.Messages;
+using Pronetsys.Shared.Models;
 using Microsoft.Extensions.Logging;
 using Bitbound.SimpleMessenger;
 using System.Collections.Concurrent;
 
-namespace Remotely.Desktop.Shared.Services;
+namespace Pronetsys.Desktop.Shared.Services;
 
 public interface IAppState
 {

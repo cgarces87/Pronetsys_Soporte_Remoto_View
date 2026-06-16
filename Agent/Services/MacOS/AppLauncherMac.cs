@@ -1,15 +1,15 @@
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.Logging;
-using Remotely.Agent.Interfaces;
-using Remotely.Shared.Models;
-using Remotely.Shared.Services;
-using Remotely.Shared.Utilities;
+using Pronetsys.Agent.Interfaces;
+using Pronetsys.Shared.Models;
+using Pronetsys.Shared.Services;
+using Pronetsys.Shared.Utilities;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Remotely.Agent.Services.MacOS;
+namespace Pronetsys.Agent.Services.MacOS;
 
 /// <summary>
 /// Launches the Remotely desktop (screen-control) client on macOS.

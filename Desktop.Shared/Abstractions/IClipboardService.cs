@@ -1,4 +1,4 @@
-﻿namespace Remotely.Desktop.Shared.Abstractions;
+﻿namespace Pronetsys.Desktop.Shared.Abstractions;
 
 public interface IClipboardService
 {

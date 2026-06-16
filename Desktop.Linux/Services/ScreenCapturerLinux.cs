@@ -1,13 +1,13 @@
-using Remotely.Desktop.Shared.Abstractions;
-using Remotely.Desktop.Shared.Services;
+using Pronetsys.Desktop.Shared.Abstractions;
+using Pronetsys.Desktop.Shared.Services;
 using Microsoft.Extensions.Logging;
-using Remotely.Shared.Primitives;
+using Pronetsys.Shared.Primitives;
 using SkiaSharp;
 using System.Drawing;
 using System.Runtime.InteropServices;
-using Remotely.Desktop.Native.Linux;
+using Pronetsys.Desktop.Native.Linux;
 
-namespace Remotely.Desktop.Linux.Services;
+namespace Pronetsys.Desktop.Linux.Services;
 
 public class ScreenCapturerLinux : IScreenCapturer
 {

@@ -1,2 +1,2 @@
-﻿namespace Remotely.Desktop.Shared.Messages;
+﻿namespace Pronetsys.Desktop.Shared.Messages;
 public record DisplaySettingsChangedMessage();

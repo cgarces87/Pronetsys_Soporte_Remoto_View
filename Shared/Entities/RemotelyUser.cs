@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Remotely.Shared.Models;
+using Pronetsys.Shared.Models;
 using System.Text.Json.Serialization;
 
-namespace Remotely.Shared.Entities;
+namespace Pronetsys.Shared.Entities;
 
 public class RemotelyUser : IdentityUser
 {

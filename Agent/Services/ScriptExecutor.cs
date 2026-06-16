@@ -1,17 +1,17 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.Logging;
-using Remotely.Shared;
-using Remotely.Shared.Dtos;
-using Remotely.Shared.Entities;
-using Remotely.Shared.Enums;
-using Remotely.Shared.Utilities;
+using Pronetsys.Shared;
+using Pronetsys.Shared.Dtos;
+using Pronetsys.Shared.Entities;
+using Pronetsys.Shared.Enums;
+using Pronetsys.Shared.Utilities;
 using System;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Remotely.Agent.Services;
+namespace Pronetsys.Agent.Services;
 
 public interface IScriptExecutor
 {

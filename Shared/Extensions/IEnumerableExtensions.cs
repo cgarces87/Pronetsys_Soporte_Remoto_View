@@ -1,4 +1,4 @@
-﻿namespace Remotely.Shared.Extensions;
+﻿namespace Pronetsys.Shared.Extensions;
 
 public static class IEnumerableExtensions
 {

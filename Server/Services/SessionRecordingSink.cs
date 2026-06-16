@@ -1,6 +1,6 @@
-﻿using Remotely.Server.Models;
+﻿using Pronetsys.Server.Models;
 
-namespace Remotely.Server.Services;
+namespace Pronetsys.Server.Services;
 
 
 /// <summary>

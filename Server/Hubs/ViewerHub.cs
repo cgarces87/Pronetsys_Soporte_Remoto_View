@@ -1,13 +1,13 @@
-using Remotely.Server.Enums;
-using Remotely.Server.Filters;
-using Remotely.Server.Models;
-using Remotely.Server.Services;
-using Remotely.Shared.Interfaces;
-using Remotely.Shared.Models;
+using Pronetsys.Server.Enums;
+using Pronetsys.Server.Filters;
+using Pronetsys.Server.Models;
+using Pronetsys.Server.Services;
+using Pronetsys.Shared.Interfaces;
+using Pronetsys.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 
-namespace Remotely.Server.Hubs;
+namespace Pronetsys.Server.Hubs;
 
 [ServiceFilter(typeof(ViewerAuthorizationFilter))]
 public class ViewerHub : Hub<IViewerHubClient>

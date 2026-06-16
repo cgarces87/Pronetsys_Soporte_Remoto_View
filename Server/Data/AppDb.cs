@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Remotely.Server.Converters;
-using Remotely.Shared.Entities;
-using Remotely.Shared.Models;
+using Pronetsys.Server.Converters;
+using Pronetsys.Shared.Entities;
+using Pronetsys.Shared.Models;
 using System.Text.Json;
 
-namespace Remotely.Server.Data;
+namespace Pronetsys.Server.Data;
 
 public class AppDb : IdentityDbContext
 {

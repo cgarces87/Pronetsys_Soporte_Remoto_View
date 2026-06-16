@@ -1,4 +1,4 @@
-﻿namespace Remotely.Server.Data;
+﻿namespace Pronetsys.Server.Data;
 
 public interface IAppDbFactory
 {

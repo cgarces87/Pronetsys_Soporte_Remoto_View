@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Remotely.Server.Migrations.PostgreSql;
+namespace Pronetsys.Server.Migrations.PostgreSql;
 
 /// <inheritdoc />
 public partial class Enable_NullableReferences : Migration

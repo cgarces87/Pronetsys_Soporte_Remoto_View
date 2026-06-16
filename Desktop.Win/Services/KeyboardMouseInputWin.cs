@@ -1,15 +1,15 @@
-﻿using Remotely.Desktop.Native.Windows;
-using Remotely.Desktop.Shared.Abstractions;
-using Remotely.Desktop.Shared.Enums;
-using Remotely.Desktop.Shared.Services;
-using Remotely.Desktop.UI.Services;
+﻿using Pronetsys.Desktop.Native.Windows;
+using Pronetsys.Desktop.Shared.Abstractions;
+using Pronetsys.Desktop.Shared.Enums;
+using Pronetsys.Desktop.Shared.Services;
+using Pronetsys.Desktop.UI.Services;
 using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
-using static Remotely.Desktop.Native.Windows.User32;
+using static Pronetsys.Desktop.Native.Windows.User32;
 
-namespace Remotely.Desktop.Win.Services;
+namespace Pronetsys.Desktop.Win.Services;
 
 [SupportedOSPlatform("windows")]
 public class KeyboardMouseInputWin(

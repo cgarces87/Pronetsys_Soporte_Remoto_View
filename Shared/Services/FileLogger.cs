@@ -1,10 +1,10 @@
 ﻿#nullable enable
 
 using Microsoft.Extensions.Logging;
-using Remotely.Shared.Utilities;
+using Pronetsys.Shared.Utilities;
 using System.Collections.Concurrent;
 
-namespace Remotely.Shared.Services;
+namespace Pronetsys.Shared.Services;
 
 public class FileLogger : ILogger
 {

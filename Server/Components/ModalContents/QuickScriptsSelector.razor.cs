@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace Remotely.Server.Components.ModalContents;
+namespace Pronetsys.Server.Components.ModalContents;
 
 public partial class QuickScriptsSelector : ComponentBase
 {

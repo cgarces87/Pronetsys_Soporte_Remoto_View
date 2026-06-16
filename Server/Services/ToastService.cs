@@ -1,7 +1,7 @@
-﻿using Remotely.Server.Enums;
-using Remotely.Server.Models;
+﻿using Pronetsys.Server.Enums;
+using Pronetsys.Server.Models;
 
-namespace Remotely.Server.Services;
+namespace Pronetsys.Server.Services;
 
 public interface IToastService
 {

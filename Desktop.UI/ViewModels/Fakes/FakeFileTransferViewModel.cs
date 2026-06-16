@@ -1,9 +1,9 @@
-﻿using Remotely.Desktop.Shared.Reactive;
-using Remotely.Desktop.Shared.ViewModels;
+﻿using Pronetsys.Desktop.Shared.Reactive;
+using Pronetsys.Desktop.Shared.ViewModels;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
-namespace Remotely.Desktop.UI.ViewModels.Fakes;
+namespace Pronetsys.Desktop.UI.ViewModels.Fakes;
 
 public class FakeFileTransferViewModel : FakeBrandedViewModelBase, IFileTransferWindowViewModel
 {

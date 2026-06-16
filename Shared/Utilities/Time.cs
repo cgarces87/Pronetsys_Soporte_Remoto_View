@@ -1,4 +1,4 @@
-﻿namespace Remotely.Shared.Utilities;
+﻿namespace Pronetsys.Shared.Utilities;
 
 // TODO: Replace with ISystemTime.
 public static class Time

@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Remotely.Server.Migrations.SqlServer;
+namespace Pronetsys.Server.Migrations.SqlServer;
 
 /// <inheritdoc />
 public partial class Add_Agent_MacAddress : Migration

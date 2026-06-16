@@ -1,17 +1,17 @@
-﻿using Remotely.Desktop.Shared.Abstractions;
-using Remotely.Desktop.Shared.Messages;
-using Remotely.Shared.Enums;
-using Remotely.Shared.Interfaces;
-using Remotely.Shared.Models;
+﻿using Pronetsys.Desktop.Shared.Abstractions;
+using Pronetsys.Desktop.Shared.Messages;
+using Pronetsys.Shared.Enums;
+using Pronetsys.Shared.Interfaces;
+using Pronetsys.Shared.Models;
 using Bitbound.SimpleMessenger;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Remotely.Shared.Primitives;
+using Pronetsys.Shared.Primitives;
 using System.Diagnostics;
-using Remotely.Desktop.Native.Windows;
+using Pronetsys.Desktop.Native.Windows;
 
-namespace Remotely.Desktop.Shared.Services;
+namespace Pronetsys.Desktop.Shared.Services;
 
 public interface IDesktopHubConnection
 {

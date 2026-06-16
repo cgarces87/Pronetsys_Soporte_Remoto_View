@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 
-namespace Remotely.Shared.Services;
+namespace Pronetsys.Shared.Services;
 
 public interface IProcessInvoker
 {

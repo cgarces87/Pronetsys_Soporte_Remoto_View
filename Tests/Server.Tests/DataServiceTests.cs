@@ -1,16 +1,16 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Remotely.Server.Services;
-using Remotely.Shared.Dtos;
-using Remotely.Shared.Entities;
-using Remotely.Shared.Enums;
-using Remotely.Shared.Models;
-using Remotely.Shared.Utilities;
+using Pronetsys.Server.Services;
+using Pronetsys.Shared.Dtos;
+using Pronetsys.Shared.Entities;
+using Pronetsys.Shared.Enums;
+using Pronetsys.Shared.Models;
+using Pronetsys.Shared.Utilities;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Remotely.Server.Tests;
+namespace Pronetsys.Server.Tests;
 
 [TestClass]
 public class DataServiceTests

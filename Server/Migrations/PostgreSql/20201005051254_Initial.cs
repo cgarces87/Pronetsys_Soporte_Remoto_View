@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace Remotely.Server.Migrations.PostgreSql;
+namespace Pronetsys.Server.Migrations.PostgreSql;
 
 public partial class Initial : Migration
 {

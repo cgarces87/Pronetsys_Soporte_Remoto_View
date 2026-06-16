@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Reflection;
 
-namespace Remotely.Shared.Utilities;
+namespace Pronetsys.Shared.Utilities;
 
 public static class AppVersionHelper
 {

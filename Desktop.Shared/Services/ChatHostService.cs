@@ -1,10 +1,10 @@
-﻿using Remotely.Desktop.Shared.Abstractions;
+﻿using Pronetsys.Desktop.Shared.Abstractions;
 using Microsoft.Extensions.Logging;
-using Remotely.Shared.Models;
+using Pronetsys.Shared.Models;
 using System.IO.Pipes;
 using System.Text.Json;
 
-namespace Remotely.Desktop.Shared.Services;
+namespace Pronetsys.Desktop.Shared.Services;
 
 public interface IChatHostService
 {

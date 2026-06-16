@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Components;
 using System.Collections.Concurrent;
 
-namespace Remotely.Server.Components;
+namespace Pronetsys.Server.Components;
 
 public class MessengerSubscriber : ComponentBase, IDisposable
 {

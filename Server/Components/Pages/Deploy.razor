@@ -246,10 +246,10 @@
     private string GetLinuxScript(string platformId)
     {
         return
-            $"sudo rm -f /tmp/Install-Remotely.sh && " +
-            $"sudo wget -q -O /tmp/Install-Remotely.sh {NavMan.BaseUri}api/ClientDownloads/{platformId}/{_organizationId} && " +
-            $"sudo chmod +x /tmp/Install-Remotely.sh && " +
-            $"sudo /tmp/Install-Remotely.sh";
+            $"sudo rm -f /tmp/Install-Pronetsys.sh && " +
+            $"sudo wget -q -O /tmp/Install-Pronetsys.sh {NavMan.BaseUri}api/ClientDownloads/{platformId}/{_organizationId} && " +
+            $"sudo chmod +x /tmp/Install-Pronetsys.sh && " +
+            $"sudo /tmp/Install-Pronetsys.sh";
     }
 
 

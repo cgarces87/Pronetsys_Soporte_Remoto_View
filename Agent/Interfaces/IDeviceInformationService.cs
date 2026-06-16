@@ -1,7 +1,7 @@
-﻿using Remotely.Shared.Dtos;
+﻿using Pronetsys.Shared.Dtos;
 using System.Threading.Tasks;
 
-namespace Remotely.Agent.Interfaces;
+namespace Pronetsys.Agent.Interfaces;
 
 public interface IDeviceInformationService
 {

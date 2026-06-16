@@ -1,11 +1,11 @@
 ﻿using Avalonia.Controls;
 using System.Windows.Input;
-using Remotely.Desktop.Shared.Reactive;
+using Pronetsys.Desktop.Shared.Reactive;
 using Microsoft.Extensions.Logging;
-using Remotely.Desktop.UI.Controls.Dialogs;
-using Remotely.Desktop.Shared.Services;
+using Pronetsys.Desktop.UI.Controls.Dialogs;
+using Pronetsys.Desktop.Shared.Services;
 
-namespace Remotely.Desktop.UI.ViewModels;
+namespace Pronetsys.Desktop.UI.ViewModels;
 
 public interface IMessageBoxViewModel : IBrandedViewModelBase
 {

@@ -1,18 +1,18 @@
-﻿using Remotely.Shared.Extensions;
+﻿using Pronetsys.Shared.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
-using Remotely.Server.Auth;
-using Remotely.Server.Extensions;
-using Remotely.Server.Services;
-using Remotely.Shared.Entities;
-using Remotely.Shared.ViewModels;
+using Pronetsys.Server.Auth;
+using Pronetsys.Server.Extensions;
+using Pronetsys.Server.Services;
+using Pronetsys.Shared.Entities;
+using Pronetsys.Shared.ViewModels;
 using System.Text;
 using System.Text.Encodings.Web;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace Remotely.Server.API;
+namespace Pronetsys.Server.API;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -320,7 +320,7 @@ public class OrganizationManagementController : ControllerBase
                             <br><br>
                             Hello!
                             <br><br>
-                            You've been invited to join an organization in Remotely.
+                            You've been invited to join an organization in Pronetsys.
                             <br><br>
                             You can join the organization by <a href='{HtmlEncoder.Default.Encode(inviteURL)}'>clicking here</a>.",
                         orgId);

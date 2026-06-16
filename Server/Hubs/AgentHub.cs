@@ -1,17 +1,17 @@
-﻿using Remotely.Server.Services;
+﻿using Pronetsys.Server.Services;
 using Bitbound.SimpleMessenger;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Caching.Memory;
-using Remotely.Server.Models.Messages;
-using Remotely.Shared;
-using Remotely.Shared.Dtos;
-using Remotely.Shared.Entities;
-using Remotely.Shared.Enums;
-using Remotely.Shared.Interfaces;
-using Remotely.Shared.Models;
-using Remotely.Shared.Utilities;
+using Pronetsys.Server.Models.Messages;
+using Pronetsys.Shared;
+using Pronetsys.Shared.Dtos;
+using Pronetsys.Shared.Entities;
+using Pronetsys.Shared.Enums;
+using Pronetsys.Shared.Interfaces;
+using Pronetsys.Shared.Models;
+using Pronetsys.Shared.Utilities;
 
-namespace Remotely.Server.Hubs;
+namespace Pronetsys.Server.Hubs;
 
 public class AgentHub : Hub<IAgentHubClient>
 {

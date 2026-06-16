@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace Remotely.Server.Services;
+namespace Pronetsys.Server.Services;
 
 public class PascalCasePolicy : JsonNamingPolicy
 {

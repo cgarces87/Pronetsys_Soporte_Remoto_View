@@ -1,7 +1,7 @@
-﻿using Remotely.Desktop.Shared.Services;
-using Remotely.Desktop.Shared.ViewModels;
+﻿using Pronetsys.Desktop.Shared.Services;
+using Pronetsys.Desktop.Shared.ViewModels;
 
-namespace Remotely.Desktop.Shared.Abstractions;
+namespace Pronetsys.Desktop.Shared.Abstractions;
 
 public interface IFileTransferService
 {

@@ -1,6 +1,6 @@
-using Remotely.Desktop.Shared.Abstractions;
+using Pronetsys.Desktop.Shared.Abstractions;
 
-namespace Remotely.Desktop.Linux.Services;
+namespace Pronetsys.Desktop.Linux.Services;
 
 public class AudioCapturerLinux : IAudioCapturer
 {

@@ -1,12 +1,12 @@
-﻿using Remotely.Server.Hubs;
-using Remotely.Server.Services;
+﻿using Pronetsys.Server.Hubs;
+using Pronetsys.Server.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using Remotely.Server.Models;
-using Remotely.Shared.Entities;
+using Pronetsys.Server.Models;
+using Pronetsys.Shared.Entities;
 
-namespace Remotely.Server.API;
+namespace Pronetsys.Server.API;
 
 [Route("api/[controller]")]
 [ApiController]

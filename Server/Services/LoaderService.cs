@@ -1,8 +1,8 @@
 ﻿using Bitbound.SimpleMessenger;
-using Remotely.Server.Hubs;
-using Remotely.Server.Models.Messages;
+using Pronetsys.Server.Hubs;
+using Pronetsys.Server.Models.Messages;
 
-namespace Remotely.Server.Services;
+namespace Pronetsys.Server.Services;
 
 public interface ILoaderService
 {

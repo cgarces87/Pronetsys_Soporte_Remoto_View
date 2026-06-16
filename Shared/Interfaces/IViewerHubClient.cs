@@ -1,4 +1,4 @@
-﻿namespace Remotely.Shared.Interfaces;
+﻿namespace Pronetsys.Shared.Interfaces;
 
 public interface IViewerHubClient
 {

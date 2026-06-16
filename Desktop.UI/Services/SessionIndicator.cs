@@ -1,8 +1,8 @@
-﻿using Remotely.Desktop.Shared;
-using Remotely.Desktop.Shared.Abstractions;
+﻿using Pronetsys.Desktop.Shared;
+using Pronetsys.Desktop.Shared.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Remotely.Desktop.UI.Services;
+namespace Pronetsys.Desktop.UI.Services;
 
 public class SessionIndicator : ISessionIndicator
 {

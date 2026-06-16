@@ -1,18 +1,18 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using Remotely.Server.Hubs;
-using Remotely.Server.Services;
-using Remotely.Shared.Utilities;
-using Remotely.Shared.Enums;
-using Remotely.Server.Auth;
-using Remotely.Shared.Helpers;
-using Remotely.Shared;
-using Remotely.Server.Extensions;
-using Remotely.Shared.Entities;
-using Remotely.Shared.Interfaces;
+using Pronetsys.Server.Hubs;
+using Pronetsys.Server.Services;
+using Pronetsys.Shared.Utilities;
+using Pronetsys.Shared.Enums;
+using Pronetsys.Server.Auth;
+using Pronetsys.Shared.Helpers;
+using Pronetsys.Shared;
+using Pronetsys.Server.Extensions;
+using Pronetsys.Shared.Entities;
+using Pronetsys.Shared.Interfaces;
 
-namespace Remotely.Server.API;
+namespace Pronetsys.Server.API;
 
 [ApiController]
 [Route("api/[controller]")]

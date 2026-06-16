@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Remotely.Shared.Entities;
+namespace Pronetsys.Shared.Entities;
 
 public class KeyValueRecord
 {

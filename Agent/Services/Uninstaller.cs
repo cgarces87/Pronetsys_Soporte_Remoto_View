@@ -1,9 +1,9 @@
-﻿using Remotely.Shared.Utilities;
+﻿using Pronetsys.Shared.Utilities;
 using System;
 using System.Diagnostics;
 using System.IO;
 
-namespace Remotely.Agent.Services;
+namespace Pronetsys.Agent.Services;
 
 public interface IUninstaller
 {

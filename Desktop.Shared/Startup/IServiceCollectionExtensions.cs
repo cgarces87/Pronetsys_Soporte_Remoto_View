@@ -1,11 +1,11 @@
-using Remotely.Desktop.Shared.Services;
-using Remotely.Shared.Services;
+using Pronetsys.Desktop.Shared.Services;
+using Pronetsys.Shared.Services;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Bitbound.SimpleMessenger;
 
-namespace Remotely.Desktop.Shared.Startup;
+namespace Pronetsys.Desktop.Shared.Startup;
 
 public static class IServiceCollectionExtensions
 {

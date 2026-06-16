@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Remotely.Desktop.Shared.Reactive;
+namespace Pronetsys.Desktop.Shared.Reactive;
 
 public class ObservableObject : INotifyPropertyChanged
 {

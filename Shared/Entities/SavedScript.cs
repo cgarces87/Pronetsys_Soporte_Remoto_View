@@ -1,9 +1,9 @@
-﻿using Remotely.Shared.Enums;
+﻿using Pronetsys.Shared.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
-namespace Remotely.Shared.Entities;
+namespace Pronetsys.Shared.Entities;
 
 public class SavedScript
 {

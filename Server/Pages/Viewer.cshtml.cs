@@ -1,10 +1,10 @@
-using Remotely.Server.Filters;
-using Remotely.Server.Models;
+using Pronetsys.Server.Filters;
+using Pronetsys.Server.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Remotely.Server.Services;
+using Pronetsys.Server.Services;
 
-namespace Remotely.Server.Pages;
+namespace Pronetsys.Server.Pages;
 
 [ServiceFilter(typeof(ViewerAuthorizationFilter))]
 public class ViewerModel(IDataService _dataService) : PageModel

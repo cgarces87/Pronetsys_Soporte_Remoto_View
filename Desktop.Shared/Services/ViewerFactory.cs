@@ -1,9 +1,9 @@
-﻿using Remotely.Desktop.Shared.Abstractions;
-using Remotely.Shared.Services;
+﻿using Pronetsys.Desktop.Shared.Abstractions;
+using Pronetsys.Shared.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace Remotely.Desktop.Shared.Services;
+namespace Pronetsys.Desktop.Shared.Services;
 
 internal interface IViewerFactory
 {

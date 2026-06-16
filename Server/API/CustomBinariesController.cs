@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Remotely.Server.Services;
-using Remotely.Shared.Models;
-using Remotely.Shared.Services;
+using Pronetsys.Server.Services;
+using Pronetsys.Shared.Models;
+using Pronetsys.Shared.Services;
 
-namespace Remotely.Server.API;
+namespace Pronetsys.Server.API;
 
 [Route("api/custom-binaries")]
 [ApiController]

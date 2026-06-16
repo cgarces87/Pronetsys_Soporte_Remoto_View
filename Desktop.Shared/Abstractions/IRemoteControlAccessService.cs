@@ -1,6 +1,6 @@
-﻿using Remotely.Shared.Enums;
+﻿using Pronetsys.Shared.Enums;
 
-namespace Remotely.Desktop.Shared.Abstractions;
+namespace Pronetsys.Desktop.Shared.Abstractions;
 
 public interface IRemoteControlAccessService
 {

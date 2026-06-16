@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
-using Remotely.Agent.Interfaces;
-using Remotely.Shared.Utilities;
+using Pronetsys.Agent.Interfaces;
+using Pronetsys.Shared.Utilities;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Remotely.Agent.Services.Linux;
+namespace Pronetsys.Agent.Services.Linux;
 
 
 public class UpdaterLinux : IUpdater

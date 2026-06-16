@@ -1,7 +1,7 @@
-﻿using Remotely.Shared.Helpers;
+﻿using Pronetsys.Shared.Helpers;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace Remotely.Server.Services;
+namespace Pronetsys.Server.Services;
 
 public interface IOtpProvider
 {

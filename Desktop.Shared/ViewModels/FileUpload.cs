@@ -1,6 +1,6 @@
-﻿using Remotely.Desktop.Shared.Reactive;
+﻿using Pronetsys.Desktop.Shared.Reactive;
 
-namespace Remotely.Desktop.Shared.ViewModels;
+namespace Pronetsys.Desktop.Shared.ViewModels;
 
 public partial class FileUpload : ObservableObject
 {

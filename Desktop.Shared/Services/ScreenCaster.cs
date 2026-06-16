@@ -1,16 +1,16 @@
 using SkiaSharp;
-using Remotely.Desktop.Shared.Abstractions;
-using Remotely.Desktop.Shared.Enums;
-using Remotely.Shared.Models;
+using Pronetsys.Desktop.Shared.Abstractions;
+using Pronetsys.Desktop.Shared.Enums;
+using Pronetsys.Shared.Models;
 using Microsoft.Extensions.Logging;
-using Remotely.Shared.Helpers;
-using Remotely.Shared.Models.Dtos;
-using Remotely.Shared.Services;
+using Pronetsys.Shared.Helpers;
+using Pronetsys.Shared.Models.Dtos;
+using Pronetsys.Shared.Services;
 using Microsoft.IO;
 using Bitbound.SimpleMessenger;
-using Remotely.Desktop.Shared.Messages;
+using Pronetsys.Desktop.Shared.Messages;
 
-namespace Remotely.Desktop.Shared.Services;
+namespace Pronetsys.Desktop.Shared.Services;
 
 public interface IScreenCaster : IDisposable
 {

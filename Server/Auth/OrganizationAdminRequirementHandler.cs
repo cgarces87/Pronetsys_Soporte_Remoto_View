@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Remotely.Server.Services;
+using Pronetsys.Server.Services;
 
-namespace Remotely.Server.Auth;
+namespace Pronetsys.Server.Auth;
 
 public class OrganizationAdminRequirementHandler : AuthorizationHandler<OrganizationAdminRequirement>
 {

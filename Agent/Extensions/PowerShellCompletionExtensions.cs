@@ -1,9 +1,9 @@
-﻿using Remotely.Shared.Models;
-using Remotely.Shared.Utilities;
+﻿using Pronetsys.Shared.Models;
+using Pronetsys.Shared.Utilities;
 using System.Linq;
 using System.Management.Automation;
 
-namespace Remotely.Agent.Extensions;
+namespace Pronetsys.Agent.Extensions;
 
 public static class PowerShellCompletionExtensions
 {

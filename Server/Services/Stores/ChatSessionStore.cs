@@ -1,8 +1,8 @@
-﻿using Remotely.Shared.ViewModels;
+﻿using Pronetsys.Shared.ViewModels;
 using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Remotely.Server.Services.Stores;
+namespace Pronetsys.Server.Services.Stores;
 
 public interface IChatSessionStore
 {

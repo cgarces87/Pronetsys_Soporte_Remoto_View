@@ -1,7 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using System.Runtime.CompilerServices;
 
-namespace Remotely.Shared.Helpers;
+namespace Pronetsys.Shared.Helpers;
 
 public static class Debouncer
 {

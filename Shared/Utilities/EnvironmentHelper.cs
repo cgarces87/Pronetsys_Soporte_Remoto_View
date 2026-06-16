@@ -1,6 +1,6 @@
-﻿using Remotely.Shared.Enums;
+﻿using Pronetsys.Shared.Enums;
 
-namespace Remotely.Shared.Utilities;
+namespace Pronetsys.Shared.Utilities;
 
 // TODO: Make instanced and put behind interface.
 public static class EnvironmentHelper

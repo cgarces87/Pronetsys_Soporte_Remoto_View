@@ -1,7 +1,7 @@
 ﻿using System.Runtime.Versioning;
 using System.Security.Principal;
 
-namespace Remotely.Shared.Services;
+namespace Pronetsys.Shared.Services;
 
 [SupportedOSPlatform("windows")]
 public class ElevationDetectorWin : IElevationDetector

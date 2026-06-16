@@ -1,6 +1,6 @@
-﻿using Remotely.Shared.Enums;
+﻿using Pronetsys.Shared.Enums;
 
-namespace Remotely.Desktop.Shared.Messages;
+namespace Pronetsys.Desktop.Shared.Messages;
 
 public class WindowsSessionEndingMessage
 {

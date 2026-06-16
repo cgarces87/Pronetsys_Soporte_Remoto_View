@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Remotely.Server.Auth;
+using Pronetsys.Server.Auth;
 
-namespace Remotely.Server.Extensions;
+namespace Pronetsys.Server.Extensions;
 
 public static class IHeaderDictionaryExtensions
 {

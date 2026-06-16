@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace Remotely.Desktop.Shared.Reactive;
+namespace Pronetsys.Desktop.Shared.Reactive;
 
 public class AsyncRelayCommand : ICommand
 {

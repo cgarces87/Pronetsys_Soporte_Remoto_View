@@ -1,8 +1,8 @@
-﻿using Remotely.Server.Models;
+﻿using Pronetsys.Server.Models;
 using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Remotely.Server.Services;
+namespace Pronetsys.Server.Services;
 
 public interface IDesktopStreamCache
 {

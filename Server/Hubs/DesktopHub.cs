@@ -1,11 +1,11 @@
-using Remotely.Server.Enums;
-using Remotely.Server.Models;
-using Remotely.Server.Services;
-using Remotely.Shared.Enums;
-using Remotely.Shared.Interfaces;
+using Pronetsys.Server.Enums;
+using Pronetsys.Server.Models;
+using Pronetsys.Server.Services;
+using Pronetsys.Shared.Enums;
+using Pronetsys.Shared.Interfaces;
 using Microsoft.AspNetCore.SignalR;
 
-namespace Remotely.Server.Hubs;
+namespace Pronetsys.Server.Hubs;
 
 public class DesktopHub : Hub<IDesktopHubClient>
 {

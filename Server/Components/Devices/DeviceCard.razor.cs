@@ -1,20 +1,20 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Web;
-using Remotely.Server.Enums;
-using Remotely.Server.Hubs;
-using Remotely.Server.Models.Messages;
-using Remotely.Server.Services;
-using Remotely.Server.Services.Stores;
-using Remotely.Shared;
-using Remotely.Shared.Entities;
-using Remotely.Shared.Enums;
-using Remotely.Shared.Utilities;
-using Remotely.Shared.ViewModels;
+using Pronetsys.Server.Enums;
+using Pronetsys.Server.Hubs;
+using Pronetsys.Server.Models.Messages;
+using Pronetsys.Server.Services;
+using Pronetsys.Server.Services.Stores;
+using Pronetsys.Shared;
+using Pronetsys.Shared.Entities;
+using Pronetsys.Shared.Enums;
+using Pronetsys.Shared.Utilities;
+using Pronetsys.Shared.ViewModels;
 using System.Collections.Concurrent;
 using System.Text.Json;
 
-namespace Remotely.Server.Components.Devices;
+namespace Pronetsys.Server.Components.Devices;
 
 public partial class DeviceCard : AuthComponentBase
 {

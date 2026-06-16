@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Remotely.Server.Models;
+namespace Pronetsys.Server.Models;
 
 public class ColorPickerModel
 {

@@ -1,6 +1,6 @@
-﻿using Remotely.Shared.DtoEntityBases;
+﻿using Pronetsys.Shared.DtoEntityBases;
 
-namespace Remotely.Shared.Dtos;
+namespace Pronetsys.Shared.Dtos;
 
 public class ScriptResultDto : ScriptResultBase
 {

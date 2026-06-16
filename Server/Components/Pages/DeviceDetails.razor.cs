@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.Web;
-using Remotely.Server.Hubs;
-using Remotely.Server.Models.Messages;
-using Remotely.Server.Services;
-using Remotely.Shared.Entities;
-using Remotely.Shared.Utilities;
+using Pronetsys.Server.Hubs;
+using Pronetsys.Server.Models.Messages;
+using Pronetsys.Server.Services;
+using Pronetsys.Shared.Entities;
+using Pronetsys.Shared.Utilities;
 using System.Collections.Concurrent;
 using System.Text.Json;
 
-namespace Remotely.Server.Components.Pages;
+namespace Pronetsys.Server.Components.Pages;
 
 public partial class DeviceDetails : AuthComponentBase
 {

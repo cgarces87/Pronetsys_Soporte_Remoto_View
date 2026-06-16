@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Remotely.Server.Services;
-using Remotely.Shared;
+using Pronetsys.Server.Services;
+using Pronetsys.Shared;
 using System.Net;
 
-namespace Remotely.Server.Auth;
+namespace Pronetsys.Server.Auth;
 
 public class ApiAuthorizationFilter : IAsyncAuthorizationFilter
 {

@@ -1,7 +1,7 @@
-﻿using Remotely.Server.Components.TreeView;
-using Remotely.Shared.Entities;
+﻿using Pronetsys.Server.Components.TreeView;
+using Pronetsys.Shared.Entities;
 
-namespace Remotely.Server.Components.Scripts;
+namespace Pronetsys.Server.Components.Scripts;
 
 public class ScriptTreeNode
 {

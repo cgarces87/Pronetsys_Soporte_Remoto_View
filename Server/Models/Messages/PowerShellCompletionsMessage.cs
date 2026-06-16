@@ -1,6 +1,6 @@
-﻿using Remotely.Shared.Enums;
-using Remotely.Shared.Models;
+﻿using Pronetsys.Shared.Enums;
+using Pronetsys.Shared.Models;
 
-namespace Remotely.Server.Models.Messages;
+namespace Pronetsys.Server.Models.Messages;
 
 public record PowerShellCompletionsMessage(PwshCommandCompletion Completion, CompletionIntent Intent);

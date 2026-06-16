@@ -1,8 +1,8 @@
-using Remotely.Desktop.Shared.Abstractions;
-using Remotely.Shared.Enums;
+using Pronetsys.Desktop.Shared.Abstractions;
+using Pronetsys.Shared.Enums;
 using Microsoft.Extensions.Logging;
 
-namespace Remotely.Desktop.UI.Services;
+namespace Pronetsys.Desktop.UI.Services;
 
 public class RemoteControlAccessService : IRemoteControlAccessService
 {

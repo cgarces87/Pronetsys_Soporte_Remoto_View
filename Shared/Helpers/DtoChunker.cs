@@ -1,9 +1,9 @@
-﻿using Remotely.Shared.Models.Dtos;
+﻿using Pronetsys.Shared.Models.Dtos;
 using MessagePack;
 using Microsoft.Extensions.Caching.Memory;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Remotely.Shared.Helpers;
+namespace Pronetsys.Shared.Helpers;
 
 public static class DtoChunker
 {

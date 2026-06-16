@@ -1,9 +1,9 @@
-﻿using Remotely.Shared.Dtos;
-using Remotely.Shared.Entities;
+﻿using Pronetsys.Shared.Dtos;
+using Pronetsys.Shared.Entities;
 using System.Runtime.Serialization;
 using System.Text.Json;
 
-namespace Remotely.Shared.Extensions;
+namespace Pronetsys.Shared.Extensions;
 
 public static class DeviceExtensions
 {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System.Linq.Expressions;
 
-namespace Remotely.Server.Converters;
+namespace Pronetsys.Server.Converters;
 
 /// <summary>
 /// <para>

@@ -1,4 +1,4 @@
-﻿namespace Remotely.Server.Services.Stores;
+﻿namespace Pronetsys.Server.Services.Stores;
 
 public interface ISelectedCardsStore
 {

@@ -1,6 +1,6 @@
-﻿using Remotely.Shared.Utilities;
+﻿using Pronetsys.Shared.Utilities;
 
-namespace Remotely.Server.Services;
+namespace Pronetsys.Server.Services;
 
 public class ScriptScheduler : IHostedService, IDisposable
 {

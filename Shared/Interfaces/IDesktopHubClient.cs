@@ -1,7 +1,7 @@
-﻿using Remotely.Shared.Enums;
-using Remotely.Shared.Models;
+﻿using Pronetsys.Shared.Enums;
+using Pronetsys.Shared.Models;
 
-namespace Remotely.Shared.Interfaces;
+namespace Pronetsys.Shared.Interfaces;
 
 public interface IDesktopHubClient
 {

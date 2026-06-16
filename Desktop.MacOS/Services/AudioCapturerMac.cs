@@ -1,6 +1,6 @@
-using Remotely.Desktop.Shared.Abstractions;
+using Pronetsys.Desktop.Shared.Abstractions;
 
-namespace Remotely.Desktop.MacOS.Services;
+namespace Pronetsys.Desktop.MacOS.Services;
 
 public class AudioCapturerMac : IAudioCapturer
 {

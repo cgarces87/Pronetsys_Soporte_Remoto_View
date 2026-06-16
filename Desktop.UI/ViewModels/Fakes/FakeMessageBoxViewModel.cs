@@ -1,8 +1,8 @@
-﻿using Remotely.Desktop.Shared.Reactive;
+﻿using Pronetsys.Desktop.Shared.Reactive;
 using System.Windows.Input;
-using Remotely.Desktop.UI.Controls.Dialogs;
+using Pronetsys.Desktop.UI.Controls.Dialogs;
 
-namespace Remotely.Desktop.UI.ViewModels.Fakes;
+namespace Pronetsys.Desktop.UI.ViewModels.Fakes;
 
 public class FakeMessageBoxViewModel : FakeBrandedViewModelBase, IMessageBoxViewModel
 {

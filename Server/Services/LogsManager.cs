@@ -1,10 +1,10 @@
-﻿using Remotely.Shared.Extensions;
+﻿using Pronetsys.Shared.Extensions;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.IO.Compression;
 using System.Text;
 
-namespace Remotely.Server.Services;
+namespace Pronetsys.Server.Services;
 
 public interface ILogsManager
 {

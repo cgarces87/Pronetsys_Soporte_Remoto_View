@@ -1,15 +1,15 @@
 ﻿#nullable disable
-using Remotely.Desktop.Shared.Abstractions;
-using Remotely.Desktop.Shared.Services;
-using Remotely.Desktop.Windows.Services;
-using Remotely.Shared.Models;
+using Pronetsys.Desktop.Shared.Abstractions;
+using Pronetsys.Desktop.Shared.Services;
+using Pronetsys.Desktop.Windows.Services;
+using Pronetsys.Shared.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Remotely.Desktop.Win.Services;
-using Remotely.Shared.Models;
-using Remotely.Shared.Models.RemoteControlDtos;
+using Pronetsys.Desktop.Win.Services;
+using Pronetsys.Shared.Models;
+using Pronetsys.Shared.Models.RemoteControlDtos;
 using SkiaSharp;
 using SkiaSharp.Views.Desktop;
 using System;
@@ -22,7 +22,7 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Remotely.Tests
+namespace Pronetsys.Tests
 {
     [TestClass]
     [Ignore("Manual test.")]
@@ -307,7 +307,7 @@ namespace Remotely.Tests
 
         private SKBitmap GetImage(string imageFileName)
         {
-            using var mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream($"Remotely.Desktop.Win.Tests.Resources.{imageFileName}.jpg");
+            using var mrs = Assembly.GetExecutingAssembly().GetManifestResourceStream($"Pronetsys.Desktop.Win.Tests.Resources.{imageFileName}.jpg");
             var resourceImage = (Bitmap)Bitmap.FromStream(mrs);
 
             if (resourceImage.PixelFormat != PixelFormat.Format32bppArgb)

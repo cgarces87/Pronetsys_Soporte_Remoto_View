@@ -2,14 +2,14 @@
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.SignalR;
-using Remotely.Server.Hubs;
-using Remotely.Server.Models;
-using Remotely.Server.Services;
-using Remotely.Shared.Entities;
-using Remotely.Shared.Interfaces;
+using Pronetsys.Server.Hubs;
+using Pronetsys.Server.Models;
+using Pronetsys.Server.Services;
+using Pronetsys.Shared.Entities;
+using Pronetsys.Shared.Interfaces;
 using System.Net;
 
-namespace Remotely.Server.Components.Pages;
+namespace Pronetsys.Server.Components.Pages;
 
 public partial class ServerConfig : AuthComponentBase
 {

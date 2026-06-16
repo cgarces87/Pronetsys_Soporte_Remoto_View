@@ -1,10 +1,10 @@
-﻿using Remotely.Server.Enums;
-using Remotely.Server.Hubs;
-using Remotely.Shared.Helpers;
-using Remotely.Shared.Interfaces;
+﻿using Pronetsys.Server.Enums;
+using Pronetsys.Server.Hubs;
+using Pronetsys.Shared.Helpers;
+using Pronetsys.Shared.Interfaces;
 using Microsoft.AspNetCore.SignalR;
 
-namespace Remotely.Server.Services;
+namespace Pronetsys.Server.Services;
 
 internal class RemoteControlSessionReconnector : BackgroundService
 {

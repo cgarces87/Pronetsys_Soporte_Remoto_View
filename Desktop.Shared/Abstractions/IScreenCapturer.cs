@@ -1,8 +1,8 @@
-﻿using Remotely.Shared.Primitives;
+﻿using Pronetsys.Shared.Primitives;
 using SkiaSharp;
 using System.Drawing;
 
-namespace Remotely.Desktop.Shared.Abstractions;
+namespace Pronetsys.Desktop.Shared.Abstractions;
 
 public interface IScreenCapturer : IDisposable
 {

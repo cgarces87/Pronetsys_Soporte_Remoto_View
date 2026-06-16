@@ -1,9 +1,9 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using Remotely.Desktop.Shared;
+using Pronetsys.Desktop.Shared;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Remotely.Desktop.UI.Views;
+namespace Pronetsys.Desktop.UI.Views;
 
 public partial class MainWindow : Window
 {

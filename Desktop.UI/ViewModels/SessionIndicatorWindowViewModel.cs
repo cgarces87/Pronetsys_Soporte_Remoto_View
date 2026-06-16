@@ -1,9 +1,9 @@
-﻿using Remotely.Desktop.Shared.Abstractions;
-using Remotely.Desktop.UI.Controls.Dialogs;
+﻿using Pronetsys.Desktop.Shared.Abstractions;
+using Pronetsys.Desktop.UI.Controls.Dialogs;
 using Microsoft.Extensions.Logging;
-using Remotely.Desktop.Shared.Services;
+using Pronetsys.Desktop.Shared.Services;
 
-namespace Remotely.Desktop.UI.ViewModels;
+namespace Pronetsys.Desktop.UI.ViewModels;
 
 public interface ISessionIndicatorWindowViewModel : IBrandedViewModelBase
 {

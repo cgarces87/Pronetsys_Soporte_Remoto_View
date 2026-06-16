@@ -1,8 +1,8 @@
-﻿using Remotely.Server.Data;
-using Remotely.Server.Models;
+﻿using Pronetsys.Server.Data;
+using Pronetsys.Server.Models;
 using System.Text.Json;
 
-namespace Remotely.Server.Extensions;
+namespace Pronetsys.Server.Extensions;
 
 public static class AppDbExtensions
 {

@@ -3,13 +3,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Remotely.Server.Data;
-using Remotely.Server.Services;
-using Remotely.Shared.Entities;
+using Pronetsys.Server.Data;
+using Pronetsys.Server.Services;
+using Pronetsys.Shared.Entities;
 using System;
 using System.Collections.Generic;
 
-namespace Remotely.Server.Tests;
+namespace Pronetsys.Server.Tests;
 
 [TestClass]
 public class IoCActivator

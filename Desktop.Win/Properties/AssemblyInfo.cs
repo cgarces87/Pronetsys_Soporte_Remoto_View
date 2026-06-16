@@ -1,3 +1,3 @@
 ﻿using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("Remotely.Desktop.Win.Tests")]
+[assembly: InternalsVisibleTo("Pronetsys.Desktop.Win.Tests")]

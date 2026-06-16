@@ -1,12 +1,12 @@
-﻿using Remotely.Desktop.Shared.Abstractions;
-using Remotely.Desktop.Shared.Enums;
-using Remotely.Shared.Helpers;
-using Remotely.Shared.Models.Dtos;
+﻿using Pronetsys.Desktop.Shared.Abstractions;
+using Pronetsys.Desktop.Shared.Enums;
+using Pronetsys.Shared.Helpers;
+using Pronetsys.Shared.Models.Dtos;
 using MessagePack;
 using Microsoft.Extensions.Logging;
-using Remotely.Desktop.Native.Windows;
+using Pronetsys.Desktop.Native.Windows;
 
-namespace Remotely.Desktop.Shared.Services;
+namespace Pronetsys.Desktop.Shared.Services;
 
 public interface IDtoMessageHandler
 {

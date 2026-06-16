@@ -1,12 +1,12 @@
-﻿using Remotely.Shared.Extensions;
+﻿using Pronetsys.Shared.Extensions;
 using Microsoft.AspNetCore.Mvc;
-using Remotely.Server.Auth;
-using Remotely.Server.Extensions;
-using Remotely.Server.Services;
-using Remotely.Shared.Models;
+using Pronetsys.Server.Auth;
+using Pronetsys.Server.Extensions;
+using Pronetsys.Server.Services;
+using Pronetsys.Shared.Models;
 using System.Text.Json;
 
-namespace Remotely.Server.API;
+namespace Pronetsys.Server.API;
 
 [Route("api/[controller]")]
 [ApiController]

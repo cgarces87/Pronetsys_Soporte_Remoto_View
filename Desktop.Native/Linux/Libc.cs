@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Remotely.Desktop.Native.Linux;
+namespace Pronetsys.Desktop.Native.Linux;
 
 public class Libc
 {

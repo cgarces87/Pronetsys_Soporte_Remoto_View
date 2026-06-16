@@ -1,6 +1,6 @@
-﻿using Remotely.Desktop.UI.Controls.Dialogs;
+﻿using Pronetsys.Desktop.UI.Controls.Dialogs;
 
-namespace Remotely.Desktop.UI.Services;
+namespace Pronetsys.Desktop.UI.Services;
 
 public interface IDialogProvider
 {

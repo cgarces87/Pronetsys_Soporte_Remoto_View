@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Remotely.Server.Services;
-using Remotely.Shared;
-using Remotely.Shared.Utilities;
+using Pronetsys.Server.Services;
+using Pronetsys.Shared;
+using Pronetsys.Shared.Utilities;
 using System.Net;
 
-namespace Remotely.Server.Auth;
+namespace Pronetsys.Server.Auth;
 
 public class ExpiringTokenFilter : ActionFilterAttribute, IAsyncAuthorizationFilter
 {

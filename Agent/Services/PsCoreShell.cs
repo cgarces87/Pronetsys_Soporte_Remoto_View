@@ -1,14 +1,14 @@
 ﻿using Microsoft.Extensions.Logging;
-using Remotely.Agent.Interfaces;
-using Remotely.Shared.Dtos;
-using Remotely.Shared.Models;
+using Pronetsys.Agent.Interfaces;
+using Pronetsys.Shared.Dtos;
+using Pronetsys.Shared.Models;
 using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
 
-namespace Remotely.Agent.Services;
+namespace Pronetsys.Agent.Services;
 
 public interface IPsCoreShell : IDisposable, IScriptingShell
 {

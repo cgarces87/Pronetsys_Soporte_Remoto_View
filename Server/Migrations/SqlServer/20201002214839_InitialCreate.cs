@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Remotely.Server.Migrations.SqlServer;
+namespace Pronetsys.Server.Migrations.SqlServer;
 
 public partial class InitialCreate : Migration
 {

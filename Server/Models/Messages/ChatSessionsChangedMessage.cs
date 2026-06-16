@@ -1,3 +1,3 @@
-﻿namespace Remotely.Server.Models.Messages;
+﻿namespace Pronetsys.Server.Models.Messages;
 
 public record ChatSessionsChangedMessage();

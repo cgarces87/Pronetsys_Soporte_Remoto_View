@@ -1,5 +1,5 @@
-using Remotely.Server.Components.Account.Pages;
-using Remotely.Server.Components.Account.Pages.Manage;
+using Pronetsys.Server.Components.Account.Pages;
+using Pronetsys.Server.Components.Account.Pages.Manage;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Http.Extensions;
@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 using System.Security.Claims;
 using System.Text.Json;
-using Remotely.Shared.Entities;
+using Pronetsys.Shared.Entities;
 
 #pragma warning disable IDE0130 // Namespace does not match folder structure
 namespace Microsoft.AspNetCore.Routing;

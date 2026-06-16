@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Remotely.Shared.Utilities;
+namespace Pronetsys.Shared.Utilities;
 
 public class TimeSpanJsonConverter : JsonConverter<TimeSpan>
 {

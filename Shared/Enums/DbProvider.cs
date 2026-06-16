@@ -1,4 +1,4 @@
-﻿namespace Remotely.Shared.Enums;
+﻿namespace Pronetsys.Shared.Enums;
 
 
 public enum DbProvider

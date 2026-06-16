@@ -1,4 +1,4 @@
-﻿namespace Remotely.Server.Options;
+﻿namespace Pronetsys.Server.Options;
 
 public class ApplicationOptions
 {

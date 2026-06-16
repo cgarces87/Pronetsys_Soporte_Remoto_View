@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-namespace Remotely.Shared.Models;
+namespace Pronetsys.Shared.Models;
 
 [DataContract]
 public class EmbeddedServerData

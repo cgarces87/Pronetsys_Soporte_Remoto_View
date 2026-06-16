@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
-using Remotely.Server.Services;
-using Remotely.Shared.Entities;
+using Pronetsys.Server.Services;
+using Pronetsys.Shared.Entities;
 
-namespace Remotely.Server.Components.ModalContents;
+namespace Pronetsys.Server.Components.ModalContents;
 
 [Authorize]
 public partial class EditDeviceGroup : AuthComponentBase

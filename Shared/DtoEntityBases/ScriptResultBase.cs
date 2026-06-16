@@ -1,8 +1,8 @@
-﻿using Remotely.Shared.Enums;
-using Remotely.Shared.Utilities;
+﻿using Pronetsys.Shared.Enums;
+using Pronetsys.Shared.Utilities;
 using System.Text.Json.Serialization;
 
-namespace Remotely.Shared.DtoEntityBases;
+namespace Pronetsys.Shared.DtoEntityBases;
 
 public abstract class ScriptResultBase
 {

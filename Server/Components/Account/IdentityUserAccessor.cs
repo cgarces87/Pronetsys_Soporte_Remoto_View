@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
-using Remotely.Shared.Entities;
+using Pronetsys.Shared.Entities;
 
-namespace Remotely.Server.Components.Account;
+namespace Pronetsys.Server.Components.Account;
 
 internal sealed class IdentityUserAccessor(UserManager<RemotelyUser> userManager, IdentityRedirectManager redirectManager)
 {

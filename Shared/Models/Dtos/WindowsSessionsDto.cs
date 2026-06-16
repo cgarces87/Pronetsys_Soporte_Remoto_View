@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Remotely.Shared.Models.Dtos;
+namespace Pronetsys.Shared.Models.Dtos;
 
 [DataContract]
 public class WindowsSessionsDto

@@ -1,4 +1,4 @@
-﻿namespace Remotely.Server.Extensions;
+﻿namespace Pronetsys.Server.Extensions;
 
 public static class IApplicationBuilderExtensions
 {

@@ -1,6 +1,6 @@
 using System.Security.Cryptography;
 
-namespace Remotely.Shared.Helpers;
+namespace Pronetsys.Shared.Helpers;
 
 public class RandomGenerator
 {

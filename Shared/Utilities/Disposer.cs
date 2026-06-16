@@ -1,4 +1,4 @@
-﻿namespace Remotely.Shared.Utilities;
+﻿namespace Pronetsys.Shared.Utilities;
 
 public static class Disposer
 {

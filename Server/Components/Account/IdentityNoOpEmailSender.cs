@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
-using Remotely.Shared.Entities;
+using Pronetsys.Shared.Entities;
 
-namespace Remotely.Server.Components.Account;
+namespace Pronetsys.Server.Components.Account;
 
 // Remove the "else if (EmailSender is IdentityNoOpEmailSender)" block from RegisterConfirmation.razor after updating with a real implementation.
 internal sealed class IdentityNoOpEmailSender : IEmailSender<RemotelyUser>

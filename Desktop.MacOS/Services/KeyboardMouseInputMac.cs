@@ -1,10 +1,10 @@
-using Remotely.Desktop.Shared.Abstractions;
-using Remotely.Desktop.Shared.Enums;
-using Remotely.Desktop.Shared.Services;
+using Pronetsys.Desktop.Shared.Abstractions;
+using Pronetsys.Desktop.Shared.Enums;
+using Pronetsys.Desktop.Shared.Services;
 using Microsoft.Extensions.Logging;
-using Remotely.Desktop.Native.MacOS;
+using Pronetsys.Desktop.Native.MacOS;
 
-namespace Remotely.Desktop.MacOS.Services;
+namespace Pronetsys.Desktop.MacOS.Services;
 
 /// <summary>
 /// Synthetic keyboard/mouse input for macOS using CoreGraphics CGEvent APIs.

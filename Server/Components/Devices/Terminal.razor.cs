@@ -1,17 +1,17 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.Web;
-using Remotely.Server.Components.ModalContents;
-using Remotely.Server.Hubs;
-using Remotely.Server.Models.Messages;
-using Remotely.Server.Services;
-using Remotely.Server.Services.Stores;
-using Remotely.Shared.Entities;
-using Remotely.Shared.Enums;
-using Remotely.Shared.Models;
-using Remotely.Shared.Utilities;
+using Pronetsys.Server.Components.ModalContents;
+using Pronetsys.Server.Hubs;
+using Pronetsys.Server.Models.Messages;
+using Pronetsys.Server.Services;
+using Pronetsys.Server.Services.Stores;
+using Pronetsys.Shared.Entities;
+using Pronetsys.Shared.Enums;
+using Pronetsys.Shared.Models;
+using Pronetsys.Shared.Utilities;
 
-namespace Remotely.Server.Components.Devices;
+namespace Pronetsys.Server.Components.Devices;
 
 public partial class Terminal : AuthComponentBase, IDisposable
 {

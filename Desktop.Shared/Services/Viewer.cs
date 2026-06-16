@@ -1,15 +1,15 @@
 ﻿using System.Collections.Concurrent;
-using Remotely.Desktop.Shared.Abstractions;
-using Remotely.Shared.Models;
+using Pronetsys.Desktop.Shared.Abstractions;
+using Pronetsys.Shared.Models;
 using Microsoft.Extensions.Logging;
-using Remotely.Shared.Helpers;
-using Remotely.Shared.Models.Dtos;
-using Remotely.Desktop.Shared.ViewModels;
+using Pronetsys.Shared.Helpers;
+using Pronetsys.Shared.Models.Dtos;
+using Pronetsys.Desktop.Shared.ViewModels;
 using Microsoft.AspNetCore.SignalR.Client;
-using Remotely.Shared.Services;
-using Remotely.Desktop.Native.Windows;
+using Pronetsys.Shared.Services;
+using Pronetsys.Desktop.Native.Windows;
 
-namespace Remotely.Desktop.Shared.Services;
+namespace Pronetsys.Desktop.Shared.Services;
 
 public interface IViewer : IDisposable
 {

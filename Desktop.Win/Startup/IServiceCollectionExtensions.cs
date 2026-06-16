@@ -1,11 +1,11 @@
-﻿using Remotely.Desktop.Shared.Abstractions;
+﻿using Pronetsys.Desktop.Shared.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
-using Remotely.Desktop.Shared.Startup;
-using Remotely.Desktop.UI.Startup;
+using Pronetsys.Desktop.Shared.Startup;
+using Pronetsys.Desktop.UI.Startup;
 using System.Runtime.Versioning;
-using Remotely.Desktop.Win.Services;
+using Pronetsys.Desktop.Win.Services;
 
-namespace Remotely.Desktop.Win.Startup;
+namespace Pronetsys.Desktop.Win.Startup;
 
 public static class IServiceCollectionExtensions
 {

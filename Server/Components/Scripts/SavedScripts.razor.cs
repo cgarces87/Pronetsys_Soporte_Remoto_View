@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
-using Remotely.Server.Components.Pages;
-using Remotely.Server.Enums;
-using Remotely.Server.Services;
-using Remotely.Shared.Entities;
+using Pronetsys.Server.Components.Pages;
+using Pronetsys.Server.Enums;
+using Pronetsys.Server.Services;
+using Pronetsys.Shared.Entities;
 
-namespace Remotely.Server.Components.Scripts;
+namespace Pronetsys.Server.Components.Scripts;
 
 [Authorize]
 public partial class SavedScripts : AuthComponentBase

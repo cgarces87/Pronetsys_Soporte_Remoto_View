@@ -1,4 +1,4 @@
-﻿namespace Remotely.Shared.Services;
+﻿namespace Pronetsys.Shared.Services;
 
 public interface IElevationDetector
 {

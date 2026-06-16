@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace Remotely.Desktop.Native.MacOS;
+namespace Pronetsys.Desktop.Native.MacOS;
 
 /// <summary>
 /// P/Invoke bindings into the macOS CoreGraphics (Quartz) and CoreFoundation

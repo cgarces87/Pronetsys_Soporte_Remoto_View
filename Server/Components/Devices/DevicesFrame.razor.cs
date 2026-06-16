@@ -1,20 +1,20 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
-using Remotely.Server.Enums;
-using Remotely.Server.Hubs;
-using Remotely.Server.Models.Messages;
-using Remotely.Server.Services;
-using Remotely.Server.Services.Stores;
-using Remotely.Shared.Attributes;
-using Remotely.Shared.Entities;
-using Remotely.Shared.Utilities;
+using Pronetsys.Server.Enums;
+using Pronetsys.Server.Hubs;
+using Pronetsys.Server.Models.Messages;
+using Pronetsys.Server.Services;
+using Pronetsys.Server.Services.Stores;
+using Pronetsys.Shared.Attributes;
+using Pronetsys.Shared.Entities;
+using Pronetsys.Shared.Utilities;
 using System.Collections;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
-namespace Remotely.Server.Components.Devices;
+namespace Pronetsys.Server.Components.Devices;
 
 [Authorize]
 public partial class DevicesFrame : AuthComponentBase

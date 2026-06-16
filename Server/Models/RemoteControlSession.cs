@@ -1,8 +1,8 @@
-using Remotely.Server.Enums;
-using Remotely.Server.Services;
-using Remotely.Shared.Helpers;
+using Pronetsys.Server.Enums;
+using Pronetsys.Server.Services;
+using Pronetsys.Shared.Helpers;
 
-namespace Remotely.Server.Models;
+namespace Pronetsys.Server.Models;
 
 /// <summary>
 /// Contains data related to a remote control session.  Consuming projects

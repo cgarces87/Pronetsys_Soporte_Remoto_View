@@ -1,4 +1,4 @@
-﻿namespace Remotely.Shared.Models;
+﻿namespace Pronetsys.Shared.Models;
 
 public class Drive
 {

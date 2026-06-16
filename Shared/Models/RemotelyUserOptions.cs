@@ -1,7 +1,7 @@
-﻿using Remotely.Shared.Enums;
+﻿using Pronetsys.Shared.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace Remotely.Shared.Models;
+namespace Pronetsys.Shared.Models;
 
 public class RemotelyUserOptions
 {

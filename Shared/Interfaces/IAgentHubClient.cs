@@ -1,6 +1,6 @@
-﻿using Remotely.Shared.Enums;
+﻿using Pronetsys.Shared.Enums;
 
-namespace Remotely.Shared.Interfaces;
+namespace Pronetsys.Shared.Interfaces;
 public interface IAgentHubClient
 {
     Task ChangeWindowsSession(

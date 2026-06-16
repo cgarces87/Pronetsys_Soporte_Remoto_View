@@ -1,7 +1,7 @@
-﻿using Remotely.Desktop.Shared.Reactive;
+﻿using Pronetsys.Desktop.Shared.Reactive;
 using System.Windows.Input;
 
-namespace Remotely.Desktop.UI.ViewModels.Fakes;
+namespace Pronetsys.Desktop.UI.ViewModels.Fakes;
 
 public class FakeHostNamePromptViewModel : FakeBrandedViewModelBase, IHostNamePromptViewModel
 {

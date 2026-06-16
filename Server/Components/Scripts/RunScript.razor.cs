@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
-using Remotely.Server.Components.Pages;
-using Remotely.Server.Hubs;
-using Remotely.Server.Services;
-using Remotely.Shared.Entities;
-using Remotely.Shared.Enums;
-using Remotely.Shared.Utilities;
+using Pronetsys.Server.Components.Pages;
+using Pronetsys.Server.Hubs;
+using Pronetsys.Server.Services;
+using Pronetsys.Shared.Entities;
+using Pronetsys.Shared.Enums;
+using Pronetsys.Shared.Utilities;
 
-namespace Remotely.Server.Components.Scripts;
+namespace Pronetsys.Server.Components.Scripts;
 
 [Authorize]
 public partial class RunScript : AuthComponentBase

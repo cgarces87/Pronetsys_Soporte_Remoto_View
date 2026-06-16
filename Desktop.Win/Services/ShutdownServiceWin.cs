@@ -1,9 +1,9 @@
-using Remotely.Desktop.Shared.Abstractions;
-using Remotely.Desktop.Shared.Services;
-using Remotely.Desktop.UI.Services;
-using Remotely.Shared.Extensions;
+using Pronetsys.Desktop.Shared.Abstractions;
+using Pronetsys.Desktop.Shared.Services;
+using Pronetsys.Desktop.UI.Services;
+using Pronetsys.Shared.Extensions;
 
-namespace Remotely.Desktop.Win.Services;
+namespace Pronetsys.Desktop.Win.Services;
 
 public class ShutdownServiceWin : IShutdownService
 {

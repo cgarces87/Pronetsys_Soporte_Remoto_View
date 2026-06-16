@@ -1,18 +1,18 @@
 ﻿#nullable enable
-using Remotely.Server.Services;
+using Pronetsys.Server.Services;
 using Bitbound.SimpleMessenger;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Remotely.Server.Hubs;
-using Remotely.Server.Services.Stores;
-using Remotely.Server.Tests.Mocks;
-using Remotely.Shared.Extensions;
-using Remotely.Shared.Interfaces;
+using Pronetsys.Server.Hubs;
+using Pronetsys.Server.Services.Stores;
+using Pronetsys.Server.Tests.Mocks;
+using Pronetsys.Shared.Extensions;
+using Pronetsys.Shared.Interfaces;
 using System.Threading.Tasks;
 
-namespace Remotely.Server.Tests;
+namespace Pronetsys.Server.Tests;
 
 [TestClass]
 public class CircuitConnectionTests

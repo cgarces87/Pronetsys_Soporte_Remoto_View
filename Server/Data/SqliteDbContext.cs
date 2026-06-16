@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Remotely.Server.Data;
+namespace Pronetsys.Server.Data;
 
 public class SqliteDbContext : AppDb
 {

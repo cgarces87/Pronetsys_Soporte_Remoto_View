@@ -1,13 +1,13 @@
-﻿using Remotely.Desktop.Shared.Abstractions;
-using Remotely.Desktop.Shared.Reactive;
-using Remotely.Desktop.Shared.Services;
-using Remotely.Desktop.Shared.ViewModels;
-using Remotely.Shared.Models;
-using Remotely.Shared.Models.Dtos;
+﻿using Pronetsys.Desktop.Shared.Abstractions;
+using Pronetsys.Desktop.Shared.Reactive;
+using Pronetsys.Desktop.Shared.Services;
+using Pronetsys.Desktop.Shared.ViewModels;
+using Pronetsys.Shared.Models;
+using Pronetsys.Shared.Models.Dtos;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
-namespace Remotely.Desktop.UI.ViewModels.Fakes;
+namespace Pronetsys.Desktop.UI.ViewModels.Fakes;
 public class FakeMainViewViewModel : FakeBrandedViewModelBase, IMainViewViewModel
 {
 

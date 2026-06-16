@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components.Authorization;
-using Remotely.Shared.Entities;
+using Pronetsys.Shared.Entities;
 
-namespace Remotely.Server.Services;
+namespace Pronetsys.Server.Services;
 
 public interface IAuthService
 {

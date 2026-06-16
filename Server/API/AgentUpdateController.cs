@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.AspNetCore.SignalR;
-using Remotely.Server.Hubs;
-using Remotely.Server.RateLimiting;
-using Remotely.Server.Services;
-using Remotely.Shared.Interfaces;
+using Pronetsys.Server.Hubs;
+using Pronetsys.Server.RateLimiting;
+using Pronetsys.Server.Services;
+using Pronetsys.Shared.Interfaces;
 using System.Net;
 
-namespace Remotely.Server.API;
+namespace Pronetsys.Server.API;
 
 [Route("api/[controller]")]
 [ApiController]

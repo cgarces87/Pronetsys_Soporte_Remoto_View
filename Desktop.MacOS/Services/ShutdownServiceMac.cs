@@ -1,9 +1,9 @@
-using Remotely.Desktop.Shared.Abstractions;
-using Remotely.Desktop.Shared.Services;
+using Pronetsys.Desktop.Shared.Abstractions;
+using Pronetsys.Desktop.Shared.Services;
 using Microsoft.Extensions.Logging;
-using Remotely.Desktop.UI.Services;
+using Pronetsys.Desktop.UI.Services;
 
-namespace Remotely.Desktop.MacOS.Services;
+namespace Pronetsys.Desktop.MacOS.Services;
 
 public class ShutdownServiceMac : IShutdownService
 {

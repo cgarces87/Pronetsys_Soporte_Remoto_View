@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Remotely.Server.Data;
+using Pronetsys.Server.Data;
 
-namespace Remotely.Server.Migrations.SqlServer
+namespace Pronetsys.Server.Migrations.SqlServer
 {
     [DbContext(typeof(SqlServerDbContext))]
     [Migration("20210417155829_Add Alert Details")]
@@ -302,7 +302,7 @@ namespace Remotely.Server.Migrations.SqlServer
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.Alert", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.Alert", b =>
                 {
                     b.Property<string>("ID")
                         .ValueGeneratedOnAdd()
@@ -337,7 +337,7 @@ namespace Remotely.Server.Migrations.SqlServer
                     b.ToTable("Alerts");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.ApiToken", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.ApiToken", b =>
                 {
                     b.Property<string>("ID")
                         .ValueGeneratedOnAdd()
@@ -363,7 +363,7 @@ namespace Remotely.Server.Migrations.SqlServer
                     b.ToTable("ApiTokens");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.BrandingInfo", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.BrandingInfo", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
@@ -408,7 +408,7 @@ namespace Remotely.Server.Migrations.SqlServer
                     b.ToTable("BrandingInfo");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.Device", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.Device", b =>
                 {
                     b.Property<string>("ID")
                         .HasColumnType("nvarchar(450)");
@@ -499,7 +499,7 @@ namespace Remotely.Server.Migrations.SqlServer
                     b.ToTable("Devices");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.DeviceGroup", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.DeviceGroup", b =>
                 {
                     b.Property<string>("ID")
                         .ValueGeneratedOnAdd()
@@ -519,7 +519,7 @@ namespace Remotely.Server.Migrations.SqlServer
                     b.ToTable("DeviceGroups");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.EventLog", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.EventLog", b =>
                 {
                     b.Property<string>("ID")
                         .ValueGeneratedOnAdd()
@@ -550,7 +550,7 @@ namespace Remotely.Server.Migrations.SqlServer
                     b.ToTable("EventLogs");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.InviteLink", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.InviteLink", b =>
                 {
                     b.Property<string>("ID")
                         .ValueGeneratedOnAdd()
@@ -578,7 +578,7 @@ namespace Remotely.Server.Migrations.SqlServer
                     b.ToTable("InviteLinks");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.Organization", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.Organization", b =>
                 {
                     b.Property<string>("ID")
                         .ValueGeneratedOnAdd()
@@ -604,7 +604,7 @@ namespace Remotely.Server.Migrations.SqlServer
                     b.ToTable("Organizations");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.SavedScript", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.SavedScript", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -656,7 +656,7 @@ namespace Remotely.Server.Migrations.SqlServer
                     b.ToTable("SavedScripts");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.ScriptResult", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.ScriptResult", b =>
                 {
                     b.Property<string>("ID")
                         .ValueGeneratedOnAdd()
@@ -720,7 +720,7 @@ namespace Remotely.Server.Migrations.SqlServer
                     b.ToTable("ScriptResults");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.ScriptRun", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.ScriptRun", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -760,7 +760,7 @@ namespace Remotely.Server.Migrations.SqlServer
                     b.ToTable("ScriptRuns");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.ScriptSchedule", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.ScriptSchedule", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -806,7 +806,7 @@ namespace Remotely.Server.Migrations.SqlServer
                     b.ToTable("ScriptSchedules");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.SharedFile", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.SharedFile", b =>
                 {
                     b.Property<string>("ID")
                         .ValueGeneratedOnAdd()
@@ -834,7 +834,7 @@ namespace Remotely.Server.Migrations.SqlServer
                     b.ToTable("SharedFiles");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.RemotelyUser", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.RemotelyUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -862,13 +862,13 @@ namespace Remotely.Server.Migrations.SqlServer
 
             modelBuilder.Entity("DeviceGroupRemotelyUser", b =>
                 {
-                    b.HasOne("Remotely.Shared.Models.DeviceGroup", null)
+                    b.HasOne("Pronetsys.Shared.Models.DeviceGroup", null)
                         .WithMany()
                         .HasForeignKey("DeviceGroupsID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Remotely.Shared.Models.RemotelyUser", null)
+                    b.HasOne("Pronetsys.Shared.Models.RemotelyUser", null)
                         .WithMany()
                         .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -877,13 +877,13 @@ namespace Remotely.Server.Migrations.SqlServer
 
             modelBuilder.Entity("DeviceGroupScriptSchedule", b =>
                 {
-                    b.HasOne("Remotely.Shared.Models.DeviceGroup", null)
+                    b.HasOne("Pronetsys.Shared.Models.DeviceGroup", null)
                         .WithMany()
                         .HasForeignKey("DeviceGroupsID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Remotely.Shared.Models.ScriptSchedule", null)
+                    b.HasOne("Pronetsys.Shared.Models.ScriptSchedule", null)
                         .WithMany()
                         .HasForeignKey("ScriptSchedulesId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -892,13 +892,13 @@ namespace Remotely.Server.Migrations.SqlServer
 
             modelBuilder.Entity("DeviceScriptRun", b =>
                 {
-                    b.HasOne("Remotely.Shared.Models.Device", null)
+                    b.HasOne("Pronetsys.Shared.Models.Device", null)
                         .WithMany()
                         .HasForeignKey("DevicesID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Remotely.Shared.Models.ScriptRun", null)
+                    b.HasOne("Pronetsys.Shared.Models.ScriptRun", null)
                         .WithMany()
                         .HasForeignKey("ScriptRunsId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -907,13 +907,13 @@ namespace Remotely.Server.Migrations.SqlServer
 
             modelBuilder.Entity("DeviceScriptRun1", b =>
                 {
-                    b.HasOne("Remotely.Shared.Models.Device", null)
+                    b.HasOne("Pronetsys.Shared.Models.Device", null)
                         .WithMany()
                         .HasForeignKey("DevicesCompletedID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Remotely.Shared.Models.ScriptRun", null)
+                    b.HasOne("Pronetsys.Shared.Models.ScriptRun", null)
                         .WithMany()
                         .HasForeignKey("ScriptRunsCompletedId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -922,13 +922,13 @@ namespace Remotely.Server.Migrations.SqlServer
 
             modelBuilder.Entity("DeviceScriptSchedule", b =>
                 {
-                    b.HasOne("Remotely.Shared.Models.Device", null)
+                    b.HasOne("Pronetsys.Shared.Models.Device", null)
                         .WithMany()
                         .HasForeignKey("DevicesID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Remotely.Shared.Models.ScriptSchedule", null)
+                    b.HasOne("Pronetsys.Shared.Models.ScriptSchedule", null)
                         .WithMany()
                         .HasForeignKey("ScriptSchedulesId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -986,17 +986,17 @@ namespace Remotely.Server.Migrations.SqlServer
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.Alert", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.Alert", b =>
                 {
-                    b.HasOne("Remotely.Shared.Models.Device", "Device")
+                    b.HasOne("Pronetsys.Shared.Models.Device", "Device")
                         .WithMany("Alerts")
                         .HasForeignKey("DeviceID");
 
-                    b.HasOne("Remotely.Shared.Models.Organization", "Organization")
+                    b.HasOne("Pronetsys.Shared.Models.Organization", "Organization")
                         .WithMany("Alerts")
                         .HasForeignKey("OrganizationID");
 
-                    b.HasOne("Remotely.Shared.Models.RemotelyUser", "User")
+                    b.HasOne("Pronetsys.Shared.Models.RemotelyUser", "User")
                         .WithMany("Alerts")
                         .HasForeignKey("UserID");
 
@@ -1007,22 +1007,22 @@ namespace Remotely.Server.Migrations.SqlServer
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.ApiToken", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.ApiToken", b =>
                 {
-                    b.HasOne("Remotely.Shared.Models.Organization", "Organization")
+                    b.HasOne("Pronetsys.Shared.Models.Organization", "Organization")
                         .WithMany("ApiTokens")
                         .HasForeignKey("OrganizationID");
 
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.Device", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.Device", b =>
                 {
-                    b.HasOne("Remotely.Shared.Models.DeviceGroup", "DeviceGroup")
+                    b.HasOne("Pronetsys.Shared.Models.DeviceGroup", "DeviceGroup")
                         .WithMany("Devices")
                         .HasForeignKey("DeviceGroupID");
 
-                    b.HasOne("Remotely.Shared.Models.Organization", "Organization")
+                    b.HasOne("Pronetsys.Shared.Models.Organization", "Organization")
                         .WithMany("Devices")
                         .HasForeignKey("OrganizationID");
 
@@ -1031,49 +1031,49 @@ namespace Remotely.Server.Migrations.SqlServer
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.DeviceGroup", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.DeviceGroup", b =>
                 {
-                    b.HasOne("Remotely.Shared.Models.Organization", "Organization")
+                    b.HasOne("Pronetsys.Shared.Models.Organization", "Organization")
                         .WithMany("DeviceGroups")
                         .HasForeignKey("OrganizationID");
 
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.EventLog", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.EventLog", b =>
                 {
-                    b.HasOne("Remotely.Shared.Models.Organization", "Organization")
+                    b.HasOne("Pronetsys.Shared.Models.Organization", "Organization")
                         .WithMany("EventLogs")
                         .HasForeignKey("OrganizationID");
 
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.InviteLink", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.InviteLink", b =>
                 {
-                    b.HasOne("Remotely.Shared.Models.Organization", "Organization")
+                    b.HasOne("Pronetsys.Shared.Models.Organization", "Organization")
                         .WithMany("InviteLinks")
                         .HasForeignKey("OrganizationID");
 
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.Organization", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.Organization", b =>
                 {
-                    b.HasOne("Remotely.Shared.Models.BrandingInfo", "BrandingInfo")
+                    b.HasOne("Pronetsys.Shared.Models.BrandingInfo", "BrandingInfo")
                         .WithMany()
                         .HasForeignKey("BrandingInfoId");
 
                     b.Navigation("BrandingInfo");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.SavedScript", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.SavedScript", b =>
                 {
-                    b.HasOne("Remotely.Shared.Models.RemotelyUser", "Creator")
+                    b.HasOne("Pronetsys.Shared.Models.RemotelyUser", "Creator")
                         .WithMany("SavedScripts")
                         .HasForeignKey("CreatorId");
 
-                    b.HasOne("Remotely.Shared.Models.Organization", "Organization")
+                    b.HasOne("Pronetsys.Shared.Models.Organization", "Organization")
                         .WithMany("SavedScripts")
                         .HasForeignKey("OrganizationID");
 
@@ -1082,21 +1082,21 @@ namespace Remotely.Server.Migrations.SqlServer
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.ScriptResult", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.ScriptResult", b =>
                 {
-                    b.HasOne("Remotely.Shared.Models.Device", "Device")
+                    b.HasOne("Pronetsys.Shared.Models.Device", "Device")
                         .WithMany("ScriptResults")
                         .HasForeignKey("DeviceID");
 
-                    b.HasOne("Remotely.Shared.Models.Organization", "Organization")
+                    b.HasOne("Pronetsys.Shared.Models.Organization", "Organization")
                         .WithMany("ScriptResults")
                         .HasForeignKey("OrganizationID");
 
-                    b.HasOne("Remotely.Shared.Models.ScriptSchedule", "Schedule")
+                    b.HasOne("Pronetsys.Shared.Models.ScriptSchedule", "Schedule")
                         .WithMany()
                         .HasForeignKey("ScheduleId");
 
-                    b.HasOne("Remotely.Shared.Models.ScriptRun", null)
+                    b.HasOne("Pronetsys.Shared.Models.ScriptRun", null)
                         .WithMany("Results")
                         .HasForeignKey("ScriptRunId");
 
@@ -1107,26 +1107,26 @@ namespace Remotely.Server.Migrations.SqlServer
                     b.Navigation("Schedule");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.ScriptRun", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.ScriptRun", b =>
                 {
-                    b.HasOne("Remotely.Shared.Models.Organization", "Organization")
+                    b.HasOne("Pronetsys.Shared.Models.Organization", "Organization")
                         .WithMany("ScriptRuns")
                         .HasForeignKey("OrganizationID");
 
-                    b.HasOne("Remotely.Shared.Models.ScriptSchedule", null)
+                    b.HasOne("Pronetsys.Shared.Models.ScriptSchedule", null)
                         .WithMany("ScriptRuns")
                         .HasForeignKey("ScriptScheduleId");
 
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.ScriptSchedule", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.ScriptSchedule", b =>
                 {
-                    b.HasOne("Remotely.Shared.Models.RemotelyUser", "Creator")
+                    b.HasOne("Pronetsys.Shared.Models.RemotelyUser", "Creator")
                         .WithMany("ScriptSchedules")
                         .HasForeignKey("CreatorId");
 
-                    b.HasOne("Remotely.Shared.Models.Organization", "Organization")
+                    b.HasOne("Pronetsys.Shared.Models.Organization", "Organization")
                         .WithMany("ScriptSchedules")
                         .HasForeignKey("OrganizationID");
 
@@ -1135,37 +1135,37 @@ namespace Remotely.Server.Migrations.SqlServer
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.SharedFile", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.SharedFile", b =>
                 {
-                    b.HasOne("Remotely.Shared.Models.Organization", "Organization")
+                    b.HasOne("Pronetsys.Shared.Models.Organization", "Organization")
                         .WithMany("SharedFiles")
                         .HasForeignKey("OrganizationID");
 
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.RemotelyUser", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.RemotelyUser", b =>
                 {
-                    b.HasOne("Remotely.Shared.Models.Organization", "Organization")
+                    b.HasOne("Pronetsys.Shared.Models.Organization", "Organization")
                         .WithMany("RemotelyUsers")
                         .HasForeignKey("OrganizationID");
 
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.Device", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.Device", b =>
                 {
                     b.Navigation("Alerts");
 
                     b.Navigation("ScriptResults");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.DeviceGroup", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.DeviceGroup", b =>
                 {
                     b.Navigation("Devices");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.Organization", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.Organization", b =>
                 {
                     b.Navigation("Alerts");
 
@@ -1192,17 +1192,17 @@ namespace Remotely.Server.Migrations.SqlServer
                     b.Navigation("SharedFiles");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.ScriptRun", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.ScriptRun", b =>
                 {
                     b.Navigation("Results");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.ScriptSchedule", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.ScriptSchedule", b =>
                 {
                     b.Navigation("ScriptRuns");
                 });
 
-            modelBuilder.Entity("Remotely.Shared.Models.RemotelyUser", b =>
+            modelBuilder.Entity("Pronetsys.Shared.Models.RemotelyUser", b =>
                 {
                     b.Navigation("Alerts");
 

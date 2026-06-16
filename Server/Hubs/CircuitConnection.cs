@@ -1,19 +1,19 @@
-﻿using Remotely.Server.Services;
-using Remotely.Shared.Helpers;
+﻿using Pronetsys.Server.Services;
+using Pronetsys.Shared.Helpers;
 using Bitbound.SimpleMessenger;
 using Microsoft.AspNetCore.Components.Server.Circuits;
 using Microsoft.AspNetCore.SignalR;
-using Remotely.Server.Models;
-using Remotely.Server.Models.Messages;
-using Remotely.Server.Services.Stores;
-using Remotely.Shared;
-using Remotely.Shared.Entities;
-using Remotely.Shared.Enums;
-using Remotely.Shared.Interfaces;
-using Remotely.Shared.Utilities;
+using Pronetsys.Server.Models;
+using Pronetsys.Server.Models.Messages;
+using Pronetsys.Server.Services.Stores;
+using Pronetsys.Shared;
+using Pronetsys.Shared.Entities;
+using Pronetsys.Shared.Enums;
+using Pronetsys.Shared.Interfaces;
+using Pronetsys.Shared.Utilities;
 using System.Collections.Concurrent;
 
-namespace Remotely.Server.Hubs;
+namespace Pronetsys.Server.Hubs;
 
 public interface ICircuitConnection
 {

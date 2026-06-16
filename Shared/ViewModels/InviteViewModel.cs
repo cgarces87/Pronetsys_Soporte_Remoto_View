@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Remotely.Shared.ViewModels;
+namespace Pronetsys.Shared.ViewModels;
 
 public class InviteViewModel
 {
