@@ -11,7 +11,7 @@
     <title>Pronetsys Asistencia Remota</title>
     <base href="/" />
     <link href="css/site.css" rel="stylesheet" />
-    <link href="Pronetsys_Server.styles.css" rel="stylesheet" />
+    <link href="Pronetsys_Server.styles.css?v=@CssVersion" rel="stylesheet" />
     <script src="interop.js"></script>
 
     @if (_theme == Theme.Dark)
@@ -45,6 +45,12 @@
     private PronetsysUser? _user;
     private Theme _theme;
     private bool _isAuthenticated;
+
+    // Cache-busting token for the scoped-CSS bundle. Its scope hashes change on
+    // every build, and the front-end proxy caches the bundle by its URL. A token
+    // that changes each app start makes the URL unique per deploy, so clients (and
+    // the proxy) always fetch the bundle that matches the current build.
+    private static readonly string CssVersion = Guid.NewGuid().ToString("N")[..8];
 
     protected override async Task OnInitializedAsync()
     {
