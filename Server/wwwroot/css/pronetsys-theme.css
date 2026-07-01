@@ -58,6 +58,12 @@ body {
     display: none;
 }
 
+/* Encabezado de sección "Administración" en blanco (en vez del gris tenue). */
+.sidebar .nav-item.text-muted,
+.sidebar .nav-item.text-muted .nav-label {
+    color: #ffffff !important;
+}
+
 /* Logo shown on the login / register (account) pages. */
 .pronetsys-auth-logo {
     max-width: 260px;
