@@ -64,6 +64,17 @@ body {
     color: #ffffff !important;
 }
 
+/* Menú más compacto: menos espacio entre los botones. */
+.sidebar .nav-item {
+    padding-bottom: 0.1rem !important;
+}
+
+.sidebar .nav-link,
+.sidebar .nav-link-button {
+    height: 2.4rem !important;
+    line-height: 2.4rem !important;
+}
+
 /* Logo shown on the login / register (account) pages. */
 .pronetsys-auth-logo {
     max-width: 260px;
