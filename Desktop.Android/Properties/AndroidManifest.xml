@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          android:versionCode="1"
+          android:versionName="1.0">
+
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+  <!-- Foreground service para mantener viva la captura (Android 10+/14). -->
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
+
+  <application android:label="Pronetsys Asistencia Remota"
+               android:allowBackup="false"
+               android:supportsRtl="true">
+
+    <!-- Servicio en primer plano que hospeda MediaProjection (captura de pantalla). -->
+    <service
+        android:name=".Services.ScreenCaptureForegroundService"
+        android:exported="false"
+        android:foregroundServiceType="mediaProjection" />
+
+    <!-- Servicio de accesibilidad para inyectar gestos (el tecnico controla). -->
+    <service
+        android:name=".Services.RemoteControlAccessibilityService"
+        android:exported="false"
+        android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+      <intent-filter>
+        <action android:name="android.accessibilityservice.AccessibilityService" />
+      </intent-filter>
+      <meta-data
+          android:name="android.accessibilityservice"
+          android:resource="@xml/accessibility_service_config" />
+    </service>
+
+  </application>
+</manifest>

@@ -1,0 +1,27 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Pronetsys.Desktop.Android.Views.MainView">
+  <Border Padding="24" Background="#1e1e1e">
+    <StackPanel Spacing="18" VerticalAlignment="Center" HorizontalAlignment="Center">
+
+      <TextBlock Text="Pronetsys Asistencia Remota"
+                 FontSize="22" FontWeight="Bold" Foreground="White"
+                 HorizontalAlignment="Center" />
+
+      <TextBlock Text="Comparte este código con tu técnico:"
+                 Foreground="#c7c7c7" HorizontalAlignment="Center" />
+
+      <TextBlock x:Name="SessionIdText" Text="— — —"
+                 FontSize="28" FontWeight="Bold" Foreground="#4d8bff"
+                 HorizontalAlignment="Center" />
+
+      <TextBlock x:Name="StatusText" Text="Iniciando…"
+                 Foreground="#9aa0a6" HorizontalAlignment="Center" TextWrapping="Wrap" />
+
+      <Button x:Name="StartButton" Content="Compartir pantalla"
+              HorizontalAlignment="Center" Padding="18,10"
+              Background="#0741ad" Foreground="White" />
+
+    </StackPanel>
+  </Border>
+</UserControl>

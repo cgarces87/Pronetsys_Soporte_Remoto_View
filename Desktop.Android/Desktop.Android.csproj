@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-android</TargetFramework>
+    <SupportedOSPlatformVersion>26</SupportedOSPlatformVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+    <OutputType>Exe</OutputType>
+    <ApplicationId>com.pronetsys.asistenciaremota</ApplicationId>
+    <ApplicationVersion>1</ApplicationVersion>
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <AndroidPackageFormat>apk</AndroidPackageFormat>
+
+    <RootNamespace>Pronetsys.Desktop.Android</RootNamespace>
+    <AssemblyName>Pronetsys.Desktop.Android</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Avalonia (single-view en Android). -->
+    <PackageReference Include="Avalonia" Version="11.1.4" />
+    <PackageReference Include="Avalonia.Android" Version="11.1.4" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.1.4" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.1.4" />
+
+    <!-- SignalR + MessagePack (mismo protocolo que el DesktopHub). -->
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.28" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.MessagePack" Version="8.0.28" />
+
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
+
+    <!-- Codificación de frames en Android. -->
+    <PackageReference Include="SkiaSharp" Version="2.88.8" />
+    <PackageReference Include="SkiaSharp.Views.Android" Version="2.88.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Solo se referencian los contratos portables. NO referenciar Desktop.Shared
+         hasta desacoplarlo del escritorio (ver README-DEV.md, seccion 6). -->
+    <ProjectReference Include="..\Shared\Shared.csproj" />
+  </ItemGroup>
+
+</Project>
