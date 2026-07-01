@@ -86,8 +86,8 @@
                     powershell.exe -ExecutionPolicy Bypass -F {path}\Install-Pronetsys.ps1
                     -install
                     -quiet
-                    -organizationid "0b3d706b-9c5d-41e6-8ae9-5720d16324e6"
-                    -serverurl "https://soporte.pronetsys.com"
+                    -organizationid "@_organizationId"
+                    -serverurl "@_serverUrl"
                 </code>
             </p>
             <p>
@@ -102,8 +102,8 @@
                     powershell.exe -ExecutionPolicy Bypass -F {path}\Install-Pronetsys.ps1
                     -install
                     -quiet
-                    -organizationid "0b3d706b-9c5d-41e6-8ae9-5720d16324e6"
-                    -serverurl "https://soporte.pronetsys.com"
+                    -organizationid "@_organizationId"
+                    -serverurl "@_serverUrl"
                     -path "[path]\Pronetsys-Win-x64.zip"
                 </code>
             </p>
@@ -113,8 +113,8 @@
                 <code class="label label-default small">
                     powershell.exe -ExecutionPolicy Bypass -F {path}\Install-Pronetsys.ps1
                     -install -quiet -supportshortcut
-                    -organizationid "0b3d706b-9c5d-41e6-8ae9-5720d16324e6"
-                    -serverurl "https://soporte.pronetsys.com"
+                    -organizationid "@_organizationId"
+                    -serverurl "@_serverUrl"
                     -devicegroup "Customer Group 1"
                     -devicealias "Front Desk"
                     -deviceuuid "eebb4d87-5459-4976-989e-a7876dffc69c"
@@ -204,6 +204,7 @@
 @code {
     private string? _organizationId;
     private bool _isAuthenticated;
+    private string _serverUrl = string.Empty;
 
     protected override async Task OnInitializedAsync()
     {
@@ -225,6 +226,14 @@
                 _organizationId = orgResult.Value.ID;
             }
         }
+
+        // Use the configured ServerUrl (e.g. https://asistencia.pronetsys.com.co) for the
+        // example commands so they never show a stale/placeholder domain. Fall back to the
+        // current request's base URI if ServerUrl hasn't been set.
+        var settings = await DataService.GetSettings();
+        _serverUrl = !string.IsNullOrWhiteSpace(settings.ServerUrl)
+            ? settings.ServerUrl.TrimEnd('/')
+            : NavManager.BaseUri.TrimEnd('/');
 
         await base.OnInitializedAsync();
     }
