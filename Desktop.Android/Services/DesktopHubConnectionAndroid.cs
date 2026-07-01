@@ -25,6 +25,9 @@ public class DesktopHubConnectionAndroid : IAsyncDisposable
     // Puente evento->stream: el capturer empuja JPEGs aquí; el IAsyncEnumerable los consume.
     private Channel<byte[]>? _frameChannel;
 
+    // Fase 2: traduce los DTOs de entrada del técnico a gestos de accesibilidad.
+    private readonly AndroidInputHandler _input = new();
+
     private string _deviceName = "Android";
     private int _captureWidth;
     private int _captureHeight;
@@ -62,6 +65,7 @@ public class DesktopHubConnectionAndroid : IAsyncDisposable
     {
         _captureWidth = width;
         _captureHeight = height;
+        _input.SetScreenSize(width, height);
     }
 
     /// <summary>Lo llama el capturer (evento FrameEncoded) por cada JPEG listo.</summary>
@@ -101,11 +105,11 @@ public class DesktopHubConnectionAndroid : IAsyncDisposable
                 await BeginScreenCastAsync(viewerId, requesterName, streamId);
             });
 
-        // Fase 2: DTOs entrantes (eventos de entrada del técnico) -> aplicar por accesibilidad.
+        // Fase 2: DTOs entrantes (eventos de entrada del técnico) -> gestos de accesibilidad.
         _connection.On<byte[], string>("SendDtoToClient",
             (dtoWrapper, viewerConnectionId) =>
             {
-                // TODO Fase 2: deserializar el DTO y ejecutar el gesto/tecla correspondiente.
+                _input.Handle(dtoWrapper);
             });
 
         _connection.On<string>("ViewerDisconnected", viewerId =>
