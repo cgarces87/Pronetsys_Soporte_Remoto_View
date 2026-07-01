@@ -32,8 +32,9 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
 
-    <!-- Fase 1: para codificar frames a JPEG se agregará SkiaSharp + SkiaSharp.NativeAssets.Android
-         en la versión que use Avalonia (Avalonia.Android ya trae Skia para renderizar). -->
+    <!-- Codificación de frames a JPEG (misma versión que usa Avalonia). -->
+    <PackageReference Include="SkiaSharp" Version="2.88.8" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Android" Version="2.88.8" />
 
   </ItemGroup>
 

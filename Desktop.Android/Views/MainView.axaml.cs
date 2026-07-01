@@ -26,7 +26,13 @@ public partial class MainView : UserControl
         _ = StartAsync();
     }
 
-    private async void OnStartClicked(object? sender, RoutedEventArgs e) => await StartAsync();
+    private async void OnStartClicked(object? sender, RoutedEventArgs e)
+    {
+        // Fase 1 (prueba): pedir consentimiento y empezar a capturar (los frames se registran
+        // en logcat). El envío por el hub se cablea en el siguiente incremento.
+        MainActivity.Instance?.RequestScreenCapture();
+        await StartAsync();
+    }
 
     private async Task StartAsync()
     {
