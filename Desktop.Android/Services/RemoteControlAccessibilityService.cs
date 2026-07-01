@@ -1,6 +1,6 @@
 using Android.AccessibilityServices;
-using Android.Graphics;
 using Android.Views.Accessibility;
+using Path = Android.Graphics.Path; // desambiguar de System.IO.Path
 
 namespace Pronetsys.Desktop.Android.Services;
 
@@ -29,10 +29,12 @@ public class RemoteControlAccessibilityService : AccessibilityService
     {
         using var path = new Path();
         path.MoveTo(x, y);
-        var gesture = new GestureDescription.Builder()
-            .AddStroke(new GestureDescription.StrokeDescription(path, 0, 50))
-            .Build();
-        DispatchGesture(gesture, callback: null, handler: null);
+        var stroke = new GestureDescription.StrokeDescription(path, 0, 50);
+        var gesture = new GestureDescription.Builder().AddStroke(stroke)?.Build();
+        if (gesture is not null)
+        {
+            DispatchGesture(gesture, callback: null, handler: null);
+        }
     }
 
     /// <summary>Deslizar/scroll de (x1,y1) a (x2,y2) en <paramref name="durationMs"/>.</summary>
@@ -41,12 +43,14 @@ public class RemoteControlAccessibilityService : AccessibilityService
         using var path = new Path();
         path.MoveTo(x1, y1);
         path.LineTo(x2, y2);
-        var gesture = new GestureDescription.Builder()
-            .AddStroke(new GestureDescription.StrokeDescription(path, 0, Math.Max(1, durationMs)))
-            .Build();
-        DispatchGesture(gesture, callback: null, handler: null);
+        var stroke = new GestureDescription.StrokeDescription(path, 0, Math.Max(1, durationMs));
+        var gesture = new GestureDescription.Builder().AddStroke(stroke)?.Build();
+        if (gesture is not null)
+        {
+            DispatchGesture(gesture, callback: null, handler: null);
+        }
     }
 
     // TODO Fase 2: LongPress, texto (via nodo enfocado / ACTION_SET_TEXT), botones Atrás/Inicio
-    // (PerformGlobalAction(GlobalActionBack / GlobalActionHome)).
+    // (PerformGlobalAction(GlobalAction.Back / GlobalAction.Home)).
 }

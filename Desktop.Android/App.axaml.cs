@@ -5,7 +5,9 @@ using Pronetsys.Desktop.Android.Views;
 
 namespace Pronetsys.Desktop.Android;
 
-public partial class App : Application
+// 'Application' es ambiguo en Android (Android.App.Application vs Avalonia.Application);
+// calificamos explícitamente el base de Avalonia.
+public partial class App : Avalonia.Application
 {
     public override void Initialize() => AvaloniaXamlLoader.Load(this);
 

@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.Extensions.DependencyInjection; // AddMessagePackProtocol
+using Pronetsys.Shared.Enums;                   // PromptForAccessResult
 using Pronetsys.Shared.Models;
 
 namespace Pronetsys.Desktop.Android.Services;

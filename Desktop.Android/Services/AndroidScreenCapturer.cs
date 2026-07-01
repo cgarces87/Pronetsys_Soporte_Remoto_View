@@ -1,50 +1,39 @@
-using Android.Hardware.Display;
-using Android.Media;
 using Android.Media.Projection;
 
 namespace Pronetsys.Desktop.Android.Services;
 
 /// <summary>
 /// Fase 1 — captura de pantalla vía MediaProjection. El <see cref="MediaProjection"/> se obtiene
-/// tras el consentimiento del usuario (diálogo del sistema, lanzado desde la Activity). Los frames
-/// llegan por <see cref="ImageReader"/>; se codifican (SkiaSharp → JPEG) y se envían por el hub.
+/// tras el consentimiento del usuario (diálogo del sistema, lanzado desde la Activity). En la
+/// Fase 1 se implementa: ImageReader + VirtualDisplay + listener de frames → SKBitmap → JPEG
+/// (SkiaSharp) → enviar por el hub. Debe correr con un foreground service activo
+/// (ver <see cref="ScreenCaptureForegroundService"/>).
 ///
-/// Debe correr con un foreground service activo (ver <see cref="ScreenCaptureForegroundService"/>).
+/// Por ahora es un stub que compila; el cableado exacto de la API de Android se hace en Fase 1
+/// contra un dispositivo/emulador.
 /// </summary>
 public class AndroidScreenCapturer : IDisposable
 {
     private MediaProjection? _projection;
-    private VirtualDisplay? _virtualDisplay;
-    private ImageReader? _imageReader;
 
-    /// <summary>Evento con cada frame ya codificado (JPEG) listo para enviar por el hub.</summary>
+    /// <summary>Cada frame ya codificado (JPEG) listo para enviar por el hub.</summary>
     public event Action<byte[]>? FrameEncoded;
 
     public void Start(MediaProjection projection, int width, int height, int densityDpi)
     {
         _projection = projection;
 
-        _imageReader = ImageReader.NewInstance(width, height, ImageFormatType.Rgba8888, maxImages: 2);
-
-        _virtualDisplay = _projection.CreateVirtualDisplay(
-            name: "PronetsysCapture",
-            width: width,
-            height: height,
-            densityDpi: densityDpi,
-            flags: (DisplayFlags)VirtualDisplayFlags.AutoMirror,
-            surface: _imageReader.Surface,
-            callback: null,
-            handler: null);
-
-        // TODO Fase 1: SetOnImageAvailableListener -> leer el Image (planes/rowStride),
-        // construir SKBitmap, comparar con el frame anterior (solo enviar cambios),
-        // codificar a JPEG con calidad ajustable y disparar FrameEncoded.
+        // TODO Fase 1:
+        //   var reader = ImageReader.NewInstance(width, height, (int)Android.Graphics.Format.Rgba8888, 2);
+        //   _projection.CreateVirtualDisplay("PronetsysCapture", width, height, densityDpi,
+        //       (int)Android.Hardware.Display.DisplayManagerFlags.VirtualDisplayFlagAutoMirror,
+        //       reader.Surface, callback: null, handler: null);
+        //   reader.SetOnImageAvailableListener(...) -> leer planes -> SKBitmap -> JPEG -> FrameEncoded.
+        _ = FrameEncoded; // evita CS0067 mientras es stub
     }
 
     public void Dispose()
     {
-        _virtualDisplay?.Release();
-        _imageReader?.Close();
         _projection?.Stop();
         GC.SuppressFinalize(this);
     }
