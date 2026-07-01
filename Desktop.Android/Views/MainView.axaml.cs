@@ -13,9 +13,17 @@ public partial class MainView : UserControl
 
     private readonly DesktopHubConnectionAndroid _hub = new();
 
+    /// <summary>
+    /// Hub de la vista activa, para que <see cref="MainActivity"/> le entregue los frames
+    /// capturados por MediaProjection (creada fuera del árbol de Avalonia).
+    /// </summary>
+    public static DesktopHubConnectionAndroid? ActiveHub { get; private set; }
+
     public MainView()
     {
         InitializeComponent();
+
+        ActiveHub = _hub;
 
         _hub.StatusChanged += message =>
             Dispatcher.UIThread.Post(() => StatusText.Text = message);

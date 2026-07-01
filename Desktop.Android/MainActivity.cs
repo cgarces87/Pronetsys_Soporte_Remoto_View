@@ -69,12 +69,18 @@ public class MainActivity : AvaloniaMainActivity<App>
         var height = metrics?.HeightPixels ?? 1920;
         var dpi = metrics is not null ? (int)metrics.DensityDpi : 320;
 
+        // Informar al hub las dimensiones para el DTO ScreenData y el encabezado de cada frame.
+        Views.MainView.ActiveHub?.SetCaptureInfo(width, height);
+
         _capturer?.Dispose();
         _capturer = new AndroidScreenCapturer();
         _capturer.FrameEncoded += bytes =>
-            Log.Info(LogTag, $"Frame JPEG capturado: {bytes.Length} bytes ({width}x{height})");
+        {
+            // Entregar el JPEG al hub para que lo transmita al técnico (si hay sesión activa).
+            Views.MainView.ActiveHub?.PushFrame(bytes);
+        };
         _capturer.Start(projection, width, height, dpi);
 
-        Log.Info(LogTag, "Captura de pantalla iniciada.");
+        Log.Info(LogTag, $"Captura de pantalla iniciada ({width}x{height}).");
     }
 }
