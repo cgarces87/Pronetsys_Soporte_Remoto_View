@@ -53,6 +53,11 @@ body {
     background-image: none !important;
 }
 
+/* Menú de solo texto: ocultar los íconos y dejar únicamente las etiquetas. */
+.sidebar .oi {
+    display: none;
+}
+
 /* Logo shown on the login / register (account) pages. */
 .pronetsys-auth-logo {
     max-width: 260px;
