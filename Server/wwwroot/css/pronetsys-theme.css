@@ -53,11 +53,6 @@ body {
     background-image: none !important;
 }
 
-/* Menú de solo texto: ocultar los íconos y dejar únicamente las etiquetas. */
-.sidebar .oi {
-    display: none;
-}
-
 /* Encabezado de sección "Administración" en blanco (en vez del gris tenue). */
 .sidebar .nav-item.text-muted,
 .sidebar .nav-item.text-muted .nav-label {
