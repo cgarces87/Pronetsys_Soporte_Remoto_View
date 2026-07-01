@@ -118,15 +118,19 @@ function Stop-Pronetsys {
 
 function Uninstall-Pronetsys {
 	Stop-Pronetsys
+	Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Pronetsys_Asistencia_Remota" -Force -Recurse -ErrorAction SilentlyContinue
 	Remove-Item -Path $InstallPath -Force -Recurse -ErrorAction SilentlyContinue
 	Remove-NetFirewallRule -Name "Pronetsys Desktop Unattended" -ErrorAction SilentlyContinue
 }
 
 function Install-Pronetsys {
-	$HeadResponse = Invoke-WebRequest -Uri "$HostName/Content/Pronetsys-Win-$Platform.zip" -Method Head -UseBasicParsing
-	$ETag = $HeadResponse.Headers["ETag"]
-	if (!$Etag) {
-		Write-Log "Failed to get ETag from server.  Aborting install."
+	try {
+		$HeadResponse = Invoke-WebRequest -Uri "$HostName/Content/Pronetsys-Win-$Platform.zip" -Method Head -UseBasicParsing -TimeoutSec 10
+		$ETag = $HeadResponse.Headers["ETag"]
+	}
+	catch {
+		Write-Log "Server not reachable for ETag; continuing offline install."
+		$ETag = ""
 	}
 
 	if ((Test-Path -Path "$InstallPath") -and (Test-Path -Path "$InstallPath\ConnectionInfo.json")) {
@@ -134,7 +138,9 @@ function Install-Pronetsys {
 		if ($ConnectionInfo) {
 			$ConnectionInfo.Host = $HostName
 			$ConnectionInfo.OrganizationID = $Organization
-			$ConnectionInfo.ServerVerificationToken = ""
+			# Keep the existing ServerVerificationToken so reinstalling over an
+			# existing install still authenticates with the server (which stores
+			# that token). Resetting it here caused a permanent token mismatch.
 		}
 	}
 	else {
@@ -196,6 +202,29 @@ function Install-Pronetsys {
 	New-Service -Name "Pronetsys_Asistencia_Remota" -BinaryPathName "`"$InstallPath\Pronetsys_Agent.exe`"" -DisplayName "Pronetsys Asistencia Remota" -StartupType Automatic -Description "Background service that maintains a connection to the Pronetsys server.  The service is used for remote support and maintenance by this computer's administrators."
 	Start-Process -FilePath "cmd.exe" -ArgumentList "/c sc.exe failure `"Pronetsys_Asistencia_Remota`" reset=5 actions=restart/5000" -Wait -WindowStyle Hidden
 	Start-Service -Name Pronetsys_Asistencia_Remota
+
+	# Register the app in Windows "Add or remove programs" (ARP).
+	try {
+		Copy-Item -Path $PSCommandPath -Destination "$InstallPath\Install-Pronetsys.ps1" -Force
+		$Version = ""
+		try { $Version = (Get-Item "$InstallPath\Pronetsys_Agent.exe").VersionInfo.FileVersion } catch { }
+		if (!$Version) { $Version = (Get-Date -Format 'yyyy.MM.dd') }
+		$UninstallCmd = "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$InstallPath\Install-Pronetsys.ps1`" -uninstall -organizationid $Organization -serverurl $HostName"
+		$UninstallKey = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Pronetsys_Asistencia_Remota"
+		New-Item -Path $UninstallKey -Force | Out-Null
+		Set-ItemProperty -Path $UninstallKey -Name "DisplayName" -Value "Pronetsys Asistencia Remota"
+		Set-ItemProperty -Path $UninstallKey -Name "Publisher" -Value "Pronetsys"
+		Set-ItemProperty -Path $UninstallKey -Name "DisplayVersion" -Value $Version
+		Set-ItemProperty -Path $UninstallKey -Name "DisplayIcon" -Value "$InstallPath\Pronetsys_Agent.exe"
+		Set-ItemProperty -Path $UninstallKey -Name "InstallLocation" -Value $InstallPath
+		Set-ItemProperty -Path $UninstallKey -Name "UninstallString" -Value $UninstallCmd
+		Set-ItemProperty -Path $UninstallKey -Name "QuietUninstallString" -Value $UninstallCmd
+		Set-ItemProperty -Path $UninstallKey -Name "NoModify" -Value 1 -Type DWord
+		Set-ItemProperty -Path $UninstallKey -Name "NoRepair" -Value 1 -Type DWord
+	}
+	catch {
+		Write-Log "Could not register in Add/Remove Programs: $($_.Exception.Message)"
+	}
 }
 
 #endregion
