@@ -2,19 +2,19 @@
  * Pronetsys corporate theme.
  * Loaded after the base Bootswatch theme so these brand colors take precedence.
  * Palette taken from pronetsys.com.co:
- *   primary  #0065cb   secondary #0057ad   dark #0d1821
+ *   primary  #0741ad   secondary #053182   dark #0d1821
  */
 :root {
-    --pronetsys-primary: #0065cb;
-    --pronetsys-secondary: #0057ad;
+    --pronetsys-primary: #0741ad;
+    --pronetsys-secondary: #053182;
     --pronetsys-dark: #0d1821;
 
     /* Recolor Bootstrap's primary + links via its CSS variables. */
-    --bs-primary: #0065cb;
+    --bs-primary: #0741ad;
     --bs-primary-rgb: 0, 101, 203;
-    --bs-link-color: #0065cb;
+    --bs-link-color: #0741ad;
     --bs-link-color-rgb: 0, 101, 203;
-    --bs-link-hover-color: #0057ad;
+    --bs-link-hover-color: #053182;
     --bs-link-hover-color-rgb: 0, 87, 173;
 }
 

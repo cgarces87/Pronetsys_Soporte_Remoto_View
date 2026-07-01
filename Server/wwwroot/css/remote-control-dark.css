@@ -44,7 +44,7 @@ button {
   }
 
   button:active {
-    border: 1px solid #0057ad;
+    border: 1px solid #053182;
   }
 
 .menu-options-header {
@@ -73,12 +73,12 @@ button {
 
 #connectButton {
   color: white;
-  background-color: #0065cb;
+  background-color: #0741ad;
 }
 
   #connectButton:active {
-    border: 1px solid #0057ad;
-    background-color: #0057ad;
+    border: 1px solid #053182;
+    background-color: #053182;
   }
 
   #connectButton:disabled {
