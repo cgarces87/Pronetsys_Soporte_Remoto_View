@@ -19,19 +19,47 @@ public partial class MainView : UserControl
     /// </summary>
     public static DesktopHubConnectionAndroid? ActiveHub { get; private set; }
 
+    /// <summary>Vista activa, para que la Activity pueda refrescar su estado (p. ej. al reanudar).</summary>
+    public static MainView? Current { get; private set; }
+
     public MainView()
     {
         InitializeComponent();
 
         ActiveHub = _hub;
+        Current = this;
 
         _hub.StatusChanged += message =>
             Dispatcher.UIThread.Post(() => StatusText.Text = message);
 
+        _hub.SessionActiveChanged += active =>
+            Dispatcher.UIThread.Post(() => SessionIndicator.IsVisible = active);
+
         StartButton.Click += OnStartClicked;
+        AccessibilityButton.Click += OnAccessibilityClicked;
 
         // Fase 0: al abrir la app, conectar y mostrar el ID de sesión.
         _ = StartAsync();
+        RefreshAccessibilityState();
+    }
+
+    private void OnAccessibilityClicked(object? sender, RoutedEventArgs e)
+    {
+        MainActivity.Instance?.OpenAccessibilitySettings();
+    }
+
+    /// <summary>La Activity llama esto al reanudar (p. ej. tras volver de Ajustes).</summary>
+    public void RefreshFromActivity()
+    {
+        Dispatcher.UIThread.Post(RefreshAccessibilityState);
+    }
+
+    // Refleja si el control táctil ya está habilitado (servicio de accesibilidad activo).
+    private void RefreshAccessibilityState()
+    {
+        var enabled = MainActivity.Instance?.IsAccessibilityEnabled() == true;
+        AccessibilityButton.Content = enabled ? "Control táctil habilitado ✓" : "Habilitar control táctil";
+        AccessibilityHint.IsVisible = !enabled;
     }
 
     private async void OnStartClicked(object? sender, RoutedEventArgs e)

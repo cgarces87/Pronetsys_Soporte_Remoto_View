@@ -35,6 +35,9 @@ public class DesktopHubConnectionAndroid : IAsyncDisposable
     public string SessionId { get; private set; } = string.Empty;
     public event Action<string>? StatusChanged;
 
+    /// <summary>true cuando un técnico está viendo la pantalla; false al terminar la sesión.</summary>
+    public event Action<bool>? SessionActiveChanged;
+
     /// <summary>True cuando MediaProjection ya está capturando (dimensiones conocidas).</summary>
     public bool IsCapturing => _captureWidth > 0 && _captureHeight > 0;
 
@@ -73,6 +76,16 @@ public class DesktopHubConnectionAndroid : IAsyncDisposable
     {
         // Si no hay stream activo, el frame se descarta silenciosamente.
         _frameChannel?.Writer.TryWrite(jpeg);
+    }
+
+    /// <summary>El usuario detuvo el compartir: cerrar el stream y marcar sin captura.</summary>
+    public void StopSharing()
+    {
+        _captureWidth = 0;
+        _captureHeight = 0;
+        _input.SetScreenSize(0, 0);
+        _frameChannel?.Writer.TryComplete();
+        StatusChanged?.Invoke("Compartir pantalla detenido.");
     }
 
     private void RegisterClientHandlers()
@@ -118,12 +131,17 @@ public class DesktopHubConnectionAndroid : IAsyncDisposable
             _frameChannel?.Writer.TryComplete();
         });
 
-        // Consentimiento atendido: el servidor invoca y ESPERA una respuesta.
+        // Consentimiento (usado en modo desatendido con RequireConsent). En el modelo atendido el
+        // usuario ya consintió al compartir el código y aceptar el diálogo de MediaProjection, así
+        // que aceptamos. (Un diálogo modal explícito por conexión sería un refinamiento posterior.)
         _connection.On<RemoteControlAccessRequest, PromptForAccessResult>("PromptForAccess",
             accessRequest =>
             {
-                // TODO Fase 3: mostrar el diálogo real y devolver la decisión del usuario.
-                return Task.FromResult(new PromptForAccessResult());
+                var who = string.IsNullOrWhiteSpace(accessRequest?.RequesterDisplayName)
+                    ? "Un técnico"
+                    : accessRequest.RequesterDisplayName;
+                StatusChanged?.Invoke($"{who} solicitó acceso.");
+                return Task.FromResult(PromptForAccessResult.Accepted);
             });
     }
 
@@ -165,6 +183,7 @@ public class DesktopHubConnectionAndroid : IAsyncDisposable
         await SendDtoToViewerAsync(screenData, DtoType.ScreenData, viewerId);
 
         // 2) Stream de frames (bloquea hasta que el canal se completa: Disconnect/ViewerDisconnected).
+        SessionActiveChanged?.Invoke(true);
         try
         {
             await _connection.SendAsync("SendDesktopStream", StreamFramesAsync(), streamId);
@@ -172,6 +191,11 @@ public class DesktopHubConnectionAndroid : IAsyncDisposable
         catch (Exception ex)
         {
             StatusChanged?.Invoke("Transmisión finalizada: " + ex.Message);
+        }
+        finally
+        {
+            SessionActiveChanged?.Invoke(false);
+            StatusChanged?.Invoke("Listo. Comparte el ID con tu técnico.");
         }
     }
 

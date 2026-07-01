@@ -18,9 +18,25 @@
       <TextBlock x:Name="StatusText" Text="Iniciando…"
                  Foreground="#9aa0a6" HorizontalAlignment="Center" TextWrapping="Wrap" />
 
+      <Border x:Name="SessionIndicator" IsVisible="False"
+              Background="#3a1212" BorderBrush="#e53935" BorderThickness="1"
+              CornerRadius="6" Padding="12,6" HorizontalAlignment="Center">
+        <TextBlock Text="🔴  Un técnico está viendo tu pantalla"
+                   Foreground="#ff8a80" FontWeight="SemiBold" HorizontalAlignment="Center" />
+      </Border>
+
       <Button x:Name="StartButton" Content="Compartir pantalla"
               HorizontalAlignment="Center" Padding="18,10"
               Background="#0741ad" Foreground="White" />
+
+      <Button x:Name="AccessibilityButton" Content="Habilitar control táctil"
+              HorizontalAlignment="Center" Padding="18,10"
+              Background="#2a2a2a" Foreground="#c7c7c7" />
+
+      <TextBlock x:Name="AccessibilityHint"
+                 Text="Para que el técnico pueda tocar y deslizar, habilita el servicio de accesibilidad de Pronetsys."
+                 FontSize="12" Foreground="#7a7f85" HorizontalAlignment="Center"
+                 TextWrapping="Wrap" MaxWidth="320" TextAlignment="Center" />
 
     </StackPanel>
   </Border>

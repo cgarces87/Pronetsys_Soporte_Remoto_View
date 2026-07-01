@@ -26,12 +26,20 @@ public class MainActivity : AvaloniaMainActivity<App>
 
     private MediaProjectionManager? _mpm;
     private AndroidScreenCapturer? _capturer;
+    private bool _hubEventsWired;
 
     protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)
     {
         Instance = this;
         return base.CustomizeAppBuilder(builder)
             .WithInterFont();
+    }
+
+    protected override void OnResume()
+    {
+        base.OnResume();
+        // Refrescar el estado del botón de accesibilidad al volver de Ajustes.
+        Views.MainView.Current?.RefreshFromActivity();
     }
 
     /// <summary>Lanza el diálogo de consentimiento de captura de pantalla (llamado desde la UI).</summary>
@@ -70,7 +78,18 @@ public class MainActivity : AvaloniaMainActivity<App>
         var dpi = metrics is not null ? (int)metrics.DensityDpi : 320;
 
         // Informar al hub las dimensiones para el DTO ScreenData y el encabezado de cada frame.
-        Views.MainView.ActiveHub?.SetCaptureInfo(width, height);
+        var hub = Views.MainView.ActiveHub;
+        hub?.SetCaptureInfo(width, height);
+
+        // Reflejar el estado de la sesión en la notificación persistente (una sola suscripción).
+        if (hub is not null && !_hubEventsWired)
+        {
+            _hubEventsWired = true;
+            hub.SessionActiveChanged += active =>
+                ScreenCaptureForegroundService.UpdateStatus(active
+                    ? "Un técnico está viendo tu pantalla."
+                    : "Sesión de soporte activa: listo para compartir.");
+        }
 
         _capturer?.Dispose();
         _capturer = new AndroidScreenCapturer();
@@ -82,5 +101,38 @@ public class MainActivity : AvaloniaMainActivity<App>
         _capturer.Start(projection, width, height, dpi);
 
         Log.Info(LogTag, $"Captura de pantalla iniciada ({width}x{height}).");
+    }
+
+    /// <summary>Detiene la captura y el compartir (lo llama la acción "Detener" de la notificación).</summary>
+    public void StopScreenCapture()
+    {
+        Views.MainView.ActiveHub?.StopSharing();
+        _capturer?.Dispose();
+        _capturer = null;
+        Log.Info(LogTag, "Captura de pantalla detenida por el usuario.");
+    }
+
+    /// <summary>Abre Ajustes → Accesibilidad para que el usuario habilite el control remoto.</summary>
+    public void OpenAccessibilitySettings()
+    {
+        var intent = new Intent(global::Android.Provider.Settings.ActionAccessibilitySettings);
+        intent.AddFlags(ActivityFlags.NewTask);
+        StartActivity(intent);
+    }
+
+    /// <summary>True si el servicio de accesibilidad de esta app ya está habilitado.</summary>
+    public bool IsAccessibilityEnabled()
+    {
+        try
+        {
+            var enabled = global::Android.Provider.Settings.Secure.GetString(
+                ContentResolver,
+                global::Android.Provider.Settings.Secure.EnabledAccessibilityServices);
+            return enabled?.Contains(PackageName ?? "com.pronetsys.asistenciaremota") == true;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }
