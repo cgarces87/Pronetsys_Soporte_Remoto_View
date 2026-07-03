@@ -311,11 +311,30 @@ public partial class ManageOrganization : AuthComponentBase
 
                 await UserManager.ConfirmEmailAsync(user, await UserManager.GenerateEmailConfirmationTokenAsync(user));
 
+                // Enviar un correo de activación para que el usuario nuevo fije su contraseña e
+                // ingrese. (Como el auto-registro está deshabilitado, este correo es su única vía.)
+                var code = await UserManager.GeneratePasswordResetTokenAsync(user);
+                code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                var activateUrl = $"{NavManager.BaseUri}Account/ResetPassword?code={code}";
+
+                var activationResult = await EmailSender.SendBrandedActionEmailAsync(
+                    _inviteEmail,
+                    "Activa tu cuenta — Pronetsys",
+                    "Te damos la bienvenida a Pronetsys",
+                    "Un administrador te agregó a una organización en <strong>Pronetsys Asistencia Remota</strong>. " +
+                    "Crea tu contraseña con el botón para activar tu cuenta y empezar a recibir soporte.",
+                    "Activar mi cuenta",
+                    activateUrl,
+                    "Si no esperabas este correo, puedes ignorarlo.",
+                    User.OrganizationID);
+
                 _orgUsers.Add(user);
 
                 _inviteAsAdmin = false;
                 _inviteEmail = string.Empty;
-                ToastService.ShowToast("User account created.");
+                ToastService.ShowToast(activationResult
+                    ? "Cuenta creada. Se envió un correo de activación al usuario."
+                    : "Cuenta creada, pero no se pudo enviar el correo de activación. Usa \"Restablecer contraseña\" para darle acceso.");
                 return;
             }
             else
@@ -341,14 +360,15 @@ public partial class ManageOrganization : AuthComponentBase
             }
 
             var inviteURL = $"{NavManager.BaseUri}Invite/{newInvite.Value.ID}";
-            var emailResult = await EmailSender.SendEmailAsync(invite.InvitedUser, "Invitación a una organización — Pronetsys",
-                    $@"<img src='{NavManager.BaseUri}images/Pronetsys_Logo.png' alt='Pronetsys'/>
-                            <br><br>
-                            ¡Hola!
-                            <br><br>
-                            Te han invitado a unirte a una organización en Pronetsys Asistencia Remota.
-                            <br><br>
-                            Puedes unirte <a href='{HtmlEncoder.Default.Encode(inviteURL)}'>haciendo clic aquí</a>.",
+            var emailResult = await EmailSender.SendBrandedActionEmailAsync(
+                    invite.InvitedUser,
+                    "Invitación a una organización — Pronetsys",
+                    "Te invitaron a Pronetsys",
+                    "Te han invitado a unirte a una organización en <strong>Pronetsys Asistencia Remota</strong>. " +
+                    "Acepta la invitación con el botón para crear tu acceso y empezar a recibir soporte.",
+                    "Aceptar invitación",
+                    inviteURL,
+                    "Si no esperabas esta invitación, puedes ignorar este correo.",
                     User.OrganizationID);
             if (emailResult)
             {

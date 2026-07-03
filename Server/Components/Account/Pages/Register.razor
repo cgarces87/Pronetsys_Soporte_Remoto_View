@@ -161,11 +161,12 @@ else
         return (IUserEmailStore<PronetsysUser>)UserStore;
     }
 
-    private async Task<bool> IsRegistrationEnabled()
+    private Task<bool> IsRegistrationEnabled()
     {
+        // Solo se permite crear la primera cuenta (arranque del servidor). Después, nadie puede
+        // auto-registrarse: las personas solo entran si un administrador las agrega o las invita.
         var organizationCount = DataService.GetOrganizationCount();
-        var settings = await DataService.GetSettings();
-        return settings.MaxOrganizationCount < 0 || organizationCount < settings.MaxOrganizationCount;
+        return Task.FromResult(organizationCount == 0);
     }
 
     private sealed class InputModel

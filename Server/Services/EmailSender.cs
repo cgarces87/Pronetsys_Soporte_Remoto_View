@@ -12,6 +12,21 @@ public interface IEmailSenderEx
     Task<bool> SendEmailAsync(string email, string replyTo, string subject, string htmlMessage, string? organizationID = null);
 
     Task<bool> SendEmailAsync(string email, string subject, string htmlMessage, string? organizationID = null);
+
+    /// <summary>
+    /// Sends an email using the corporate Pronetsys template (logo header, heading, intro text,
+    /// call-to-action button, and footer). Use this for any transactional email with a link so the
+    /// look stays consistent across invites, password resets and confirmations.
+    /// </summary>
+    Task<bool> SendBrandedActionEmailAsync(
+        string email,
+        string subject,
+        string heading,
+        string introHtml,
+        string buttonText,
+        string buttonUrl,
+        string footerNote,
+        string? organizationID = null);
 }
 
 public class EmailSender : IEmailSender
@@ -121,6 +136,30 @@ public class EmailSenderEx : IEmailSenderEx, IEmailSender<PronetsysUser>
         return await SendEmailAsync(email, settings.SmtpEmail, subject, htmlMessage, organizationID);
     }
 
+    public async Task<bool> SendBrandedActionEmailAsync(
+        string email,
+        string subject,
+        string heading,
+        string introHtml,
+        string buttonText,
+        string buttonUrl,
+        string footerNote,
+        string? organizationID = null)
+    {
+        var baseUrl = string.Empty;
+        try
+        {
+            baseUrl = new Uri(System.Net.WebUtility.HtmlDecode(buttonUrl)).GetLeftPart(UriPartial.Authority);
+        }
+        catch
+        {
+            // buttonUrl wasn't parseable as an absolute URL; the email still works without the logo.
+        }
+
+        var html = BuildBrandedHtml(baseUrl, heading, introHtml, buttonText, buttonUrl, footerNote);
+        return await SendEmailAsync(email, subject, html, organizationID);
+    }
+
     public async Task SendPasswordResetCodeAsync(PronetsysUser user, string email, string resetCode)
     {
         await SendEmailAsync(
@@ -220,5 +259,25 @@ public class EmailSenderFake(ILogger<EmailSenderFake> _logger) : IEmailSenderEx
     public Task<bool> SendEmailAsync(string email, string subject, string htmlMessage, string? organizationID = null)
     {
         return SendEmailAsync(email, "", subject, htmlMessage, organizationID);
+    }
+
+    public Task<bool> SendBrandedActionEmailAsync(
+        string email,
+        string subject,
+        string heading,
+        string introHtml,
+        string buttonText,
+        string buttonUrl,
+        string footerNote,
+        string? organizationID = null)
+    {
+        _logger.LogInformation(
+            "Fake EmailSender registered in dev mode. " +
+            "Branded action email would have been sent to {email}." +
+            "\n\nSubject: {EmailSubject}. \n\nButton URL: {ButtonUrl}",
+            email,
+            subject,
+            buttonUrl);
+        return Task.FromResult(true);
     }
 }

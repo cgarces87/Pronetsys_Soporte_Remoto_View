@@ -8,6 +8,7 @@
 @inject ILogger<LoginForm> Logger
 @inject NavigationManager NavigationManager
 @inject IdentityRedirectManager RedirectManager
+@inject IDataService DataService
 
 @*
     Reusable corporate login form. Used both by the /Account/Login page and the
@@ -59,9 +60,12 @@ else
                 <p>
                     <a href="Account/ForgotPassword">¿Olvidó su contraseña?</a>
                 </p>
-                <p>
-                    <a href="@(NavigationManager.GetUriWithQueryParameters("Account/Register", new Dictionary<string, object?> { ["ReturnUrl"] = ReturnUrl }))">Registrarse como nuevo usuario</a>
-                </p>
+                @if (_registrationEnabled)
+                {
+                    <p>
+                        <a href="@(NavigationManager.GetUriWithQueryParameters("Account/Register", new Dictionary<string, object?> { ["ReturnUrl"] = ReturnUrl }))">Registrarse como nuevo usuario</a>
+                    </p>
+                }
                 <p>
                     <a href="Account/ResendEmailConfirmation">Reenviar confirmación de correo electrónico</a>
                 </p>
@@ -72,6 +76,10 @@ else
 
 @code {
     private string? errorMessage;
+
+    // El registro solo se ofrece durante el arranque (sin organizaciones aún); luego se agrega
+    // gente únicamente por invitación de un administrador.
+    private bool _registrationEnabled;
 
     [CascadingParameter]
     private HttpContext? HttpContext { get; set; }
@@ -84,6 +92,8 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        _registrationEnabled = DataService.GetOrganizationCount() == 0;
+
         if (HttpContext is null)
         {
             // Running interactively (no HttpContext). Identity sign-in needs an
