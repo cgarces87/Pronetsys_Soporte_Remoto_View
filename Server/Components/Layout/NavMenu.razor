@@ -170,8 +170,9 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var settings = await DataService.GetSettings();
-        _isRegistrationEnabled = settings.MaxOrganizationCount < 0 || DataService.GetOrganizationCount() < settings.MaxOrganizationCount;
+        // El registro solo se ofrece durante el arranque (sin organizaciones aún); luego se agrega
+        // gente únicamente por invitación de un administrador.
+        _isRegistrationEnabled = DataService.GetOrganizationCount() == 0;
 
         await base.OnInitializedAsync();
 
